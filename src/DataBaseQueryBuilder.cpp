@@ -13,45 +13,60 @@ DataBaseQueryBuilder::~DataBaseQueryBuilder ()
 {
 }
 
+void DataBaseQueryBuilder::processSelectClause()
+{
+    m_finalString = "SELECT ";
+
+    for(std::vector<string>::iterator it = m_selectList.begin() ; it != m_selectList.end(); it++)
+    {
+        m_finalString.append(*it);
+        if (*it != m_selectList.at(m_selectList.size() - 1))
+        {
+            m_finalString.append(",");
+        }
+
+    }
+
+    m_finalString.append("\n");
+};
+
+void DataBaseQueryBuilder::processFromClause()
+{
+    m_finalString.append("FROM ");
+    m_finalString.append(m_from);
+};
+
+void DataBaseQueryBuilder::processWhereClause()
+{
+    if (m_whereList.size() > 0)
+    {
+        m_finalString.append("\n");
+
+    	m_finalString.append("WHERE (");
+
+    	for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
+    	{
+    		m_finalString.append(*it);
+    		if (*it != m_whereList.at(m_whereList.size() - 1))
+    		{
+    			m_finalString.append(" AND ");
+    		}
+
+    	}
+
+    	m_finalString.append(")");
+    }
+}
+
 string DataBaseQueryBuilder::Build()
 {
     m_finalString = "";
     if(!m_selectList.empty())
     {
-        m_finalString = "SELECT ";
+    	processSelectClause();
+    	processFromClause();
+    	processWhereClause();
 
-        for(std::vector<string>::iterator it = m_selectList.begin() ; it != m_selectList.end(); it++)
-        {
-            m_finalString.append(*it);
-            if (*it != m_selectList.at(m_selectList.size() - 1))
-            {
-                m_finalString.append(",");
-            }
-
-        }
-
-        m_finalString.append("\n");
-
-        m_finalString.append("FROM ");
-        m_finalString.append(m_from);
-
-        if (m_whereList.size() > 0)
-        {
-            m_finalString.append("\n");
-        	m_finalString.append("WHERE (");
-
-        	for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
-        	{
-        		m_finalString.append(*it);
-        		if (*it != m_whereList.at(m_whereList.size() - 1))
-        		{
-        			m_finalString.append(" AND ");
-        		}
-
-        	}
-
-        	m_finalString.append(")");
-        }
     }
     if(m_update != "")
     {
@@ -72,50 +87,15 @@ string DataBaseQueryBuilder::Build()
 
         }
 
-        if (m_whereList.size() > 0)
-		{
-			m_finalString.append("\n");
+        processWhereClause();
 
-			m_finalString.append("WHERE (");
-
-			for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
-			{
-				m_finalString.append(*it);
-				if (*it != m_whereList.at(m_whereList.size() - 1))
-				{
-					m_finalString.append(" AND ");
-				}
-
-			}
-
-			m_finalString.append(")");
-		}
     }
     if(m_delete == true)
     {
         m_finalString.append("DELETE ");
-        m_finalString.append("FROM ");
-        m_finalString.append(m_from);
 
-
-        if (m_whereList.size() > 0)
-		{
-			m_finalString.append("\n");
-
-			m_finalString.append("WHERE (");
-
-			for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
-			{
-				m_finalString.append(*it);
-				if (*it != m_whereList.at(m_whereList.size() - 1))
-				{
-					m_finalString.append(" AND ");
-				}
-
-			}
-
-			m_finalString.append(")");
-		}
+        processFromClause();
+        processWhereClause();
 
     }
     if(m_insertInto != "")

@@ -82,6 +82,10 @@ private:
     vector<string> m_fieldsList;
     string m_dropTable;
     bool m_delete;
+
+    void processSelectClause();
+    void processFromClause();
+    void processWhereClause();
 };
 
 #endif /* SRC_DATABASEQUERYBUILDER_H_ */
