@@ -88,6 +88,7 @@ private:
     bool m_delete;
     vector<string> m_operatorList;
 
+    void addReturnLine();
     void processSelectClause();
     void processFromClause();
     void processWhereClause();

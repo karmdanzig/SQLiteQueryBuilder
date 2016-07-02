@@ -5,13 +5,18 @@
 
 using namespace std;
 
-DataBaseQueryBuilder::DataBaseQueryBuilder () : m_delete(false)
+DataBaseQueryBuilder::DataBaseQueryBuilder () : m_finalString(""), m_delete(false)
 {
 }
 
 DataBaseQueryBuilder::~DataBaseQueryBuilder ()
 {
 }
+
+void DataBaseQueryBuilder::addReturnLine()
+{
+    m_finalString.append("\n");
+};
 
 void DataBaseQueryBuilder::processSelectClause()
 {
@@ -26,8 +31,6 @@ void DataBaseQueryBuilder::processSelectClause()
         }
 
     }
-
-    m_finalString.append("\n");
 };
 
 void DataBaseQueryBuilder::processFromClause()
@@ -40,7 +43,7 @@ void DataBaseQueryBuilder::processWhereClause()
 {
     if (m_whereList.size() > 0)
     {
-        m_finalString.append("\n");
+    	addReturnLine();
 
     	m_finalString.append("WHERE (");
 
@@ -60,10 +63,10 @@ void DataBaseQueryBuilder::processWhereClause()
 
 string DataBaseQueryBuilder::Build()
 {
-    m_finalString = "";
     if(!m_selectList.empty())
     {
     	processSelectClause();
+    	addReturnLine();
     	processFromClause();
     	processWhereClause();
 
@@ -73,7 +76,7 @@ string DataBaseQueryBuilder::Build()
         m_finalString.append("UPDATE ");
         m_finalString.append(m_update);
 
-        m_finalString.append("\n");
+        addReturnLine();
 
         m_finalString.append("SET ");
 
@@ -104,7 +107,7 @@ string DataBaseQueryBuilder::Build()
 
         m_finalString.append(m_insertInto);
 
-        m_finalString.append("\n");
+        addReturnLine();
 
         m_finalString.append("VALUES (");
 
@@ -125,14 +128,16 @@ string DataBaseQueryBuilder::Build()
         m_finalString.append("CREATE TABLE ");
         m_finalString.append(m_createTable);
 
-        m_finalString.append(" (\n");
+        m_finalString.append(" (");
+        addReturnLine();
 
         for(std::vector<string>::iterator it = m_fieldsList.begin() ; it != m_fieldsList.end(); it++)
         {
             m_finalString.append(*it);
             if (*it != m_fieldsList.at(m_fieldsList.size() - 1))
             {
-                m_finalString.append(",\n");
+                m_finalString.append(",");
+                addReturnLine();
             }
 
         }
