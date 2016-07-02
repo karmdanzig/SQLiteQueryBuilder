@@ -36,16 +36,45 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\');", t);
 }
 
-TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS)
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 {
 	string t = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
+			And().
 			WhereEqualOrLessThan("Column4", 3).
 			Build();
 
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3);", t);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
+{
+	string t = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			Or().
+			WhereEqualOrLessThan("Column4", 3).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' OR Column4 <= 3);", t);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
+{
+	string t = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			And().
+			WhereEqualOrLessThan("Column4", 3).
+			Or().
+			WhereEqualOrGreaterThan("Column5", 7).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3 OR Column5 >= 7);", t);
 }
 
 TEST(DeleteClause, TEST_DELETE)

@@ -44,12 +44,12 @@ void DataBaseQueryBuilder::processWhereClause()
 
     	m_finalString.append("WHERE (");
 
-    	for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
+    	for(std::vector<string>::iterator it = m_whereList.begin(), it2 = m_operatorList.begin() ; it != m_whereList.end(); it++, it2++)
     	{
     		m_finalString.append(*it);
     		if (*it != m_whereList.at(m_whereList.size() - 1))
     		{
-    			m_finalString.append(" AND ");
+    			m_finalString.append(" " + *it2 +" ");
     		}
 
     	}
@@ -310,5 +310,17 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrGreaterThan(string Filte
     ss << value;
     string temp = FilterField + " >= " + ss.str();
     m_whereList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::And()
+{;
+    m_operatorList.push_back("AND");
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Or()
+{;
+    m_operatorList.push_back("OR");
     return *this;
 }

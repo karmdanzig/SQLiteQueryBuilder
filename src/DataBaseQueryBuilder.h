@@ -68,6 +68,10 @@ public:
 
     DataBaseQueryBuilder& WhereEqualOrGreaterThan(string FilterField, int value);
 
+    DataBaseQueryBuilder& And();
+
+    DataBaseQueryBuilder& Or();
+
 private:
     string m_finalString;
 
@@ -82,6 +86,7 @@ private:
     vector<string> m_fieldsList;
     string m_dropTable;
     bool m_delete;
+    vector<string> m_operatorList;
 
     void processSelectClause();
     void processFromClause();
