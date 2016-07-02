@@ -133,12 +133,12 @@ string DataBaseQueryBuilder::Build()
             m_finalString.append(*it);
             if (*it != m_valuesList.at(m_valuesList.size() - 1))
             {
-                m_finalString.append(" , ");
+                m_finalString.append(", ");
             }
 
         }
 
-        m_finalString.append(") ");
+        m_finalString.append(")");
     }
     if(m_createTable != "")
     {

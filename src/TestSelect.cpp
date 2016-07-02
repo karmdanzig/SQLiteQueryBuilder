@@ -100,6 +100,18 @@ TEST(UpdateClause, TEST_UPDATE_TABLE)
 	ASSERT_EQ("UPDATE Table\nSET Column1 = '2', Column2 = 3;", t);
 }
 
+TEST(InsertClause, TEST_INSERT_INTO_TABLE)
+{
+	string t = DataBaseQueryBuilder().
+			InsertInto("Table").
+			Values("SomeText").
+			Values("2").
+			Values(3).
+			Build();
+
+	ASSERT_EQ("INSERT INTO Table\nVALUES ('SomeText', '2', 3);", t);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
