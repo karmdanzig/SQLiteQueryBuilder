@@ -89,6 +89,17 @@ TEST(CreateClause, TEST_CREATE_TABLE)
 	ASSERT_EQ("CREATE TABLE Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", t);
 }
 
+TEST(UpdateClause, TEST_UPDATE_TABLE)
+{
+	string t = DataBaseQueryBuilder().
+			Update("Table").
+			Set("Column1", "2").
+			Set("Column2", 3).
+			Build();
+
+	ASSERT_EQ("UPDATE Table\nSET Column1 = '2', Column2 = 3;", t);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

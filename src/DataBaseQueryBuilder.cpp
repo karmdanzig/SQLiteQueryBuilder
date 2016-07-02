@@ -67,26 +67,29 @@ string DataBaseQueryBuilder::Build()
             m_finalString.append(*it);
             if (*it != m_setList.at(m_setList.size() - 1))
             {
-                m_finalString.append(" , ");
+                m_finalString.append(", ");
             }
 
         }
 
-        m_finalString.append("\n");
+        if (m_whereList.size() > 0)
+		{
+			m_finalString.append("\n");
 
-        m_finalString.append("WHERE (");
+			m_finalString.append("WHERE (");
 
-        for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
-        {
-            m_finalString.append(*it);
-            if (*it != m_whereList.at(m_whereList.size() - 1))
-            {
-                m_finalString.append(" AND ");
-            }
+			for(std::vector<string>::iterator it = m_whereList.begin() ; it != m_whereList.end(); it++)
+			{
+				m_finalString.append(*it);
+				if (*it != m_whereList.at(m_whereList.size() - 1))
+				{
+					m_finalString.append(" AND ");
+				}
 
-        }
+			}
 
-        m_finalString.append(") ");
+			m_finalString.append(")");
+		}
     }
     if(m_delete == true)
     {
