@@ -5,6 +5,17 @@
 
 using namespace std;
 
+typedef enum
+{
+	None = 0,
+	SelectQuery,
+	DeleteQuery,
+	InsertQuery,
+	UpdateQuery,
+	CreateQuery,
+	DropQuery,
+};
+
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";
 const string InsertIntoClause = "INSERT INTO";

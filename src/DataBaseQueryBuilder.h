@@ -99,6 +99,7 @@ private:
     bool m_asc;
     bool m_desc;
     bool m_selectAll;
+    int m_queryType;
 
     void addReturnLine();
     void processSelectClause();
