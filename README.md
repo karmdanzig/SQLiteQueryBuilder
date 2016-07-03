@@ -12,4 +12,4 @@ string q = DataBaseQueryBuilder.SelectAll().From("Employee").WhereLessOrEqualTha
 q will equate to:
 SELECT *
 FROM Employee
-Where (Salary <= 20000);
+WHERE (Salary <= 20000);
