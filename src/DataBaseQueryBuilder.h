@@ -19,6 +19,8 @@ public:
 
     DataBaseQueryBuilder& Select(string ColumnToSelect);
 
+    DataBaseQueryBuilder& SelectAll();
+
     DataBaseQueryBuilder& From(string fromClause);
 
     DataBaseQueryBuilder& Update(string TableToUpdate);
@@ -96,6 +98,7 @@ private:
     bool m_delete;
     bool m_asc;
     bool m_desc;
+    bool m_selectAll;
 
     void addReturnLine();
     void processSelectClause();

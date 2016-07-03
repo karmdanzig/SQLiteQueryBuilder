@@ -13,6 +13,16 @@ TEST(SelectClause, TEST_BASIC_SELECT)
 	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_ALL)
+{
+	string query = DataBaseQueryBuilder().
+			SelectAll().
+			From("Table").
+			Build();
+
+	ASSERT_EQ("SELECT *\nFROM Table;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 {
 	string query = DataBaseQueryBuilder().

@@ -13,7 +13,8 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_dropTable(""),
 		m_delete(false),
 		m_asc(false),
-		m_desc(false)
+		m_desc(false),
+		m_selectAll(false)
 {
 }
 
@@ -28,17 +29,23 @@ void DataBaseQueryBuilder::addReturnLine()
 
 void DataBaseQueryBuilder::processSelectClause()
 {
-    m_finalString = SelectClause + " ";
+	m_finalString = SelectClause + " ";
 
-    for(std::vector<string>::iterator it = m_selectList.begin() ; it != m_selectList.end(); it++)
-    {
-        m_finalString.append(*it);
-        if (*it != m_selectList.at(m_selectList.size() - 1))
-        {
-            m_finalString.append(",");
-        }
+	if (m_selectAll)
+	{
+		m_finalString.append("*");
+	}
+	else{
+		for(std::vector<string>::iterator it = m_selectList.begin() ; it != m_selectList.end(); it++)
+		{
+			m_finalString.append(*it);
+			if (*it != m_selectList.at(m_selectList.size() - 1))
+			{
+				m_finalString.append(",");
+			}
 
-    }
+		}
+	}
 };
 
 void DataBaseQueryBuilder::processFromClause()
@@ -122,7 +129,7 @@ void DataBaseQueryBuilder::processOrderByClause()
 
 string DataBaseQueryBuilder::Build()
 {
-    if(!m_selectList.empty())
+    if(!m_selectList.empty() || m_selectAll)
     {
     	processSelectClause();
     	addReturnLine();
@@ -221,6 +228,12 @@ string DataBaseQueryBuilder::Build()
 DataBaseQueryBuilder& DataBaseQueryBuilder::Select(string ColumnToSelect)
 {
     m_selectList.push_back(ColumnToSelect);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::SelectAll()
+{
+    m_selectAll = true;
     return *this;
 }
 
