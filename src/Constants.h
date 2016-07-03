@@ -1,10 +1,3 @@
-/*
- * Constants.h
- *
- *  Created on: 3 Jul 2016
- *      Author: carmelo
- */
-
 #include <string>
 
 #ifndef SRC_CONSTANTS_H_

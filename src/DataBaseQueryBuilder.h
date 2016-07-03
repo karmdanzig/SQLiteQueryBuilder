@@ -1,10 +1,3 @@
-/*
- * DataBaseQueryBuilder.h
- *
- *  Created on: 1 Jul 2016
- *      Author: carmelo
- */
-
 #ifndef SRC_DATABASEQUERYBUILDER_H_
 #define SRC_DATABASEQUERYBUILDER_H_
 
