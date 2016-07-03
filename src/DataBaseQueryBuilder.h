@@ -107,6 +107,14 @@ private:
     void processWhereClause();
     void processGroupByClause();
     void processOrderByClause();
+    void processDeleteClause();
+    void processInsertIntoClause();
+    void processValuesClause();
+    void processUpdateClause();
+    void processSetClause();
+    void processCreateClause();
+    void processTableFields();
+    void processDropClause();
 };
 
 #endif /* SRC_DATABASEQUERYBUILDER_H_ */

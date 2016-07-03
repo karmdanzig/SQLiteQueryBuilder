@@ -128,6 +128,82 @@ void DataBaseQueryBuilder::processOrderByClause()
 
 }
 
+void DataBaseQueryBuilder::processDeleteClause()
+{
+	m_finalString = DeleteClause + " ";
+}
+
+void DataBaseQueryBuilder::processInsertIntoClause()
+{
+	m_finalString = InsertIntoClause + " " + m_insertInto;
+}
+
+void DataBaseQueryBuilder::processValuesClause()
+{
+	m_finalString.append(ValuesClause + " (");
+
+	for(std::vector<string>::iterator it = m_valuesList.begin() ; it != m_valuesList.end(); it++)
+	{
+		m_finalString.append(*it);
+		if (*it != m_valuesList.at(m_valuesList.size() - 1))
+		{
+			m_finalString.append(", ");
+		}
+
+	}
+
+	m_finalString.append(")");
+}
+
+void DataBaseQueryBuilder::processUpdateClause()
+{
+	m_finalString = UpdateClause + " " + m_update;
+}
+
+void DataBaseQueryBuilder::processSetClause()
+{
+	m_finalString.append(SetClause + " ");
+
+	for(std::vector<string>::iterator it = m_setList.begin() ; it != m_setList.end(); it++)
+	{
+		m_finalString.append(*it);
+		if (*it != m_setList.at(m_setList.size() - 1))
+		{
+			m_finalString.append(", ");
+		}
+
+	}
+}
+
+void DataBaseQueryBuilder::processCreateClause()
+{
+	m_finalString = CreateTableClause + " " + m_createTable;
+}
+
+void DataBaseQueryBuilder::processTableFields()
+{
+	m_finalString.append(" (");
+	addReturnLine();
+
+	for(std::vector<string>::iterator it = m_fieldsList.begin() ; it != m_fieldsList.end(); it++)
+	{
+		m_finalString.append(*it);
+		if (*it != m_fieldsList.at(m_fieldsList.size() - 1))
+		{
+			m_finalString.append(",");
+			addReturnLine();
+		}
+
+	}
+
+	m_finalString.append(")");
+}
+
+void DataBaseQueryBuilder::processDropClause()
+{
+	m_finalString = DropTableClause + " " + m_dropTable;
+}
+
 string DataBaseQueryBuilder::Build()
 {
 	switch(m_queryType)
@@ -140,87 +216,40 @@ string DataBaseQueryBuilder::Build()
 			processWhereClause();
 			processGroupByClause();
 			processOrderByClause();
-		break;
+			break;
 		}
 	case (DeleteQuery) :
 		{
-			m_finalString = DeleteClause + " ";
+			processDeleteClause();
 			processFromClause();
 			processWhereClause();
-		break;
+			break;
 		}
 	case (InsertQuery) :
 		{
-			m_finalString = InsertIntoClause + " ";
-
-			m_finalString.append(m_insertInto);
-
+			processInsertIntoClause();
 			addReturnLine();
-
-			m_finalString.append(ValuesClause + " (");
-
-			for(std::vector<string>::iterator it = m_valuesList.begin() ; it != m_valuesList.end(); it++)
-			{
-				m_finalString.append(*it);
-				if (*it != m_valuesList.at(m_valuesList.size() - 1))
-				{
-					m_finalString.append(", ");
-				}
-
-			}
-
-			m_finalString.append(")");
-		break;
+			processValuesClause();
+			break;
 		}
 	case (UpdateQuery) :
 		{
-			m_finalString = UpdateClause + " ";
-			m_finalString.append(m_update);
-
+			processUpdateClause();
 			addReturnLine();
-
-			m_finalString.append(SetClause + " ");
-
-			for(std::vector<string>::iterator it = m_setList.begin() ; it != m_setList.end(); it++)
-			{
-				m_finalString.append(*it);
-				if (*it != m_setList.at(m_setList.size() - 1))
-				{
-					m_finalString.append(", ");
-				}
-
-			}
-
+			processSetClause();
 			processWhereClause();
-		break;
+			break;
 		}
 	case (CreateQuery) :
 		{
-			m_finalString = CreateTableClause + " ";
-			m_finalString.append(m_createTable);
-
-			m_finalString.append(" (");
-			addReturnLine();
-
-			for(std::vector<string>::iterator it = m_fieldsList.begin() ; it != m_fieldsList.end(); it++)
-			{
-				m_finalString.append(*it);
-				if (*it != m_fieldsList.at(m_fieldsList.size() - 1))
-				{
-					m_finalString.append(",");
-					addReturnLine();
-				}
-
-			}
-
-			m_finalString.append(")");
-		break;
+			processCreateClause();
+			processTableFields();
+			break;
 		}
 	case (DropQuery) :
 		{
-			m_finalString = DropTableClause + " ";
-			m_finalString.append(m_dropTable);
-		break;
+			processDropClause();
+			break;
 		}
 
 	}
