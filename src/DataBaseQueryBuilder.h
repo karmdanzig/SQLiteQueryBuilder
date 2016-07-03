@@ -115,6 +115,8 @@ private:
     void processCreateClause();
     void processTableFields();
     void processDropClause();
+
+    void insertFromListWithSeparator(vector<string>& whichlist, string separator);
 };
 
 #endif /* SRC_DATABASEQUERYBUILDER_H_ */

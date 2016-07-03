@@ -36,16 +36,9 @@ void DataBaseQueryBuilder::processSelectClause()
 	{
 		m_finalString.append("*");
 	}
-	else{
-		for(std::vector<string>::iterator it = m_selectList.begin() ; it != m_selectList.end(); it++)
-		{
-			m_finalString.append(*it);
-			if (*it != m_selectList.at(m_selectList.size() - 1))
-			{
-				m_finalString.append(",");
-			}
-
-		}
+	else
+	{
+		insertFromListWithSeparator(m_selectList, ",");
 	}
 };
 
@@ -85,15 +78,7 @@ void DataBaseQueryBuilder::processGroupByClause()
 
     	m_finalString.append(GroupByClause + " ");
 
-    	for(std::vector<string>::iterator it = m_groupbyList.begin(); it != m_groupbyList.end(); it++)
-    	{
-    		m_finalString.append(*it);
-    		if (*it != m_groupbyList.at(m_groupbyList.size() - 1))
-    		{
-    			m_finalString.append(", ");
-    		}
-
-    	}
+    	insertFromListWithSeparator(m_groupbyList, ", ");
 
     }
 }
@@ -106,15 +91,7 @@ void DataBaseQueryBuilder::processOrderByClause()
 
     	m_finalString.append(OrderByClause + " ");
 
-    	for(std::vector<string>::iterator it = m_orderbyList.begin(); it != m_orderbyList.end(); it++)
-    	{
-    		m_finalString.append(*it);
-    		if (*it != m_orderbyList.at(m_orderbyList.size() - 1))
-    		{
-    			m_finalString.append(", ");
-    		}
-
-    	}
+    	insertFromListWithSeparator(m_orderbyList, ", ");
 
     }
     if (m_asc)
@@ -142,15 +119,7 @@ void DataBaseQueryBuilder::processValuesClause()
 {
 	m_finalString.append(ValuesClause + " (");
 
-	for(std::vector<string>::iterator it = m_valuesList.begin() ; it != m_valuesList.end(); it++)
-	{
-		m_finalString.append(*it);
-		if (*it != m_valuesList.at(m_valuesList.size() - 1))
-		{
-			m_finalString.append(", ");
-		}
-
-	}
+	insertFromListWithSeparator(m_valuesList, ", ");
 
 	m_finalString.append(")");
 }
@@ -164,15 +133,7 @@ void DataBaseQueryBuilder::processSetClause()
 {
 	m_finalString.append(SetClause + " ");
 
-	for(std::vector<string>::iterator it = m_setList.begin() ; it != m_setList.end(); it++)
-	{
-		m_finalString.append(*it);
-		if (*it != m_setList.at(m_setList.size() - 1))
-		{
-			m_finalString.append(", ");
-		}
-
-	}
+	insertFromListWithSeparator(m_setList, ", ");
 }
 
 void DataBaseQueryBuilder::processCreateClause()
@@ -185,16 +146,7 @@ void DataBaseQueryBuilder::processTableFields()
 	m_finalString.append(" (");
 	addReturnLine();
 
-	for(std::vector<string>::iterator it = m_fieldsList.begin() ; it != m_fieldsList.end(); it++)
-	{
-		m_finalString.append(*it);
-		if (*it != m_fieldsList.at(m_fieldsList.size() - 1))
-		{
-			m_finalString.append(",");
-			addReturnLine();
-		}
-
-	}
+	insertFromListWithSeparator(m_fieldsList, ",\n");
 
 	m_finalString.append(")");
 }
@@ -202,6 +154,19 @@ void DataBaseQueryBuilder::processTableFields()
 void DataBaseQueryBuilder::processDropClause()
 {
 	m_finalString = DropTableClause + " " + m_dropTable;
+}
+
+void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
+{
+	for(std::vector<string>::iterator it = whichList.begin() ; it != whichList.end(); it++)
+	{
+		m_finalString.append(*it);
+		if (*it != whichList.at(whichList.size() - 1))
+		{
+			m_finalString.append(separator);
+		}
+
+	}
 }
 
 string DataBaseQueryBuilder::Build()
