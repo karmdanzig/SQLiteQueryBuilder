@@ -79,6 +79,8 @@ public:
 
     DataBaseQueryBuilder& Desc();
 
+    DataBaseQueryBuilder& Distinct();
+
 private:
     string m_finalString;
 
@@ -100,6 +102,7 @@ private:
     bool m_desc;
     bool m_selectAll;
     int m_queryType;
+    bool m_distinct;
 
     void addReturnLine();
     void processSelectClause();

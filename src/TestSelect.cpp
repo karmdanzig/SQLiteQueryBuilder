@@ -23,6 +23,28 @@ TEST(SelectClause, TEST_BASIC_SELECT_ALL)
 	ASSERT_EQ("SELECT *\nFROM Table;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column").
+			Distinct().
+			From("Table").
+			Build();
+
+	ASSERT_EQ("SELECT DISTINCT Column\nFROM Table;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT_ALL)
+{
+	string query = DataBaseQueryBuilder().
+			SelectAll().
+			Distinct().
+			From("Table").
+			Build();
+
+	ASSERT_EQ("SELECT DISTINCT *\nFROM Table;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 {
 	string query = DataBaseQueryBuilder().

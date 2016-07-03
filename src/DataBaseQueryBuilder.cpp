@@ -15,7 +15,8 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_asc(false),
 		m_desc(false),
 		m_selectAll(false),
-		m_queryType(None)
+		m_queryType(None),
+		m_distinct(false)
 {
 }
 
@@ -30,7 +31,7 @@ void DataBaseQueryBuilder::addReturnLine()
 
 void DataBaseQueryBuilder::processSelectClause()
 {
-	m_finalString = SelectClause + " ";
+	m_finalString = SelectClause + " " + (m_distinct? DistinctClause + " " : "");
 
 	if (m_selectAll)
 	{
@@ -235,6 +236,12 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::SelectAll()
 {
     m_selectAll = true;
     m_queryType = SelectQuery;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Distinct()
+{
+    m_distinct = true;
     return *this;
 }
 

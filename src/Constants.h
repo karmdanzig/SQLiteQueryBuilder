@@ -40,5 +40,6 @@ const string GroupByClause="GROUP BY";
 const string OrderByClause="ORDER BY";
 const string AscClause="ASC";
 const string DescClause="DESC";
+const string DistinctClause="DISTINCT";
 
 #endif /* SRC_CONSTANTS_H_ */
