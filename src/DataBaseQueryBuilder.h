@@ -76,6 +76,14 @@ public:
 
     DataBaseQueryBuilder& Or();
 
+    DataBaseQueryBuilder& GroupBy(string column);
+
+    DataBaseQueryBuilder& OrderBy(string column);
+
+    DataBaseQueryBuilder& Asc();
+
+    DataBaseQueryBuilder& Desc();
+
 private:
     string m_finalString;
 
@@ -85,17 +93,23 @@ private:
     vector<string> m_setList;
     vector<string> m_valuesList;
     vector<string> m_operatorList;
+    vector<string> m_groupbyList;
+    vector<string> m_orderbyList;
     string m_from;
     string m_update;
     string m_insertInto;
     string m_createTable;
     string m_dropTable;
     bool m_delete;
+    bool m_asc;
+    bool m_desc;
 
     void addReturnLine();
     void processSelectClause();
     void processFromClause();
     void processWhereClause();
+    void processGroupByClause();
+    void processOrderByClause();
 };
 
 #endif /* SRC_DATABASEQUERYBUILDER_H_ */

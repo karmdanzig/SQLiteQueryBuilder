@@ -88,6 +88,73 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3 OR Column5 >= 7);", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			GroupBy("Column1").
+			GroupBy("Column2").
+			GroupBy("Column3").
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			GroupBy("Column1").
+			GroupBy("Column2").
+			GroupBy("Column3").
+			OrderBy("Column1").
+			OrderBy("Column2").
+			OrderBy("Column3").
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_ASC)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			GroupBy("Column1").
+			GroupBy("Column2").
+			GroupBy("Column3").
+			OrderBy("Column1").
+			OrderBy("Column2").
+			OrderBy("Column3").
+			Asc().
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 ASC;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_DESC)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			GroupBy("Column1").
+			GroupBy("Column2").
+			GroupBy("Column3").
+			OrderBy("Column1").
+			OrderBy("Column2").
+			OrderBy("Column3").
+			Desc().
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 DESC;", query);
+}
+
 TEST(DeleteClause, TEST_DELETE)
 {
 	string query = DataBaseQueryBuilder().

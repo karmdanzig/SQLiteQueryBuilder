@@ -13,7 +13,9 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_insertInto(""),
 		m_createTable(""),
 		m_dropTable(""),
-		m_delete(false)
+		m_delete(false),
+		m_asc(false),
+		m_desc(false)
 {
 }
 
@@ -69,6 +71,57 @@ void DataBaseQueryBuilder::processWhereClause()
     }
 }
 
+void DataBaseQueryBuilder::processGroupByClause()
+{
+    if (m_groupbyList.size() > 0)
+    {
+    	addReturnLine();
+
+    	m_finalString.append(GroupByClause + " ");
+
+    	for(std::vector<string>::iterator it = m_groupbyList.begin(); it != m_groupbyList.end(); it++)
+    	{
+    		m_finalString.append(*it);
+    		if (*it != m_groupbyList.at(m_groupbyList.size() - 1))
+    		{
+    			m_finalString.append(", ");
+    		}
+
+    	}
+
+    }
+}
+
+void DataBaseQueryBuilder::processOrderByClause()
+{
+    if (m_orderbyList.size() > 0)
+    {
+    	addReturnLine();
+
+    	m_finalString.append(OrderByClause + " ");
+
+    	for(std::vector<string>::iterator it = m_orderbyList.begin(); it != m_orderbyList.end(); it++)
+    	{
+    		m_finalString.append(*it);
+    		if (*it != m_orderbyList.at(m_orderbyList.size() - 1))
+    		{
+    			m_finalString.append(", ");
+    		}
+
+    	}
+
+    }
+    if (m_asc)
+    {
+    	m_finalString.append(" " + AscClause);
+    }
+    if (m_desc)
+	{
+		m_finalString.append(" " + DescClause);
+	}
+
+}
+
 string DataBaseQueryBuilder::Build()
 {
     if(!m_selectList.empty())
@@ -77,6 +130,8 @@ string DataBaseQueryBuilder::Build()
     	addReturnLine();
     	processFromClause();
     	processWhereClause();
+    	processGroupByClause();
+    	processOrderByClause();
 
     }
     if(m_update != "")
@@ -343,13 +398,37 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(string FilterField, int va
 }
 
 DataBaseQueryBuilder& DataBaseQueryBuilder::And()
-{;
+{
     m_operatorList.push_back(AndClause);
     return *this;
 }
 
 DataBaseQueryBuilder& DataBaseQueryBuilder::Or()
-{;
+{
     m_operatorList.push_back(OrClause);
     return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::GroupBy(string column)
+{
+	m_groupbyList.push_back(column);
+	return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::OrderBy(string column)
+{
+	m_orderbyList.push_back(column);
+	return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Asc()
+{
+    m_asc = true;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Desc()
+{
+	m_desc = true;
+	return *this;
 }

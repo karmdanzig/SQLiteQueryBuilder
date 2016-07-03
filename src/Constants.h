@@ -32,6 +32,9 @@ const string GreaterClause = ">";
 const string LessClause = "<";
 const string GreaterOrEqualClause = ">=";
 const string LessOrEqualClause = "<=";
-
+const string GroupByClause="GROUP BY";
+const string OrderByClause="ORDER BY";
+const string AscClause="ASC";
+const string DescClause="DESC";
 
 #endif /* SRC_CONSTANTS_H_ */
