@@ -5,7 +5,7 @@ The intent of the project is to facilitate the creation of query strings for SQL
 
 Usage:
 
-For example we want to create query string to select all the records from table "Employee" where Salary is Less or Equal than 20.
+For example we want to create query string to select all the records from table "Employee" where Salary is Less or Equal than 20000.
 
 string q = DataBaseQueryBuilder.SelectAll().From("Employee").WhereLessOrEqualThan("Salary", 20000).Build();
 
