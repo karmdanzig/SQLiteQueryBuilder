@@ -14,7 +14,7 @@ typedef enum
 	UpdateQuery,
 	CreateQuery,
 	DropQuery,
-};
+} QueryType;
 
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";
