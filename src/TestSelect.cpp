@@ -6,39 +6,50 @@ using namespace std;
 
 TEST(SelectClause, TEST_BASIC_SELECT)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column").
 			From("Table").
 			Build();
 
-	ASSERT_EQ("SELECT Column\nFROM Table;", t);
+	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", 2).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = 2);", t);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = 2);", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\');", t);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\');", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereLike("Column", "_T%").
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column LIKE \'_T%\');", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -46,12 +57,12 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 			WhereEqualOrLessThan("Column4", 3).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3);", t);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3);", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -59,12 +70,12 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
 			WhereEqualOrLessThan("Column4", 3).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' OR Column4 <= 3);", t);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' OR Column4 <= 3);", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -74,83 +85,83 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 			WhereEqualOrGreaterThan("Column5", 7).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3 OR Column5 >= 7);", t);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3 OR Column5 >= 7);", query);
 }
 
 TEST(DeleteClause, TEST_DELETE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Delete().
 			From("Table").
 			Build();
 
-	ASSERT_EQ("DELETE FROM Table;", t);
+	ASSERT_EQ("DELETE FROM Table;", query);
 }
 
 TEST(DeleteClause, TEST_DELETE_WITH_CONDITION)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Delete().
 			From("Table").
 			WhereEqual("Column", "2").
 			Build();
 
-	ASSERT_EQ("DELETE FROM Table\nWHERE (Column = \'2\');", t);
+	ASSERT_EQ("DELETE FROM Table\nWHERE (Column = \'2\');", query);
 }
 
 TEST(DropClause, TEST_DROP_TABLE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			DropTable("Table").
 			Build();
 
-	ASSERT_EQ("DROP TABLE Table;", t);
+	ASSERT_EQ("DROP TABLE Table;", query);
 }
 
 TEST(CreateClause, TEST_CREATE_TABLE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			CreateTable("Table").
 			Field("Field1", "INT", true, true).
 			Field("Field2", "CHAR(50)", false, true).
 			Build();
 
-	ASSERT_EQ("CREATE TABLE Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", t);
+	ASSERT_EQ("CREATE TABLE Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", query);
 }
 
 TEST(UpdateClause, TEST_UPDATE_TABLE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Update("Table").
 			Set("Column1", "2").
 			Set("Column2", 3).
 			Build();
 
-	ASSERT_EQ("UPDATE Table\nSET Column1 = '2', Column2 = 3;", t);
+	ASSERT_EQ("UPDATE Table\nSET Column1 = \'2\', Column2 = 3;", query);
 }
 
 TEST(UpdateClause, TEST_UPDATE_TABLE_WITH_CONDITION)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			Update("Table").
 			Set("Column1", "2").
 			Set("Column2", 3).
 			WhereLessThan("Column3", 4).
 			Build();
 
-	ASSERT_EQ("UPDATE Table\nSET Column1 = '2', Column2 = 3\nWHERE (Column3 < 4);", t);
+	ASSERT_EQ("UPDATE Table\nSET Column1 = \'2\', Column2 = 3\nWHERE (Column3 < 4);", query);
 }
 
 TEST(InsertClause, TEST_INSERT_INTO_TABLE)
 {
-	string t = DataBaseQueryBuilder().
+	string query = DataBaseQueryBuilder().
 			InsertInto("Table").
 			Values("SomeText").
 			Values("2").
 			Values(3).
 			Build();
 
-	ASSERT_EQ("INSERT INTO Table\nVALUES ('SomeText', '2', 3);", t);
+	ASSERT_EQ("INSERT INTO Table\nVALUES (\'SomeText\', \'2\', 3);", query);
 }
 
 int main(int argc, char **argv) {

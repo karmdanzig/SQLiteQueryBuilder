@@ -68,6 +68,10 @@ public:
 
     DataBaseQueryBuilder& WhereEqualOrGreaterThan(string FilterField, int value);
 
+    DataBaseQueryBuilder& WhereLike(string FilterField, string value);
+
+    DataBaseQueryBuilder& WhereLike(string FilterField, int value);
+
     DataBaseQueryBuilder& And();
 
     DataBaseQueryBuilder& Or();
@@ -76,17 +80,17 @@ private:
     string m_finalString;
 
     vector<string> m_selectList;
-    string m_from;
+    vector<string> m_fieldsList;
     vector<string> m_whereList;
     vector<string> m_setList;
     vector<string> m_valuesList;
+    vector<string> m_operatorList;
+    string m_from;
     string m_update;
     string m_insertInto;
     string m_createTable;
-    vector<string> m_fieldsList;
     string m_dropTable;
     bool m_delete;
-    vector<string> m_operatorList;
 
     void addReturnLine();
     void processSelectClause();

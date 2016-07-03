@@ -1,0 +1,37 @@
+/*
+ * Constants.h
+ *
+ *  Created on: 3 Jul 2016
+ *      Author: carmelo
+ */
+
+#include <string>
+
+#ifndef SRC_CONSTANTS_H_
+#define SRC_CONSTANTS_H_
+
+using namespace std;
+
+const string SelectClause = "SELECT";
+const string DeleteClause = "DELETE";
+const string InsertIntoClause = "INSERT INTO";
+const string UpdateClause = "UPDATE";
+const string DropTableClause = "DROP TABLE";
+const string CreateTableClause = "CREATE TABLE";
+const string FromClause = "FROM";
+const string WhereClause = "WHERE";
+const string AndClause = "AND";
+const string OrClause = "OR";
+const string SetClause = "SET";
+const string ValuesClause = "VALUES";
+const string PrimaryKeyClause = "PRIMARY KEY";
+const string NotNullClause = "NOT NULL";
+const string LikeClause = "LIKE";
+const string EqualClause = "=";
+const string GreaterClause = ">";
+const string LessClause = "<";
+const string GreaterOrEqualClause = ">=";
+const string LessOrEqualClause = "<=";
+
+
+#endif /* SRC_CONSTANTS_H_ */
