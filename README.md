@@ -1,7 +1,8 @@
 # DataBaseQueryBuilder
 ### Simple way to create queries for SQLite
 
-The intent of the project is to facilitate the creation of query strings for SQLite. 
+The intent of the project is to facilitate the creation of query strings for SQLite by using functions as normal SQL words, for instance Select() as a SELECT clause or Insert() as a INSERT. The aim of this is to use SQLite without writing the entire query string and using predefined less error-prone routines.
+
 The project was made with Test Driven Development. Unit tests are done using Google test library.
 
 ### Usage:
