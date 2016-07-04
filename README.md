@@ -19,7 +19,7 @@ WHERE (Salary <= 20000);
 Example 2:
 We want to create query string to select Name and Last Name from table "Employee" where Salary is greater than 20000 and less than 50000 Ordered by "City" ascending.
 
-string q = DataBaseQueryBuilder.Select("Name").Select("Last Name").From("Employee").WhereGreaterThan("Salary", 20000).And().WhereLess("Salary", 50000).OrderBy("City").Asc()Build();
+string q = DataBaseQueryBuilder.Select("Name").Select("Last Name").From("Employee").WhereGreaterThan("Salary", 20000).And().WhereLess("Salary", 50000).OrderBy("City").Asc().Build();
 
 q will equate to:
 SELECT Name, Last Name
