@@ -53,4 +53,4 @@ Select Distinct Name and Age from table "Employee" where Company begins with "Ar
 q will equate to:
 <pre><code>SELECT DISTINCT Name, Last Name</code>
 <code>FROM Employee</code>
-<code>WHERE (Company Like "Ar%");</code></pre>
+<code>WHERE (Company Like 'Ar%');</code></pre>
