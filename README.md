@@ -28,7 +28,7 @@ Select Name and Last Name from table "Employee" where Salary is greater than 200
 <code>            From("Employee").</code>
 <code>            WhereGreaterThan("Salary", 20000).</code>
 <code>            And().</code>
-<code>            WhereLess("Salary", 50000).</code>
+<code>            WhereLessThan("Salary", 50000).</code>
 <code>            OrderBy("City").</code>
 <code>            Asc().</code>
 <code>            Build();</code></pre>
