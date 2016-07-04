@@ -85,6 +85,8 @@ public:
 
     DataBaseQueryBuilder& Having(string FilterField, int value);
 
+    DataBaseQueryBuilder& WhereIn(string FilterField, string query);
+
 private:
     string m_finalString;
 

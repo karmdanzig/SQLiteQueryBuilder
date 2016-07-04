@@ -486,3 +486,11 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Having(string FilterField, int value
     m_havingList.push_back(temp);
     return *this;
 }
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn(string FilterField, string value)
+{
+	string temp1 = value;
+	temp1 = FilterField + " " + InClause + " (" + temp1.substr(0, temp1.size()-1) + ")";
+    m_whereList.push_back(temp1);
+    return *this;
+}
