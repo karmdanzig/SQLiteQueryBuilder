@@ -24,5 +24,5 @@ string q = DataBaseQueryBuilder.Select("Name").Select("Last Name").From("Employe
 q will equate to:
 SELECT Name, Last Name
 FROM Employee
-WHERE (Salary > 20000 AND Salary < 50000).
+WHERE (Salary > 20000 AND Salary < 50000)
 ORDER BY City ASC;
