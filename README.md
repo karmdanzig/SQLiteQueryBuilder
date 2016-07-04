@@ -41,17 +41,17 @@ q will equate to:
 <code>ORDER BY City ASC;</code></pre>
 
 ###### Example 3:
-Select Distinct Name and Age from table "Employee" where Company begins with "Ar".
+Select Distinct Name and Age from table "Employee" where Company does not begin with "Ar".
 
 <pre><code>string q = DataBaseQueryBuilder.</code>
 <code>            Select("Name").</code>
 <code>            Select("Age").</code>
 <code>            Distinct().</code>
 <code>            From("Employee").</code>
-<code>            WhereLike("Company", "Ar%").</code>
+<code>            WhereNotLike("Company", "Ar%").</code>
 <code>            Build();</code></pre>
 
 q will equate to:
 <pre><code>SELECT DISTINCT Name, Last Name</code>
 <code>FROM Employee</code>
-<code>WHERE Company Like 'Ar%';</code></pre>
+<code>WHERE Company NOT LIKE 'Ar%';</code></pre>
