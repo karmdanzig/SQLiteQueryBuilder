@@ -433,6 +433,22 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(string FilterField, int va
     return *this;
 }
 
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(string FilterField, string value)
+{
+    string temp = FilterField + " " + NotClause + " " + LikeClause + " \'" + value + "\'";
+    m_whereList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(string FilterField, int value)
+{
+    ostringstream ss;
+    ss << value;
+    string temp = FilterField + " " + NotClause + " " + LikeClause + " " + ss.str();
+    m_whereList.push_back(temp);
+    return *this;
+}
+
 DataBaseQueryBuilder& DataBaseQueryBuilder::And()
 {
     m_operatorList.push_back(AndClause);
@@ -506,6 +522,23 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(string FilterField, int
 DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(string FilterField, string min, string max)
 {
 	string temp1 = FilterField + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
+    m_whereList.push_back(temp1);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(string FilterField, int min, int max)
+{
+    ostringstream ss, ss1;
+    ss << min;
+    ss1 << max;
+	string temp1 = FilterField + " " + NotClause + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
+    m_whereList.push_back(temp1);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(string FilterField, string min, string max)
+{
+	string temp1 = FilterField + " " + NotClause + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
     m_whereList.push_back(temp1);
     return *this;
 }

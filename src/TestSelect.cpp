@@ -89,6 +89,17 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column LIKE \'_T%\';", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_NOT_LIKE_CONDITION)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereNotLike("Column", "_T%").
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column NOT LIKE \'_T%\';", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 {
 	string query = DataBaseQueryBuilder().
@@ -139,6 +150,17 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_BETWEEN_CLAUSE)
 			Build();
 
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column2 BETWEEN 3 AND 4;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_NOT_BETWEEN_CLAUSE)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereNotBetween("Column2", 3, 4).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column2 NOT BETWEEN 3 AND 4;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)

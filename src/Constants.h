@@ -43,6 +43,7 @@ const string AscClause = "ASC";
 const string DescClause = "DESC";
 const string DistinctClause = "DISTINCT";
 const string InClause = "IN";
+const string NotClause = "NOT";
 const string BetweenClause = "BETWEEN";
 
 #endif /* SRC_CONSTANTS_H_ */
