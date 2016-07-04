@@ -26,3 +26,13 @@ SELECT Name, Last Name
 FROM Employee
 WHERE (Salary > 20000 AND Salary < 50000)
 ORDER BY City ASC;
+
+Example 3:
+We want to create query string to select Name and Age from table "Employee" where Company begins with "Ar".
+
+string q = DataBaseQueryBuilder.Select("Name").Select("Age").From("Employee").WhereLike("Company", "Ar%").Build();
+
+q will equate to:
+SELECT Name, Last Name
+FROM Employee
+WHERE (Company Like "Ar%");
