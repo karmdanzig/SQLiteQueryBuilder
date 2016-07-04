@@ -53,7 +53,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 			WhereEqual("Column", 2).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = 2);", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = 2;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
@@ -64,7 +64,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
 			WhereIn("Column", DataBaseQueryBuilder().Select("Column2").From("Table2").Build()).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column IN (SELECT Column2\nFROM Table2));", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column IN (SELECT Column2\nFROM Table2);", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
@@ -75,7 +75,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
 			WhereEqual("Column", "2").
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\');", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\';", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
@@ -86,7 +86,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
 			WhereLike("Column", "_T%").
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column LIKE \'_T%\');", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column LIKE \'_T%\';", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
@@ -99,7 +99,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 			WhereEqualOrLessThan("Column4", 3).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3);", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\' AND Column4 <= 3;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
@@ -112,7 +112,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
 			WhereEqualOrLessThan("Column4", 3).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' OR Column4 <= 3);", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\' OR Column4 <= 3;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
@@ -127,7 +127,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 			WhereEqualOrGreaterThan("Column5", 7).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\' AND Column4 <= 3 OR Column5 >= 7);", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\' AND Column4 <= 3 OR Column5 >= 7;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
@@ -141,7 +141,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
 			GroupBy("Column3").
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3;", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\'\nGROUP BY Column1, Column2, Column3;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_HAVING)
@@ -156,7 +156,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_HAVING)
 			Having("Column2", 5).
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nHAVING Column2 = 5;", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\'\nGROUP BY Column1, Column2, Column3\nHAVING Column2 = 5;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
@@ -173,7 +173,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
 			OrderBy("Column3").
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3;", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\'\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_ASC)
@@ -191,7 +191,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_ASC)
 			Asc().
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 ASC;", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\'\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 ASC;", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_DESC)
@@ -209,7 +209,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_DESC)
 			Desc().
 			Build();
 
-	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 DESC;", query);
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\'\nGROUP BY Column1, Column2, Column3\nORDER BY Column1, Column2, Column3 DESC;", query);
 }
 
 TEST(DeleteClause, TEST_DELETE)
@@ -230,7 +230,7 @@ TEST(DeleteClause, TEST_DELETE_WITH_CONDITION)
 			WhereEqual("Column", "2").
 			Build();
 
-	ASSERT_EQ("DELETE FROM Table\nWHERE (Column = \'2\');", query);
+	ASSERT_EQ("DELETE FROM Table\nWHERE Column = \'2\';", query);
 }
 
 TEST(DropClause, TEST_DROP_TABLE)
@@ -273,7 +273,7 @@ TEST(UpdateClause, TEST_UPDATE_TABLE_WITH_CONDITION)
 			WhereLessThan("Column3", 4).
 			Build();
 
-	ASSERT_EQ("UPDATE Table\nSET Column1 = \'2\', Column2 = 3\nWHERE (Column3 < 4);", query);
+	ASSERT_EQ("UPDATE Table\nSET Column1 = \'2\', Column2 = 3\nWHERE Column3 < 4;", query);
 }
 
 TEST(InsertClause, TEST_INSERT_INTO_TABLE)

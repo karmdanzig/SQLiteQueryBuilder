@@ -55,7 +55,7 @@ void DataBaseQueryBuilder::processWhereClause()
     {
     	addReturnLine();
 
-    	m_finalString.append(WhereClause + " (");
+    	m_finalString.append(WhereClause + " ");
 
     	for(std::vector<string>::iterator it = m_whereList.begin(), it2 = m_operatorList.begin() ; it != m_whereList.end(); it++, it2++)
     	{
@@ -66,8 +66,6 @@ void DataBaseQueryBuilder::processWhereClause()
     		}
 
     	}
-
-    	m_finalString.append(")");
     }
 }
 
