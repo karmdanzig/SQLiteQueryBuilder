@@ -81,6 +81,10 @@ public:
 
     DataBaseQueryBuilder& Distinct();
 
+    DataBaseQueryBuilder& Having(string FilterField, string value);
+
+    DataBaseQueryBuilder& Having(string FilterField, int value);
+
 private:
     string m_finalString;
 
@@ -92,6 +96,7 @@ private:
     vector<string> m_operatorList;
     vector<string> m_groupbyList;
     vector<string> m_orderbyList;
+    vector<string> m_havingList;
     string m_from;
     string m_update;
     string m_insertInto;
@@ -118,6 +123,7 @@ private:
     void processCreateClause();
     void processTableFields();
     void processDropClause();
+    void processHavingClause();
 
     void insertFromListWithSeparator(vector<string>& whichlist, string separator);
 };

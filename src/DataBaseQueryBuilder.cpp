@@ -84,6 +84,19 @@ void DataBaseQueryBuilder::processGroupByClause()
     }
 }
 
+void DataBaseQueryBuilder::processHavingClause()
+{
+    if (m_havingList.size() > 0)
+    {
+    	addReturnLine();
+
+    	m_finalString.append(HavingClause + " ");
+
+    	insertFromListWithSeparator(m_havingList, ", ");
+
+    }
+}
+
 void DataBaseQueryBuilder::processOrderByClause()
 {
     if (m_orderbyList.size() > 0)
@@ -181,6 +194,7 @@ string DataBaseQueryBuilder::Build()
 			processFromClause();
 			processWhereClause();
 			processGroupByClause();
+			processHavingClause();
 			processOrderByClause();
 			break;
 		}
@@ -455,4 +469,20 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Desc()
 {
 	m_desc = true;
 	return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Having(string FilterField, string value)
+{
+    string temp = FilterField + " = \'" + value + "\'";
+    m_havingList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Having(string FilterField, int value)
+{
+    ostringstream ss;
+    ss << value;
+    string temp = FilterField + " = " + ss.str();
+    m_havingList.push_back(temp);
+    return *this;
 }

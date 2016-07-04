@@ -36,10 +36,11 @@ const string GreaterClause = ">";
 const string LessClause = "<";
 const string GreaterOrEqualClause = ">=";
 const string LessOrEqualClause = "<=";
-const string GroupByClause="GROUP BY";
-const string OrderByClause="ORDER BY";
-const string AscClause="ASC";
-const string DescClause="DESC";
-const string DistinctClause="DISTINCT";
+const string GroupByClause = "GROUP BY";
+const string HavingClause = "HAVING";
+const string OrderByClause = "ORDER BY";
+const string AscClause = "ASC";
+const string DescClause = "DESC";
+const string DistinctClause = "DISTINCT";
 
 #endif /* SRC_CONSTANTS_H_ */

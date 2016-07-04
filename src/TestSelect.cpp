@@ -133,6 +133,21 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_HAVING)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereEqual("Column", "2").
+			GroupBy("Column1").
+			GroupBy("Column2").
+			GroupBy("Column3").
+			Having("Column2", 5).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE (Column = \'2\')\nGROUP BY Column1, Column2, Column3\nHAVING Column2 = 5;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
 {
 	string query = DataBaseQueryBuilder().
