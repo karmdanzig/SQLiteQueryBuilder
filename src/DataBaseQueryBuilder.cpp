@@ -492,3 +492,20 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn(string FilterField, string v
     m_whereList.push_back(temp1);
     return *this;
 }
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(string FilterField, int min, int max)
+{
+    ostringstream ss, ss1;
+    ss << min;
+    ss1 << max;
+	string temp1 = FilterField + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
+    m_whereList.push_back(temp1);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(string FilterField, string min, string max)
+{
+	string temp1 = FilterField + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
+    m_whereList.push_back(temp1);
+    return *this;
+}

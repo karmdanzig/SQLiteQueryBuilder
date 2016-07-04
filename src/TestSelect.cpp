@@ -130,6 +130,17 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = \'2\' AND Column4 <= 3 OR Column5 >= 7;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_BETWEEN_CLAUSE)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereBetween("Column2", 3, 4).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column2 BETWEEN 3 AND 4;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
 {
 	string query = DataBaseQueryBuilder().

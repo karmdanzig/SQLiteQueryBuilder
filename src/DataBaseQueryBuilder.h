@@ -87,6 +87,10 @@ public:
 
     DataBaseQueryBuilder& WhereIn(string FilterField, string query);
 
+    DataBaseQueryBuilder& WhereBetween(string FilterField, int min, int max);
+
+    DataBaseQueryBuilder& WhereBetween(string FilterField, string min, string max);
+
 private:
     string m_finalString;
 
