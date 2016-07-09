@@ -45,5 +45,7 @@ const string DistinctClause = "DISTINCT";
 const string InClause = "IN";
 const string NotClause = "NOT";
 const string BetweenClause = "BETWEEN";
+const string IfExists = "IF EXISTS";
+const string IfNotExists = "IF NOT EXISTS";
 
 #endif /* SRC_CONSTANTS_H_ */
