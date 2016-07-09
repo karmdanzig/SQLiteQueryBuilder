@@ -14,6 +14,7 @@ typedef enum
 	UpdateQuery,
 	CreateQuery,
 	DropQuery,
+	AlterQuery,
 } QueryType;
 
 const string Table = "TABLE";
@@ -23,6 +24,7 @@ const string InsertIntoClause = "INSERT INTO";
 const string UpdateClause = "UPDATE";
 const string DropClause = "DROP";
 const string CreateClause = "CREATE";
+const string AlterClause = "ALTER";
 const string FromClause = "FROM";
 const string WhereClause = "WHERE";
 const string AndClause = "AND";
@@ -49,5 +51,6 @@ const string BetweenClause = "BETWEEN";
 const string IfExistsClause = "IF EXISTS";
 const string IfNotExistsClause = "IF NOT EXISTS";
 const string TemporaryClause = "TEMPORARY";
+const string RenameToClause = "RENAME TO";
 
 #endif /* SRC_CONSTANTS_H_ */

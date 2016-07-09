@@ -356,6 +356,16 @@ TEST(InsertClause, TEST_INSERT_INTO_TABLE)
 	ASSERT_EQ("INSERT INTO Table\nVALUES (\'SomeText\', \'2\', 3);", query);
 }
 
+TEST(AlterClause, TEST_ALTER_RENAME)
+{
+	string query = DataBaseQueryBuilder().
+			Alter("Table").
+			RenameTo("Table1").
+			Build();
+
+	ASSERT_EQ("ALTER Table RENAME TO Table1;", query);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

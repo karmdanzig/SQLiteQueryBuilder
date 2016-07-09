@@ -11,6 +11,7 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_insertInto(""),
 		m_createTable(""),
 		m_dropTable(""),
+		m_alterTable(""),
 		m_delete(false),
 		m_asc(false),
 		m_desc(false),
@@ -19,7 +20,8 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_distinct(false),
 		m_ifExists(false),
 		m_ifNotExists(false),
-		m_temporary(false)
+		m_temporary(false),
+		m_renameTable("")
 {
 }
 
@@ -171,6 +173,11 @@ void DataBaseQueryBuilder::processDropClause()
 	m_finalString = DropClause + " " + Table + " " + (m_ifExists? IfExistsClause + " " : "") + m_dropTable;
 }
 
+void DataBaseQueryBuilder::processAlterClause()
+{
+	m_finalString = AlterClause + " " + m_alterTable + " " + RenameToClause + " " + m_renameTable;
+}
+
 void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
 {
 	for(std::vector<string>::iterator it = whichList.begin() ; it != whichList.end(); it++)
@@ -232,7 +239,11 @@ string DataBaseQueryBuilder::Build()
 			processDropClause();
 			break;
 		}
-
+	case (AlterQuery) :
+		{
+			processAlterClause();
+			break;
+		}
 	}
 
     m_finalString.append(";");
@@ -305,6 +316,19 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Drop(string table)
 {
     m_dropTable = table;
     m_queryType = DropQuery;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Alter(string table)
+{
+    m_alterTable = table;
+    m_queryType = AlterQuery;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::RenameTo(string table)
+{
+    m_renameTable = table;
     return *this;
 }
 

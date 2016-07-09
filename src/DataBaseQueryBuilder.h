@@ -35,6 +35,10 @@ public:
 
     DataBaseQueryBuilder& Drop(string table);
 
+    DataBaseQueryBuilder& Alter(string table);
+
+    DataBaseQueryBuilder& RenameTo(string table);
+
     DataBaseQueryBuilder& Set(string setField, string value);
 
     DataBaseQueryBuilder& Set(string setField, int value);
@@ -122,6 +126,8 @@ private:
     string m_insertInto;
     string m_createTable;
     string m_dropTable;
+    string m_alterTable;
+    string m_renameTable;
     bool m_delete;
     bool m_asc;
     bool m_desc;
@@ -147,6 +153,7 @@ private:
     void processTableFields();
     void processDropClause();
     void processHavingClause();
+    void processAlterClause();
 
     void insertFromListWithSeparator(vector<string>& whichlist, string separator);
 };
