@@ -29,11 +29,11 @@ public:
 
     DataBaseQueryBuilder& InsertInto(string table);
 
-    DataBaseQueryBuilder& CreateTable(string table);
+    DataBaseQueryBuilder& Create(string table);
 
     DataBaseQueryBuilder& Field(string fieldName, string fieldType, bool primaryKey, bool notNull);
 
-    DataBaseQueryBuilder& DropTable(string table);
+    DataBaseQueryBuilder& Drop(string table);
 
     DataBaseQueryBuilder& Set(string setField, string value);
 
@@ -99,6 +99,12 @@ public:
 
     DataBaseQueryBuilder& WhereNotBetween(string FilterField, string min, string max);
 
+    DataBaseQueryBuilder& IfExists();
+
+    DataBaseQueryBuilder& IfNotExists();
+
+    DataBaseQueryBuilder& Temporary();
+
 private:
     string m_finalString;
 
@@ -122,6 +128,9 @@ private:
     bool m_selectAll;
     int m_queryType;
     bool m_distinct;
+    bool m_ifExists;
+    bool m_ifNotExists;
+    bool m_temporary;
 
     void addReturnLine();
     void processSelectClause();

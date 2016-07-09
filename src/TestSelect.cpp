@@ -269,21 +269,56 @@ TEST(DeleteClause, TEST_DELETE_WITH_CONDITION)
 TEST(DropClause, TEST_DROP_TABLE)
 {
 	string query = DataBaseQueryBuilder().
-			DropTable("Table").
+			Drop("Table").
 			Build();
 
 	ASSERT_EQ("DROP TABLE Table;", query);
 }
 
+TEST(DropClause, TEST_DROP_TABLE_IF_EXISTS)
+{
+	string query = DataBaseQueryBuilder().
+			Drop("Table").
+			IfExists().
+			Build();
+
+	ASSERT_EQ("DROP TABLE IF EXISTS Table;", query);
+}
+
 TEST(CreateClause, TEST_CREATE_TABLE)
 {
 	string query = DataBaseQueryBuilder().
-			CreateTable("Table").
+			Create("Table").
 			Field("Field1", "INT", true, true).
 			Field("Field2", "CHAR(50)", false, true).
 			Build();
 
 	ASSERT_EQ("CREATE TABLE Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", query);
+}
+
+TEST(CreateClause, TEST_CREATE_TABLE_IF_NOT_EXISTS)
+{
+	string query = DataBaseQueryBuilder().
+			Create("Table").
+			IfNotExists().
+			Field("Field1", "INT", true, true).
+			Field("Field2", "CHAR(50)", false, true).
+			Build();
+
+	ASSERT_EQ("CREATE TABLE IF NOT EXISTS Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", query);
+}
+
+TEST(CreateClause, TEST_CREATE_TEMPORARY_TABLE_IF_NOT_EXISTS)
+{
+	string query = DataBaseQueryBuilder().
+			Create("Table").
+			Temporary().
+			IfNotExists().
+			Field("Field1", "INT", true, true).
+			Field("Field2", "CHAR(50)", false, true).
+			Build();
+
+	ASSERT_EQ("CREATE TEMPORARY TABLE IF NOT EXISTS Table (\nField1 INT PRIMARY KEY NOT NULL,\nField2 CHAR(50) NOT NULL);", query);
 }
 
 TEST(UpdateClause, TEST_UPDATE_TABLE)

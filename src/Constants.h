@@ -16,12 +16,13 @@ typedef enum
 	DropQuery,
 } QueryType;
 
+const string Table = "TABLE";
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";
 const string InsertIntoClause = "INSERT INTO";
 const string UpdateClause = "UPDATE";
-const string DropTableClause = "DROP TABLE";
-const string CreateTableClause = "CREATE TABLE";
+const string DropClause = "DROP";
+const string CreateClause = "CREATE";
 const string FromClause = "FROM";
 const string WhereClause = "WHERE";
 const string AndClause = "AND";
@@ -45,7 +46,8 @@ const string DistinctClause = "DISTINCT";
 const string InClause = "IN";
 const string NotClause = "NOT";
 const string BetweenClause = "BETWEEN";
-const string IfExists = "IF EXISTS";
-const string IfNotExists = "IF NOT EXISTS";
+const string IfExistsClause = "IF EXISTS";
+const string IfNotExistsClause = "IF NOT EXISTS";
+const string TemporaryClause = "TEMPORARY";
 
 #endif /* SRC_CONSTANTS_H_ */

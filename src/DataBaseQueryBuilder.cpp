@@ -16,7 +16,10 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_desc(false),
 		m_selectAll(false),
 		m_queryType(None),
-		m_distinct(false)
+		m_distinct(false),
+		m_ifExists(false),
+		m_ifNotExists(false),
+		m_temporary(false)
 {
 }
 
@@ -150,7 +153,7 @@ void DataBaseQueryBuilder::processSetClause()
 
 void DataBaseQueryBuilder::processCreateClause()
 {
-	m_finalString = CreateTableClause + " " + m_createTable;
+	m_finalString = CreateClause + " " + (m_temporary? TemporaryClause + " " : "") + Table + " " + (m_ifNotExists? IfNotExistsClause + " " : "") + m_createTable;
 }
 
 void DataBaseQueryBuilder::processTableFields()
@@ -165,7 +168,7 @@ void DataBaseQueryBuilder::processTableFields()
 
 void DataBaseQueryBuilder::processDropClause()
 {
-	m_finalString = DropTableClause + " " + m_dropTable;
+	m_finalString = DropClause + " " + Table + " " + (m_ifExists? IfExistsClause + " " : "") + m_dropTable;
 }
 
 void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
@@ -284,7 +287,7 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Update(string TableToUpdate)
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::CreateTable(string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Create(string table)
 {
     m_createTable = table;
     m_queryType = CreateQuery;
@@ -298,7 +301,7 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Field(string fieldName, string field
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::DropTable(string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Drop(string table)
 {
     m_dropTable = table;
     m_queryType = DropQuery;
@@ -540,5 +543,23 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(string FilterField, 
 {
 	string temp1 = FilterField + " " + NotClause + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
     m_whereList.push_back(temp1);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::IfExists()
+{
+	m_ifExists = true;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::IfNotExists()
+{
+	m_ifNotExists = true;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::Temporary()
+{
+	m_temporary = true;
     return *this;
 }
