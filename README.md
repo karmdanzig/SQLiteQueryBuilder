@@ -52,6 +52,6 @@ Select Distinct Name and Age from table "Employee" where Company does not begin 
 <code>            Build();</code></pre>
 
 q will equate to:
-<pre><code>SELECT DISTINCT Name, Last Name</code>
+<pre><code>SELECT DISTINCT Name, Age</code>
 <code>FROM Employee</code>
 <code>WHERE Company NOT LIKE 'Ar%';</code></pre>
