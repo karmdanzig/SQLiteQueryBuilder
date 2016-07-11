@@ -52,5 +52,6 @@ const string IfExistsClause = "IF EXISTS";
 const string IfNotExistsClause = "IF NOT EXISTS";
 const string TemporaryClause = "TEMPORARY";
 const string RenameToClause = "RENAME TO";
+const string AddColumnClause = "ADD COLUMN";
 
 #endif /* SRC_CONSTANTS_H_ */

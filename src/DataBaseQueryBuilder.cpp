@@ -21,7 +21,8 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_ifExists(false),
 		m_ifNotExists(false),
 		m_temporary(false),
-		m_renameTable("")
+		m_renameTable(""),
+		m_addColumn("")
 {
 }
 
@@ -175,7 +176,15 @@ void DataBaseQueryBuilder::processDropClause()
 
 void DataBaseQueryBuilder::processAlterClause()
 {
-	m_finalString = AlterClause + " " + m_alterTable + " " + RenameToClause + " " + m_renameTable;
+	m_finalString = AlterClause + " " + m_alterTable + " ";
+	if (m_renameTable != "")
+	{
+		m_finalString.append(RenameToClause + " " + m_renameTable);
+	}
+	else if (m_addColumn != "")
+	{
+		m_finalString.append(AddColumnClause + " " + m_addColumn);
+	}
 }
 
 void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
@@ -302,6 +311,12 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Create(string table)
 {
     m_createTable = table;
     m_queryType = CreateQuery;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::AddColumn(string fieldName, string fieldType, bool primaryKey, bool notNull)
+{
+    m_addColumn = fieldName + " " + fieldType + " " + (primaryKey? PrimaryKeyClause + " " : "") + (notNull? NotNullClause : "");
     return *this;
 }
 

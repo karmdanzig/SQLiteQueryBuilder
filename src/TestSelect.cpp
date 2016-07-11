@@ -366,6 +366,16 @@ TEST(AlterClause, TEST_ALTER_RENAME)
 	ASSERT_EQ("ALTER Table RENAME TO Table1;", query);
 }
 
+TEST(AlterClause, TEST_ALTER_ADD_COLUMN)
+{
+	string query = DataBaseQueryBuilder().
+			Alter("Table").
+			AddColumn("Field1", "INT", true, true).
+			Build();
+
+	ASSERT_EQ("ALTER Table ADD COLUMN Field1 INT PRIMARY KEY NOT NULL;", query);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

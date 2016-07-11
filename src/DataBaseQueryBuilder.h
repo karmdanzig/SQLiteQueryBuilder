@@ -109,6 +109,8 @@ public:
 
     DataBaseQueryBuilder& Temporary();
 
+    DataBaseQueryBuilder& AddColumn(string fieldName, string fieldType, bool primaryKey, bool notNull);
+
 private:
     string m_finalString;
 
@@ -128,6 +130,7 @@ private:
     string m_dropTable;
     string m_alterTable;
     string m_renameTable;
+    string m_addColumn;
     bool m_delete;
     bool m_asc;
     bool m_desc;
