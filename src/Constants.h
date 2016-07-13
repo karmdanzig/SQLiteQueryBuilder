@@ -17,6 +17,7 @@ typedef enum
 	AlterQuery,
 } QueryType;
 
+const string TerminationQueryCharacter = ";";
 const string Table = "TABLE";
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";

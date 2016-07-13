@@ -255,7 +255,7 @@ string DataBaseQueryBuilder::Build()
 		}
 	}
 
-    m_finalString.append(";");
+    m_finalString.append(TerminationQueryCharacter);
 
     return m_finalString;
 }
