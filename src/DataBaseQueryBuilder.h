@@ -93,7 +93,7 @@ public:
 
     DataBaseQueryBuilder& Having(const string FilterField, const int value);
 
-    DataBaseQueryBuilder& WhereIn(const string FilterField, const string query);
+    DataBaseQueryBuilder& WhereInQuery(const string FilterField, const string query);
 
     DataBaseQueryBuilder& WhereBetween(const string FilterField, const int min, const int max);
 

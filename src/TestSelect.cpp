@@ -61,7 +61,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
 	string query = DataBaseQueryBuilder().
 			Select("Column1").
 			From("Table").
-			WhereIn("Column", DataBaseQueryBuilder().Select("Column2").From("Table2").Build()).
+			WhereInQuery("Column", DataBaseQueryBuilder().Select("Column2").From("Table2").Build()).
 			Build();
 
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column IN (SELECT Column2\nFROM Table2);", query);

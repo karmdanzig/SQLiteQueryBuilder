@@ -543,7 +543,7 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string FilterField, con
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string FilterField, const string value)
 {
 	string temp1 = value;
 	temp1 = FilterField + " " + InClause + " (" + temp1.substr(0, temp1.size()-1) + ")";
