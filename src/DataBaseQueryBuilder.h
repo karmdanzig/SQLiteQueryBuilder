@@ -17,71 +17,71 @@ public:
 
     string Build();
 
-    DataBaseQueryBuilder& Select(string ColumnToSelect);
+    DataBaseQueryBuilder& Select(const string ColumnToSelect);
 
     DataBaseQueryBuilder& SelectAll();
 
-    DataBaseQueryBuilder& From(string fromClause);
+    DataBaseQueryBuilder& From(const string fromClause);
 
-    DataBaseQueryBuilder& Update(string TableToUpdate);
+    DataBaseQueryBuilder& Update(const string TableToUpdate);
 
     DataBaseQueryBuilder& Delete();
 
-    DataBaseQueryBuilder& InsertInto(string table);
+    DataBaseQueryBuilder& InsertInto(const string table);
 
-    DataBaseQueryBuilder& Create(string table);
+    DataBaseQueryBuilder& Create(const string table);
 
-    DataBaseQueryBuilder& Field(string fieldName, string fieldType, bool primaryKey, bool notNull);
+    DataBaseQueryBuilder& Field(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull);
 
-    DataBaseQueryBuilder& Drop(string table);
+    DataBaseQueryBuilder& Drop(const string table);
 
-    DataBaseQueryBuilder& Alter(string table);
+    DataBaseQueryBuilder& Alter(const string table);
 
-    DataBaseQueryBuilder& RenameTo(string table);
+    DataBaseQueryBuilder& RenameTo(const string table);
 
-    DataBaseQueryBuilder& Set(string setField, string value);
+    DataBaseQueryBuilder& Set(const string setField, const string value);
 
-    DataBaseQueryBuilder& Set(string setField, int value);
+    DataBaseQueryBuilder& Set(const string setField, const int value);
 
-    DataBaseQueryBuilder& Values(string value);
+    DataBaseQueryBuilder& Values(const string value);
 
-    DataBaseQueryBuilder& Values(int value);
+    DataBaseQueryBuilder& Values(const int value);
 
-    DataBaseQueryBuilder& WhereEqual(string FilterField, string value);
+    DataBaseQueryBuilder& WhereEqual(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereLessThan(string FilterField, string value);
+    DataBaseQueryBuilder& WhereLessThan(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereGreaterThan(string FilterField, string value);
+    DataBaseQueryBuilder& WhereGreaterThan(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereEqualOrLessThan(string FilterField, string value);
+    DataBaseQueryBuilder& WhereEqualOrLessThan(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereEqualOrGreaterThan(string FilterField, string value);
+    DataBaseQueryBuilder& WhereEqualOrGreaterThan(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereEqual(string FilterField, int value);
+    DataBaseQueryBuilder& WhereEqual(const string FilterField, int value);
 
-    DataBaseQueryBuilder& WhereLessThan(string FilterField, int value);
+    DataBaseQueryBuilder& WhereLessThan(const string FilterField, int value);
 
-    DataBaseQueryBuilder& WhereGreaterThan(string FilterField, int value);
+    DataBaseQueryBuilder& WhereGreaterThan(const string FilterField, int value);
 
-    DataBaseQueryBuilder& WhereEqualOrLessThan(string FilterField, int value);
+    DataBaseQueryBuilder& WhereEqualOrLessThan(const string FilterField, int value);
 
-    DataBaseQueryBuilder& WhereEqualOrGreaterThan(string FilterField, int value);
+    DataBaseQueryBuilder& WhereEqualOrGreaterThan(const string FilterField, int value);
 
-    DataBaseQueryBuilder& WhereLike(string FilterField, string value);
+    DataBaseQueryBuilder& WhereLike(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereLike(string FilterField, int value);
+    DataBaseQueryBuilder& WhereLike(const string FilterField, const int value);
 
-    DataBaseQueryBuilder& WhereNotLike(string FilterField, string value);
+    DataBaseQueryBuilder& WhereNotLike(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& WhereNotLike(string FilterField, int value);
+    DataBaseQueryBuilder& WhereNotLike(const string FilterField, const int value);
 
     DataBaseQueryBuilder& And();
 
     DataBaseQueryBuilder& Or();
 
-    DataBaseQueryBuilder& GroupBy(string column);
+    DataBaseQueryBuilder& GroupBy(const string column);
 
-    DataBaseQueryBuilder& OrderBy(string column);
+    DataBaseQueryBuilder& OrderBy(const string column);
 
     DataBaseQueryBuilder& Asc();
 
@@ -89,19 +89,19 @@ public:
 
     DataBaseQueryBuilder& Distinct();
 
-    DataBaseQueryBuilder& Having(string FilterField, string value);
+    DataBaseQueryBuilder& Having(const string FilterField, const string value);
 
-    DataBaseQueryBuilder& Having(string FilterField, int value);
+    DataBaseQueryBuilder& Having(const string FilterField, const int value);
 
-    DataBaseQueryBuilder& WhereIn(string FilterField, string query);
+    DataBaseQueryBuilder& WhereIn(const string FilterField, const string query);
 
-    DataBaseQueryBuilder& WhereBetween(string FilterField, int min, int max);
+    DataBaseQueryBuilder& WhereBetween(const string FilterField, const int min, const int max);
 
-    DataBaseQueryBuilder& WhereBetween(string FilterField, string min, string max);
+    DataBaseQueryBuilder& WhereBetween(const string FilterField, const string min, const string max);
 
-    DataBaseQueryBuilder& WhereNotBetween(string FilterField, int min, int max);
+    DataBaseQueryBuilder& WhereNotBetween(const string FilterField, const int min, const int max);
 
-    DataBaseQueryBuilder& WhereNotBetween(string FilterField, string min, string max);
+    DataBaseQueryBuilder& WhereNotBetween(const string FilterField, const string min, const string max);
 
     DataBaseQueryBuilder& IfExists();
 
@@ -109,7 +109,7 @@ public:
 
     DataBaseQueryBuilder& Temporary();
 
-    DataBaseQueryBuilder& AddColumn(string fieldName, string fieldType, bool primaryKey, bool notNull);
+    DataBaseQueryBuilder& AddColumn(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull);
 
 private:
     string m_finalString;
