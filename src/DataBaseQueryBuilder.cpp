@@ -1,6 +1,7 @@
 #include <sstream>
 #include "DataBaseQueryBuilder.h"
 #include "Constants.h"
+#include <stdarg.h>
 
 using namespace std;
 
@@ -553,6 +554,25 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string FilterFiel
 	}
 	temp1 = FilterField + " " + InClause + " (" + temp1 + ")";
     m_whereList.push_back(temp1);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn (const string FilterField, const int numberOfArguments, ... )
+{
+	string temp = FilterField + " " + InClause + " (";
+    va_list arguments;
+    va_start (arguments, numberOfArguments);
+    ostringstream ss;
+    for (int x = 0; x < numberOfArguments; x++)
+    {
+        int value = va_arg (arguments, int);
+        x == numberOfArguments-1 ? (ss << value) : (ss << value << ",");
+	}
+
+	va_end (arguments);
+
+	temp.append(ss.str()+")");
+    m_whereList.push_back(temp);
     return *this;
 }
 

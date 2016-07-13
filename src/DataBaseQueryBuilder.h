@@ -95,6 +95,8 @@ public:
 
     DataBaseQueryBuilder& WhereInQuery(const string FilterField, const string query);
 
+    DataBaseQueryBuilder& WhereIn (const string FilterField, const int numberOfArguments, ... );
+
     DataBaseQueryBuilder& WhereBetween(const string FilterField, const int min, const int max);
 
     DataBaseQueryBuilder& WhereBetween(const string FilterField, const string min, const string max);
