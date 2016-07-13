@@ -23,6 +23,12 @@ public:
 
     DataBaseQueryBuilder& From(const string fromClause);
 
+    DataBaseQueryBuilder& NaturalJoin(const string table);
+
+    DataBaseQueryBuilder& CrossJoin(const string table);
+
+    DataBaseQueryBuilder& NaturalLeftOuterJoin(const string table);
+
     DataBaseQueryBuilder& Update(const string TableToUpdate);
 
     DataBaseQueryBuilder& Delete();
@@ -133,6 +139,7 @@ private:
     string m_alterTable;
     string m_renameTable;
     string m_addColumn;
+    string m_join;
     bool m_delete;
     bool m_asc;
     bool m_desc;

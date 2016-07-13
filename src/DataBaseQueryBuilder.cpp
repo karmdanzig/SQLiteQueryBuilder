@@ -13,6 +13,9 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_createTable(""),
 		m_dropTable(""),
 		m_alterTable(""),
+		m_renameTable(""),
+		m_addColumn(""),
+		m_join(""),
 		m_delete(false),
 		m_asc(false),
 		m_desc(false),
@@ -21,9 +24,7 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_distinct(false),
 		m_ifExists(false),
 		m_ifNotExists(false),
-		m_temporary(false),
-		m_renameTable(""),
-		m_addColumn("")
+		m_temporary(false)
 {
 }
 
@@ -54,6 +55,10 @@ void DataBaseQueryBuilder::processFromClause()
 {
     m_finalString.append(FromClause + " ");
     m_finalString.append(m_from);
+    if (m_join != "")
+    {
+        m_finalString.append(" " + m_join);
+    }
 };
 
 void DataBaseQueryBuilder::processWhereClause()
@@ -284,6 +289,24 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Distinct()
 DataBaseQueryBuilder& DataBaseQueryBuilder::From(const string fromClause)
 {
     m_from = fromClause;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalJoin(const string table)
+{
+	m_join = NaturalClause + " "  + JoinClause + " " + table;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::CrossJoin(const string table)
+{
+	m_join = CrossClause + " " + JoinClause + " " + table;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalLeftOuterJoin(const string table)
+{
+	m_join = NaturalClause + " " + LeftClause + " " + OuterClause + " " + JoinClause + " " + table;
     return *this;
 }
 

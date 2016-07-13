@@ -13,6 +13,39 @@ TEST(SelectClause, TEST_BASIC_SELECT)
 	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column").
+			From("Table").
+			NaturalJoin("Table2").
+			Build();
+
+	ASSERT_EQ("SELECT Column\nFROM Table NATURAL JOIN Table2;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_CROSS_JOIN)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column").
+			From("Table").
+			CrossJoin("Table2").
+			Build();
+
+	ASSERT_EQ("SELECT Column\nFROM Table CROSS JOIN Table2;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_OUTER_JOIN)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column").
+			From("Table").
+			NaturalLeftOuterJoin("Table2").
+			Build();
+
+	ASSERT_EQ("SELECT Column\nFROM Table NATURAL LEFT OUTER JOIN Table2;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_ALL)
 {
 	string query = DataBaseQueryBuilder().
@@ -54,6 +87,39 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 			Build();
 
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column = 2;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_ONE_ELEMENT)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereIn("Column1", 1, 10).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column1 IN (10);", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_TWO_ELEMENTS)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereIn("Column1", 2, 1, 2).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column1 IN (1,2);", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_FIVE_ELEMENTS)
+{
+	string query = DataBaseQueryBuilder().
+			Select("Column1").
+			From("Table").
+			WhereIn("Column1", 5, 1, 2, 3, 4, 5).
+			Build();
+
+	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column1 IN (1,2,3,4,5);", query);
 }
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
