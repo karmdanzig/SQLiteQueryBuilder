@@ -546,7 +546,12 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string FilterField, con
 DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string FilterField, const string value)
 {
 	string temp1 = value;
-	temp1 = FilterField + " " + InClause + " (" + temp1.substr(0, temp1.size()-1) + ")";
+	size_t start_pos = temp1.find(TerminationQueryCharacter);
+	if(start_pos != std::string::npos)
+	{
+	    temp1.replace(start_pos, TerminationQueryCharacter.length(), "");
+	}
+	temp1 = FilterField + " " + InClause + " (" + temp1 + ")";
     m_whereList.push_back(temp1);
     return *this;
 }
