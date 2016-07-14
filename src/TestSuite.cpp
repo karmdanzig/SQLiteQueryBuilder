@@ -72,6 +72,28 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS_WITH_WHER
     ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 JOIN Table3 AS T3 ON T1.Column1 = T2.Column1 AND T2.Column2 = T3.Column2\nWHERE Column3 > 8 OR Column4 BETWEEN 10 AND 34;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_THREE_ALIAS_AND_THREE_CONDITIONS_WITH_WHERE_CLAUSE)
+{
+    string query = DataBaseQueryBuilder().
+            Select("Column").
+            FromAs("Table1", "T1").
+            JoinAs("Table2", "T2").
+            JoinAs("Table3", "T3").
+            OnEqual("Column1", "T1", "T2").
+            And().
+            OnEqual("Column2", "T2", "T3").
+			Or().
+			OnEqual("Column3", "T3", "T1").
+            WhereGreaterThan("Column3", 8).
+            Or().
+            WhereBetween("Column4", 10, 34).
+			And().
+			WhereNotLike("Column4", "Ft%").
+            Build();
+
+    ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 JOIN Table3 AS T3 ON T1.Column1 = T2.Column1 AND T2.Column2 = T3.Column2 OR T3.Column3 = T1.Column3\nWHERE Column3 > 8 OR Column4 BETWEEN 10 AND 34 AND Column4 NOT LIKE 'Ft%';", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
 {
 	string query = DataBaseQueryBuilder().

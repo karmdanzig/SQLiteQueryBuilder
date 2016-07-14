@@ -74,6 +74,7 @@ void DataBaseQueryBuilder::processFromClause()
             if (*it != m_OnList.at(m_OnList.size() - 1))
             {
                 m_finalString.append(" " + *it2 +" ");
+                m_operatorList.erase(it2);
             }
 
         }
@@ -94,6 +95,7 @@ void DataBaseQueryBuilder::processWhereClause()
     		if (*it != m_whereList.at(m_whereList.size() - 1))
     		{
     			m_finalString.append(" " + *it2 +" ");
+    			m_operatorList.erase(it2);
     		}
 
     	}
