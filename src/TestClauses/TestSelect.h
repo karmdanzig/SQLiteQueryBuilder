@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "DataBaseQueryBuilder.h"
+#include "../DataBaseQueryBuilder.h"
 
 TEST(SelectClause, TEST_BASIC_SELECT)
 {

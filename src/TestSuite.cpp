@@ -1,12 +1,12 @@
 #include "gtest/gtest.h"
 #include "DataBaseQueryBuilder.h"
-#include "TestSelect.h"
-#include "TestDelete.h"
-#include "TestDrop.h"
-#include "TestCreate.h"
-#include "TestUpdate.h"
-#include "TestInsert.h"
-#include "TestAlter.h"
+#include "TestClauses/TestSelect.h"
+#include "TestClauses/TestDelete.h"
+#include "TestClauses/TestDrop.h"
+#include "TestClauses/TestCreate.h"
+#include "TestClauses/TestUpdate.h"
+#include "TestClauses/TestInsert.h"
+#include "TestClauses/TestAlter.h"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);

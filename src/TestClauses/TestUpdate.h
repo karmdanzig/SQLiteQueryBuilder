@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "DataBaseQueryBuilder.h"
+#include "../DataBaseQueryBuilder.h"
 
 TEST(UpdateClause, TEST_UPDATE_TABLE)
 {
