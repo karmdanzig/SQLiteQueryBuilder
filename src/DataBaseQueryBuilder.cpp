@@ -54,10 +54,21 @@ void DataBaseQueryBuilder::processSelectClause()
 void DataBaseQueryBuilder::processFromClause()
 {
     m_finalString.append(FromClause + " ");
-    m_finalString.append(m_from);
-    if (m_join != "")
+
+    if (m_from != "")
     {
-        m_finalString.append(" " + m_join);
+        m_finalString.append(m_from);
+        if (m_join != "")
+        {
+            m_finalString.append(" " + m_join);
+        }
+    }
+
+    if (m_fromAsList.size() > 0)
+    {
+        insertFromListWithSeparator(m_fromAsList, " JOIN ");
+        m_finalString.append(" ");
+        insertFromListWithSeparator(m_OnList, "");
     }
 };
 
@@ -289,6 +300,27 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Distinct()
 DataBaseQueryBuilder& DataBaseQueryBuilder::From(const string fromClause)
 {
     m_from = fromClause;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::FromAs(const string table, const string alias)
+{
+    string temp = table + " " + AsClause + " " + alias;
+    m_fromAsList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::JoinAs(const string table, const string alias)
+{
+    string temp = table + " " + AsClause + " " + alias;
+    m_fromAsList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::OnEqual(const string column, const string alias1, const string alias2)
+{
+    string temp = OnClause + " " + alias1 + "." + column +  " = " + alias2 + "." + column;
+    m_OnList.push_back(temp);
     return *this;
 }
 

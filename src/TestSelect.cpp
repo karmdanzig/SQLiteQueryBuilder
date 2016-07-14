@@ -13,6 +13,18 @@ TEST(SelectClause, TEST_BASIC_SELECT)
 	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS)
+{
+    string query = DataBaseQueryBuilder().
+            Select("Column").
+            FromAs("Table1", "T1").
+            JoinAs("Table2", "T2").
+            OnEqual("Column5", "T1", "T2").
+            Build();
+
+    ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 ON T1.Column5 = T2.Column5;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
 {
 	string query = DataBaseQueryBuilder().

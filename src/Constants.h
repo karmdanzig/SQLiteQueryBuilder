@@ -53,6 +53,7 @@ const string DescClause = "DESC";
 const string DistinctClause = "DISTINCT";
 const string InClause = "IN";
 const string AsClause = "AS";
+const string OnClause = "ON";
 const string NotClause = "NOT";
 const string BetweenClause = "BETWEEN";
 const string IfExistsClause = "IF EXISTS";

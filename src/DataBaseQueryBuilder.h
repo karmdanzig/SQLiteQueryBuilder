@@ -23,6 +23,12 @@ public:
 
     DataBaseQueryBuilder& From(const string fromClause);
 
+    DataBaseQueryBuilder& FromAs(const string table, const string alias);
+
+    DataBaseQueryBuilder& JoinAs(const string table, const string alias);
+
+    DataBaseQueryBuilder& OnEqual(const string column, const string alias1, const string alias2);
+
     DataBaseQueryBuilder& NaturalJoin(const string table);
 
     DataBaseQueryBuilder& CrossJoin(const string table);
@@ -131,6 +137,8 @@ private:
     vector<string> m_groupbyList;
     vector<string> m_orderbyList;
     vector<string> m_havingList;
+    vector<string> m_fromAsList;
+    vector<string> m_OnList;
     string m_from;
     string m_update;
     string m_insertInto;
