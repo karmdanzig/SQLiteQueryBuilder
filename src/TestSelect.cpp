@@ -25,6 +25,35 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS)
     ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 ON T1.Column5 = T2.Column5;", query);
 }
 
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS_AND_TWO_CONDITIONS)
+{
+    string query = DataBaseQueryBuilder().
+            Select("Column").
+            FromAs("Table1", "T1").
+            JoinAs("Table2", "T2").
+            OnEqual("Column5", "T1", "T2").
+            And().
+            OnEqual("Column3", "T1", "T2").
+            Build();
+
+    ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 ON T1.Column5 = T2.Column5 AND T1.Column3 = T2.Column3;", query);
+}
+
+TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS)
+{
+    string query = DataBaseQueryBuilder().
+            Select("Column").
+            FromAs("Table1", "T1").
+            JoinAs("Table2", "T2").
+            JoinAs("Table3", "T3").
+            OnEqual("Column1", "T1", "T2").
+            And().
+            OnEqual("Column2", "T2", "T3").
+            Build();
+
+    ASSERT_EQ("SELECT Column\nFROM Table1 AS T1 JOIN Table2 AS T2 JOIN Table3 AS T3 ON T1.Column1 = T2.Column1 AND T2.Column2 = T3.Column2;", query);
+}
+
 TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
 {
 	string query = DataBaseQueryBuilder().

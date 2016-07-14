@@ -67,8 +67,16 @@ void DataBaseQueryBuilder::processFromClause()
     if (m_fromAsList.size() > 0)
     {
         insertFromListWithSeparator(m_fromAsList, " JOIN ");
-        m_finalString.append(" ");
-        insertFromListWithSeparator(m_OnList, "");
+        m_finalString.append(" " + OnClause + " ");
+        for(std::vector<string>::iterator it = m_OnList.begin(), it2 = m_operatorList.begin() ; it != m_OnList.end(); it++, it2++)
+        {
+            m_finalString.append(*it);
+            if (*it != m_OnList.at(m_OnList.size() - 1))
+            {
+                m_finalString.append(" " + *it2 +" ");
+            }
+
+        }
     }
 };
 
@@ -319,7 +327,7 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::JoinAs(const string table, const str
 
 DataBaseQueryBuilder& DataBaseQueryBuilder::OnEqual(const string column, const string alias1, const string alias2)
 {
-    string temp = OnClause + " " + alias1 + "." + column +  " = " + alias2 + "." + column;
+    string temp = alias1 + "." + column +  " = " + alias2 + "." + column;
     m_OnList.push_back(temp);
     return *this;
 }
