@@ -139,6 +139,7 @@ private:
     vector<string> m_havingList;
     vector<string> m_fromAsList;
     vector<string> m_OnList;
+
     string m_from;
     string m_update;
     string m_insertInto;

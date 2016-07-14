@@ -68,7 +68,7 @@ void DataBaseQueryBuilder::processFromClause()
     {
         insertFromListWithSeparator(m_fromAsList, " JOIN ");
         m_finalString.append(" " + OnClause + " ");
-        for(std::vector<string>::iterator it = m_OnList.begin(), it2 = m_operatorList.begin() ; it != m_OnList.end(); it++, it2++)
+        for(std::vector<string>::iterator it = m_OnList.begin(), it2 = m_operatorList.begin(); it != m_OnList.end(); it++, it2++)
         {
             m_finalString.append(*it);
             if (*it != m_OnList.at(m_OnList.size() - 1))
@@ -88,7 +88,7 @@ void DataBaseQueryBuilder::processWhereClause()
 
     	m_finalString.append(WhereClause + " ");
 
-    	for(std::vector<string>::iterator it = m_whereList.begin(), it2 = m_operatorList.begin() ; it != m_whereList.end(); it++, it2++)
+    	for(std::vector<string>::iterator it = m_whereList.begin(), it2 = m_operatorList.begin(); it != m_whereList.end(); it++, it2++)
     	{
     		m_finalString.append(*it);
     		if (*it != m_whereList.at(m_whereList.size() - 1))
@@ -227,7 +227,7 @@ void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList
 
 string DataBaseQueryBuilder::Build()
 {
-	switch(m_queryType)
+    switch(m_queryType)
 	{
 	case (SelectQuery) :
 		{
