@@ -1,0 +1,22 @@
+#include "gtest/gtest.h"
+#include "DataBaseQueryBuilder.h"
+
+TEST(AlterClause, TEST_ALTER_RENAME)
+{
+	string query = DataBaseQueryBuilder().
+			Alter("Table").
+			RenameTo("Table1").
+			Build();
+
+	ASSERT_EQ("ALTER Table RENAME TO Table1;", query);
+}
+
+TEST(AlterClause, TEST_ALTER_ADD_COLUMN)
+{
+	string query = DataBaseQueryBuilder().
+			Alter("Table").
+			AddColumn("Field1", "INT", true, true).
+			Build();
+
+	ASSERT_EQ("ALTER Table ADD COLUMN Field1 INT PRIMARY KEY NOT NULL;", query);
+}
