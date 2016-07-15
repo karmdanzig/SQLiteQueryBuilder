@@ -163,6 +163,69 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEYS)
     ASSERT_EQ("PRAGMA foreign_keys;", query);
 }
 
+TEST(PragmaClause, TEST_PRAGMA_FREELIST_COUNT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaFreelistCount().
+            Build();
+
+    ASSERT_EQ("PRAGMA freelist_count;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_FULLFSYNC)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaFullfsync().
+            Build();
+
+    ASSERT_EQ("PRAGMA fullfsync;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaIgnoreCheckConstraints().
+            Build();
+
+    ASSERT_EQ("PRAGMA ignore_check_constraints;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_INCREMENTAL_VACUUM)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaIncrementalVacuum().
+            Build();
+
+    ASSERT_EQ("PRAGMA incremental_vacuum;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_INDEX_INFO)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaIndexInfo().
+            Build();
+
+    ASSERT_EQ("PRAGMA index_info;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_INDEX_LIST)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaIndexList().
+            Build();
+
+    ASSERT_EQ("PRAGMA index_list;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_INDEX_XINFO)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaIndexXinfo().
+            Build();
+
+    ASSERT_EQ("PRAGMA index_xinfo;", query);
+}
+
 TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
 {
     string query = DataBaseQueryBuilder().
@@ -170,6 +233,114 @@ TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
             Build();
 
     ASSERT_EQ("PRAGMA integrity_check;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_JOURNAL_MODE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaJournalMode().
+            Build();
+
+    ASSERT_EQ("PRAGMA journal_mode;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaJournalSizeLimit().
+            Build();
+
+    ASSERT_EQ("PRAGMA journal_size_limit;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_LEGACY_FILE_FORMAT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaLegacyFileFormat().
+            Build();
+
+    ASSERT_EQ("PRAGMA legacy_file_format;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_LOCKING_MODE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaLockingMode().
+            Build();
+
+    ASSERT_EQ("PRAGMA locking_mode;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_MAX_PAGE_COUNT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaMaxPageCount().
+            Build();
+
+    ASSERT_EQ("PRAGMA max_page_count;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_MMAP_SIZE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaMmapSize().
+            Build();
+
+    ASSERT_EQ("PRAGMA mmap_size;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_PAGE_COUNT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaPageCount().
+            Build();
+
+    ASSERT_EQ("PRAGMA page_count;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_PAGE_SIZE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaPageSize().
+            Build();
+
+    ASSERT_EQ("PRAGMA page_size;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_PARSER_TRACE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaParserTrace().
+            Build();
+
+    ASSERT_EQ("PRAGMA parser_trace;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_QUICK_CHECK)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaQuickCheck().
+            Build();
+
+    ASSERT_EQ("PRAGMA quick_check;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_READ_UNCOMMITTED)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaReadUncommitted().
+            Build();
+
+    ASSERT_EQ("PRAGMA read_uncommitted;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaRecursiveTriggers().
+            Build();
+
+    ASSERT_EQ("PRAGMA recursive_triggers;", query);
 }
 
 TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)

@@ -278,11 +278,106 @@ void DataBaseQueryBuilder::processPragmaClause()
 			m_finalString.append("foreign_keys");
 			break;
 		}
+		case FreelistCount :
+		{
+			m_finalString.append("freelist_count");
+			break;
+		}
+		case Fullfsync :
+		{
+			m_finalString.append("fullfsync");
+			break;
+		}
+		case IgnoreCheckConstraints :
+        {
+        	m_finalString.append("ignore_check_constraints");
+            break;
+        }
+		case IncrementalVacuum :
+        {
+        	m_finalString.append("incremental_vacuum");
+            break;
+        }
+		case IndexInfo :
+		{
+			m_finalString.append("index_info");
+			break;
+		}
+		case IndexList :
+		{
+			m_finalString.append("index_list");
+			break;
+		}
+		case IndexXinfo :
+		{
+			m_finalString.append("index_xinfo");
+			break;
+		}
 		case IntegrityCheck :
         {
         	m_finalString.append("integrity_check");
             break;
         }
+		case JournalMode :
+		{
+			m_finalString.append("journal_mode");
+			break;
+		}
+		case JournalSizeLimit :
+        {
+        	m_finalString.append("journal_size_limit");
+            break;
+        }
+		case LegacyFileFormat :
+		{
+			m_finalString.append("legacy_file_format");
+			break;
+		}
+		case LockingMode :
+		{
+			m_finalString.append("locking_mode");
+			break;
+		}
+		case MaxPageCount :
+		{
+			m_finalString.append("max_page_count");
+			break;
+		}
+		case MmapSize :
+		{
+			m_finalString.append("mmap_size");
+			break;
+		}
+		case PageCount :
+		{
+			m_finalString.append("page_count");
+			break;
+		}
+		case PageSize :
+		{
+			m_finalString.append("page_size");
+			break;
+		}
+		case ParserTrace :
+		{
+			m_finalString.append("parser_trace");
+			break;
+		}
+		case QuickCheck :
+		{
+			m_finalString.append("quick_check");
+			break;
+		}
+		case ReadUncommitted :
+		{
+			m_finalString.append("read_uncommitted");
+			break;
+		}
+		case RecursiveTriggers :
+		{
+			m_finalString.append("recursive_triggers");
+			break;
+		}
         case TableInfo :
         {
         	m_finalString.append("table_info(" + m_pragma + ")");
@@ -916,10 +1011,143 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaForeignKeys()
     return *this;
 }
 
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaFreelistCount()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = FreelistCount;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaFullfsync()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = Fullfsync;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIgnoreCheckConstraints()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = IgnoreCheckConstraints;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIncrementalVacuum()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = IncrementalVacuum;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIndexInfo()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = IndexInfo;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIndexList()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = IndexList;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIndexXinfo()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = IndexXinfo;
+    return *this;
+}
+
 DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIntegrityCheck()
 {
     m_queryType = PragmaQuery;
     m_pragmaType = IntegrityCheck;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaJournalMode()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = JournalMode;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaJournalSizeLimit()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = JournalSizeLimit;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaLegacyFileFormat()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = LegacyFileFormat;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaLockingMode()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = LockingMode;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaMaxPageCount()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = MaxPageCount;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaMmapSize()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = MmapSize;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaPageCount()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = PageCount;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaPageSize()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = PageSize;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaParserTrace()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ParserTrace;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaQuickCheck()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = QuickCheck;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaReadUncommitted()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ReadUncommitted;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaRecursiveTriggers()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = RecursiveTriggers;
     return *this;
 }
 

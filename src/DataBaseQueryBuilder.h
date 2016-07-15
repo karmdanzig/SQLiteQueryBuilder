@@ -161,7 +161,45 @@ public:
 
     DataBaseQueryBuilder& PragmaForeignKeys();
 
+    DataBaseQueryBuilder& PragmaFreelistCount();
+
+    DataBaseQueryBuilder& PragmaFullfsync();
+
+    DataBaseQueryBuilder& PragmaIgnoreCheckConstraints();
+
+    DataBaseQueryBuilder& PragmaIncrementalVacuum();
+
+    DataBaseQueryBuilder& PragmaIndexInfo();
+
+    DataBaseQueryBuilder& PragmaIndexList();
+
+    DataBaseQueryBuilder& PragmaIndexXinfo();
+
     DataBaseQueryBuilder& PragmaIntegrityCheck();
+
+    DataBaseQueryBuilder& PragmaJournalMode();
+
+    DataBaseQueryBuilder& PragmaJournalSizeLimit();
+
+    DataBaseQueryBuilder& PragmaLegacyFileFormat();
+
+    DataBaseQueryBuilder& PragmaLockingMode();
+
+    DataBaseQueryBuilder& PragmaMaxPageCount();
+
+    DataBaseQueryBuilder& PragmaMmapSize();
+
+    DataBaseQueryBuilder& PragmaPageCount();
+
+    DataBaseQueryBuilder& PragmaPageSize();
+
+    DataBaseQueryBuilder& PragmaParserTrace();
+
+    DataBaseQueryBuilder& PragmaQuickCheck();
+
+    DataBaseQueryBuilder& PragmaReadUncommitted();
+
+    DataBaseQueryBuilder& PragmaRecursiveTriggers();
 
     DataBaseQueryBuilder& PragmaTableInfo(const string table);
 
