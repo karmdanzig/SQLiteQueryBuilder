@@ -125,6 +125,8 @@ public:
 
     DataBaseQueryBuilder& AddColumn(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull);
 
+    DataBaseQueryBuilder& PragmaIntegrityCheck();
+
 private:
     string m_finalString;
 
@@ -175,8 +177,10 @@ private:
     void processDropClause();
     void processHavingClause();
     void processAlterClause();
+    void processPragmaClause();
 
     void insertFromListWithSeparator(vector<string>& whichlist, string separator);
+    void insertFromListWithOperatorList(vector<string>& whichList);
 };
 
 #endif /* SRC_DATABASEQUERYBUILDER_H_ */

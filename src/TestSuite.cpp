@@ -7,6 +7,7 @@
 #include "TestClauses/TestUpdate.h"
 #include "TestClauses/TestInsert.h"
 #include "TestClauses/TestAlter.h"
+#include "TestClauses/TestPragma.h"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);

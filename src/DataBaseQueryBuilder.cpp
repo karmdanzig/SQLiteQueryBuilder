@@ -68,16 +68,7 @@ void DataBaseQueryBuilder::processFromClause()
     {
         insertFromListWithSeparator(m_fromAsList, " JOIN ");
         m_finalString.append(" " + OnClause + " ");
-        for(std::vector<string>::iterator it = m_OnList.begin(), it2 = m_operatorList.begin(); it != m_OnList.end(); it++, it2++)
-        {
-            m_finalString.append(*it);
-            if (*it != m_OnList.at(m_OnList.size() - 1))
-            {
-                m_finalString.append(" " + *it2 +" ");
-                m_operatorList.erase(it2);
-            }
-
-        }
+        insertFromListWithOperatorList(m_OnList);
     }
 };
 
@@ -86,19 +77,8 @@ void DataBaseQueryBuilder::processWhereClause()
     if (m_whereList.size() > 0)
     {
     	addReturnLine();
-
     	m_finalString.append(WhereClause + " ");
-
-    	for(std::vector<string>::iterator it = m_whereList.begin(), it2 = m_operatorList.begin(); it != m_whereList.end(); it++, it2++)
-    	{
-    		m_finalString.append(*it);
-    		if (*it != m_whereList.at(m_whereList.size() - 1))
-    		{
-    			m_finalString.append(" " + *it2 +" ");
-    			m_operatorList.erase(it2);
-    		}
-
-    	}
+    	insertFromListWithOperatorList(m_whereList);
     }
 }
 
@@ -107,11 +87,8 @@ void DataBaseQueryBuilder::processGroupByClause()
     if (m_groupbyList.size() > 0)
     {
     	addReturnLine();
-
     	m_finalString.append(GroupByClause + " ");
-
     	insertFromListWithSeparator(m_groupbyList, ", ");
-
     }
 }
 
@@ -120,11 +97,8 @@ void DataBaseQueryBuilder::processHavingClause()
     if (m_havingList.size() > 0)
     {
     	addReturnLine();
-
     	m_finalString.append(HavingClause + " ");
-
     	insertFromListWithSeparator(m_havingList, ", ");
-
     }
 }
 
@@ -133,11 +107,8 @@ void DataBaseQueryBuilder::processOrderByClause()
     if (m_orderbyList.size() > 0)
     {
     	addReturnLine();
-
     	m_finalString.append(OrderByClause + " ");
-
     	insertFromListWithSeparator(m_orderbyList, ", ");
-
     }
     if (m_asc)
     {
@@ -163,9 +134,7 @@ void DataBaseQueryBuilder::processInsertIntoClause()
 void DataBaseQueryBuilder::processValuesClause()
 {
 	m_finalString.append(ValuesClause + " (");
-
 	insertFromListWithSeparator(m_valuesList, ", ");
-
 	m_finalString.append(")");
 }
 
@@ -177,7 +146,6 @@ void DataBaseQueryBuilder::processUpdateClause()
 void DataBaseQueryBuilder::processSetClause()
 {
 	m_finalString.append(SetClause + " ");
-
 	insertFromListWithSeparator(m_setList, ", ");
 }
 
@@ -190,9 +158,7 @@ void DataBaseQueryBuilder::processTableFields()
 {
 	m_finalString.append(" (");
 	addReturnLine();
-
 	insertFromListWithSeparator(m_fieldsList, ",\n");
-
 	m_finalString.append(")");
 }
 
@@ -214,6 +180,11 @@ void DataBaseQueryBuilder::processAlterClause()
 	}
 }
 
+void DataBaseQueryBuilder::processPragmaClause()
+{
+    m_finalString = PragmaClause + " integrity_check";
+}
+
 void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
 {
 	for(std::vector<string>::iterator it = whichList.begin() ; it != whichList.end(); it++)
@@ -225,6 +196,20 @@ void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList
 		}
 
 	}
+}
+
+void DataBaseQueryBuilder::insertFromListWithOperatorList(vector<string>& whichList)
+{
+    for(std::vector<string>::iterator it = whichList.begin(), it2 = m_operatorList.begin(); it != whichList.end(); it++, it2++)
+    {
+        m_finalString.append(*it);
+        if (*it != whichList.at(whichList.size() - 1))
+        {
+            m_finalString.append(" " + *it2 +" ");
+            m_operatorList.erase(it2);
+        }
+
+    }
 }
 
 string DataBaseQueryBuilder::Build()
@@ -280,6 +265,11 @@ string DataBaseQueryBuilder::Build()
 			processAlterClause();
 			break;
 		}
+    case (PragmaQuery) :
+        {
+            processPragmaClause();
+            break;
+        }
 	}
 
     m_finalString.append(TerminationQueryCharacter);
@@ -690,5 +680,11 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::IfNotExists()
 DataBaseQueryBuilder& DataBaseQueryBuilder::Temporary()
 {
 	m_temporary = true;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIntegrityCheck()
+{
+    m_queryType = PragmaQuery;
     return *this;
 }

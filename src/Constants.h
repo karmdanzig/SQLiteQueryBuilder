@@ -15,6 +15,7 @@ typedef enum
 	CreateQuery,
 	DropQuery,
 	AlterQuery,
+	PragmaQuery
 } QueryType;
 
 const string TerminationQueryCharacter = ";";
@@ -61,5 +62,6 @@ const string IfNotExistsClause = "IF NOT EXISTS";
 const string TemporaryClause = "TEMPORARY";
 const string RenameToClause = "RENAME TO";
 const string AddColumnClause = "ADD COLUMN";
+const string PragmaClause = "PRAGMA";
 
 #endif /* SRC_CONSTANTS_H_ */
