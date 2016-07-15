@@ -20,8 +20,25 @@ typedef enum
 
 typedef enum
 {
-    //None = 0,
-    IntegrityCheck = 1,
+	ApplicationId = 1,
+	AutoVacuum,
+	AutomaticIndex,
+	BusyTimeout,
+	CacheSize,
+	CacheSpill,
+	CaseSensitiveLike,
+	CellSizeCheck,
+	CheckpointFullfsync,
+	CollationList,
+	CompileOptions,
+	DataVersion,
+	DatabaseList,
+	DeferForeignKeys,
+	Encoding,
+	ForeignKeyCheck,
+	ForeignKeyList,
+	ForeignKeys,
+    IntegrityCheck,
     TableInfo
 } PragmaType;
 

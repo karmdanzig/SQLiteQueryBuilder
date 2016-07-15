@@ -184,16 +184,108 @@ void DataBaseQueryBuilder::processAlterClause()
 
 void DataBaseQueryBuilder::processPragmaClause()
 {
+	m_finalString = PragmaClause + " ";
+
     switch(m_pragmaType)
     {
-        case IntegrityCheck :
+    	case ApplicationId :
+		{
+			m_finalString.append("application_id");
+			break;
+		}
+		case AutoVacuum :
+		{
+			m_finalString.append("auto_vacuum");
+			break;
+		}
+		case AutomaticIndex :
+		{
+			m_finalString.append("automatic_index");
+			break;
+		}
+		case BusyTimeout :
+		{
+			m_finalString.append("busy_timeout");
+			break;
+		}
+		case CacheSize :
+		{
+			m_finalString.append("cache_size");
+			break;
+		}
+		case CacheSpill :
+		{
+			m_finalString.append("cache_spill");
+			break;
+		}
+		case CaseSensitiveLike :
+		{
+			m_finalString.append("case_sensitive_like");
+			break;
+		}
+		case CellSizeCheck :
+		{
+			m_finalString.append("cell_size_check");
+			break;
+		}
+		case CheckpointFullfsync :
+		{
+			m_finalString.append("checkpoint_fullfsync");
+			break;
+		}
+		case CollationList :
+		{
+			m_finalString.append("collation_list");
+			break;
+		}
+		case CompileOptions :
+		{
+			m_finalString.append("compile_options");
+			break;
+		}
+		case DataVersion :
+		{
+			m_finalString.append("data_version");
+			break;
+		}
+		case DatabaseList :
+		{
+			m_finalString.append("database_list");
+			break;
+		}
+		case DeferForeignKeys :
+		{
+			m_finalString.append("defer_foreign_keys");
+			break;
+		}
+		case Encoding :
+		{
+			m_finalString.append("encoding");
+			break;
+		}
+		case ForeignKeyCheck :
+		{
+			m_finalString.append("foreign_key_check");
+			break;
+		}
+		case ForeignKeyList :
+		{
+			m_finalString.append("foreign_key_list");
+			break;
+		}
+		case ForeignKeys :
+		{
+			m_finalString.append("foreign_keys");
+			break;
+		}
+		case IntegrityCheck :
         {
-            m_finalString = PragmaClause + " integrity_check";
+        	m_finalString.append("integrity_check");
             break;
         }
         case TableInfo :
         {
-            m_finalString = PragmaClause + " table_info(" + m_pragma + ")";
+        	m_finalString.append("table_info(" + m_pragma + ")");
             break;
         }
     }
@@ -695,6 +787,132 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::IfNotExists()
 DataBaseQueryBuilder& DataBaseQueryBuilder::Temporary()
 {
 	m_temporary = true;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaApplicationId()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ApplicationId;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaAutoVacuum()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = AutoVacuum;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaAutomaticIndex()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = AutomaticIndex;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaBusyTimeout()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = BusyTimeout;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCacheSize()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CacheSize;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCacheSpill()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CacheSpill;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCaseSensitiveLike()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CaseSensitiveLike;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCellSizeCheck()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CellSizeCheck;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCheckpointFullfsync()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CheckpointFullfsync;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCollationList()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CollationList;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaCompileOptions()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = CompileOptions;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaDataVersion()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = DataVersion;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaDatabaseList()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = DatabaseList;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaDeferForeignKeys()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = DeferForeignKeys;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaEncoding()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = Encoding;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaForeignKeyCheck()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ForeignKeyCheck;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaForeignKeyList()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ForeignKeyList;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaForeignKeys()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ForeignKeys;
     return *this;
 }
 

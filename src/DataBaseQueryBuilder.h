@@ -125,6 +125,42 @@ public:
 
     DataBaseQueryBuilder& AddColumn(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull);
 
+    DataBaseQueryBuilder& PragmaApplicationId();
+
+    DataBaseQueryBuilder& PragmaAutoVacuum();
+
+    DataBaseQueryBuilder& PragmaAutomaticIndex();
+
+    DataBaseQueryBuilder& PragmaBusyTimeout();
+
+    DataBaseQueryBuilder& PragmaCacheSize();
+
+    DataBaseQueryBuilder& PragmaCacheSpill();
+
+    DataBaseQueryBuilder& PragmaCaseSensitiveLike();
+
+    DataBaseQueryBuilder& PragmaCellSizeCheck();
+
+    DataBaseQueryBuilder& PragmaCheckpointFullfsync();
+
+    DataBaseQueryBuilder& PragmaCollationList();
+
+    DataBaseQueryBuilder& PragmaCompileOptions();
+
+    DataBaseQueryBuilder& PragmaDataVersion();
+
+    DataBaseQueryBuilder& PragmaDatabaseList();
+
+    DataBaseQueryBuilder& PragmaDeferForeignKeys();
+
+    DataBaseQueryBuilder& PragmaEncoding();
+
+    DataBaseQueryBuilder& PragmaForeignKeyCheck();
+
+    DataBaseQueryBuilder& PragmaForeignKeyList();
+
+    DataBaseQueryBuilder& PragmaForeignKeys();
+
     DataBaseQueryBuilder& PragmaIntegrityCheck();
 
     DataBaseQueryBuilder& PragmaTableInfo(const string table);
