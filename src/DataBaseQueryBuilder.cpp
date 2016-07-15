@@ -16,6 +16,7 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_renameTable(""),
 		m_addColumn(""),
 		m_join(""),
+		m_pragma(""),
 		m_delete(false),
 		m_asc(false),
 		m_desc(false),
@@ -24,7 +25,8 @@ DataBaseQueryBuilder::DataBaseQueryBuilder () :
 		m_distinct(false),
 		m_ifExists(false),
 		m_ifNotExists(false),
-		m_temporary(false)
+		m_temporary(false),
+		m_pragmaType(None)
 {
 }
 
@@ -182,7 +184,20 @@ void DataBaseQueryBuilder::processAlterClause()
 
 void DataBaseQueryBuilder::processPragmaClause()
 {
-    m_finalString = PragmaClause + " integrity_check";
+    switch(m_pragmaType)
+    {
+        case IntegrityCheck :
+        {
+            m_finalString = PragmaClause + " integrity_check";
+            break;
+        }
+        case TableInfo :
+        {
+            m_finalString = PragmaClause + " table_info(" + m_pragma + ")";
+            break;
+        }
+    }
+
 }
 
 void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
@@ -686,5 +701,14 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Temporary()
 DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaIntegrityCheck()
 {
     m_queryType = PragmaQuery;
+    m_pragmaType = IntegrityCheck;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaTableInfo(const string table)
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = TableInfo;
+    m_pragma = table;
     return *this;
 }

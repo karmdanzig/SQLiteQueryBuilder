@@ -127,6 +127,8 @@ public:
 
     DataBaseQueryBuilder& PragmaIntegrityCheck();
 
+    DataBaseQueryBuilder& PragmaTableInfo(const string table);
+
 private:
     string m_finalString;
 
@@ -151,6 +153,7 @@ private:
     string m_renameTable;
     string m_addColumn;
     string m_join;
+    string m_pragma;
     bool m_delete;
     bool m_asc;
     bool m_desc;
@@ -160,6 +163,7 @@ private:
     bool m_ifExists;
     bool m_ifNotExists;
     bool m_temporary;
+    int m_pragmaType;
 
     void addReturnLine();
     void processSelectClause();

@@ -18,6 +18,13 @@ typedef enum
 	PragmaQuery
 } QueryType;
 
+typedef enum
+{
+    //None = 0,
+    IntegrityCheck = 1,
+    TableInfo
+} PragmaType;
+
 const string TerminationQueryCharacter = ";";
 const string Table = "TABLE";
 const string SelectClause = "SELECT";
