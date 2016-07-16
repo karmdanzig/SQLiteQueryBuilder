@@ -58,7 +58,24 @@ typedef enum
 	QuickCheck,
 	ReadUncommitted,
 	RecursiveTriggers,
-    TableInfo
+	ReverseUnorderedSelects,
+	SchemaVersion,
+	SecureDelete,
+	ShrinkMemory,
+	SoftHeapLimit,
+	Stats,
+	Synchronous,
+    TableInfo,
+	TempStore,
+	Threads,
+	UserVersion,
+	VdbeAddoptrace,
+	VdbeDebug,
+	VdbeListing,
+	VdbeTrace,
+	WalAutocheckpoint,
+	WalCheckpoint,
+	WritableSchema
 } PragmaType;
 
 const string TerminationQueryCharacter = ";";

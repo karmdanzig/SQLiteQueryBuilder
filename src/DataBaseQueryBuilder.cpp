@@ -378,11 +378,96 @@ void DataBaseQueryBuilder::processPragmaClause()
 			m_finalString.append("recursive_triggers");
 			break;
 		}
+		case ReverseUnorderedSelects :
+		{
+			m_finalString.append("reverse_unordered_selects");
+			break;
+		}
+		case SchemaVersion :
+		{
+			m_finalString.append("schema_version");
+			break;
+		}
+		case SecureDelete :
+		{
+			m_finalString.append("secure_delete");
+			break;
+		}
+		case ShrinkMemory :
+		{
+			m_finalString.append("shrink_memory");
+			break;
+		}
+		case SoftHeapLimit :
+		{
+			m_finalString.append("soft_heap_limit");
+			break;
+		}
+		case Stats :
+		{
+			m_finalString.append("stats");
+			break;
+		}
+		case Synchronous :
+		{
+			m_finalString.append("synchronous");
+			break;
+		}
         case TableInfo :
         {
         	m_finalString.append("table_info(" + m_pragma + ")");
             break;
         }
+		case TempStore :
+		{
+			m_finalString.append("temp_store");
+			break;
+		}
+		case Threads :
+		{
+			m_finalString.append("threads");
+			break;
+		}
+		case UserVersion :
+		{
+			m_finalString.append("user_version");
+			break;
+		}
+		case VdbeAddoptrace :
+		{
+			m_finalString.append("vdbe_addoptrace");
+			break;
+		}
+		case VdbeDebug :
+		{
+			m_finalString.append("vdbe_debug");
+			break;
+		}
+		case VdbeListing :
+		{
+			m_finalString.append("vdbe_listing");
+			break;
+		}
+		case VdbeTrace :
+		{
+			m_finalString.append("vdbe_trace");
+			break;
+		}
+		case WalAutocheckpoint :
+		{
+			m_finalString.append("wal_autocheckpoint");
+			break;
+		}
+		case WalCheckpoint :
+		{
+			m_finalString.append("wal_checkpoint");
+			break;
+		}
+		case WritableSchema :
+		{
+			m_finalString.append("writable_schema");
+			break;
+		}
     }
 
 }
@@ -1151,10 +1236,129 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaRecursiveTriggers()
     return *this;
 }
 
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaReverseUnorderedSelects()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ReverseUnorderedSelects;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaSchemaVersion()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = SchemaVersion;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaSecureDelete()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = SecureDelete;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaShrinkMemory()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = ShrinkMemory;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaSoftHeapLimit()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = SoftHeapLimit;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaStats()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = Stats;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaSynchronous()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = Synchronous;
+    return *this;
+}
+
 DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaTableInfo(const string table)
 {
     m_queryType = PragmaQuery;
     m_pragmaType = TableInfo;
     m_pragma = table;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaTempStore()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = TempStore;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaThreads()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = Threads;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaUserVersion()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = UserVersion;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaVdbeAddoptrace()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = VdbeAddoptrace;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaVdbeDebug()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = VdbeDebug;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaVdbeListing()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = VdbeListing;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaVdbeTrace()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = VdbeTrace;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaWalAutocheckpoint()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = WalAutocheckpoint;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaWalCheckpoint()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = WalCheckpoint;
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaWritableSchema()
+{
+    m_queryType = PragmaQuery;
+    m_pragmaType = WritableSchema;
     return *this;
 }

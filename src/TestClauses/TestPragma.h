@@ -343,6 +343,69 @@ TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
     ASSERT_EQ("PRAGMA recursive_triggers;", query);
 }
 
+TEST(PragmaClause, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaReverseUnorderedSelects().
+            Build();
+
+    ASSERT_EQ("PRAGMA reverse_unordered_selects;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_SCHEMA_VERSION)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaSchemaVersion().
+            Build();
+
+    ASSERT_EQ("PRAGMA schema_version;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_SECURE_DELETE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaSecureDelete().
+            Build();
+
+    ASSERT_EQ("PRAGMA secure_delete;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_SHRINK_MEMORY)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaShrinkMemory().
+            Build();
+
+    ASSERT_EQ("PRAGMA shrink_memory;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_SOFT_HEAP_LIMIT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaSoftHeapLimit().
+            Build();
+
+    ASSERT_EQ("PRAGMA soft_heap_limit;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_STATS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaStats().
+            Build();
+
+    ASSERT_EQ("PRAGMA stats;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_SYNCHRONOUS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaSynchronous().
+            Build();
+
+    ASSERT_EQ("PRAGMA synchronous;", query);
+}
+
 TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
 {
     string query = DataBaseQueryBuilder().
@@ -350,4 +413,94 @@ TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
             Build();
 
     ASSERT_EQ("PRAGMA table_info(Table);", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_TEMP_STORE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaTempStore().
+            Build();
+
+    ASSERT_EQ("PRAGMA temp_store;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_THREADS)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaThreads().
+            Build();
+
+    ASSERT_EQ("PRAGMA threads;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_USER_VERSION)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaUserVersion().
+            Build();
+
+    ASSERT_EQ("PRAGMA user_version;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_VDBE_ADDOPTRACE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaVdbeAddoptrace().
+            Build();
+
+    ASSERT_EQ("PRAGMA vdbe_addoptrace;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_VDBE_DEBUG)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaVdbeDebug().
+            Build();
+
+    ASSERT_EQ("PRAGMA vdbe_debug;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_VDBE_LISTING)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaVdbeListing().
+            Build();
+
+    ASSERT_EQ("PRAGMA vdbe_listing;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_VDBE_TRACE)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaVdbeTrace().
+            Build();
+
+    ASSERT_EQ("PRAGMA vdbe_trace;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaWalAutocheckpoint().
+            Build();
+
+    ASSERT_EQ("PRAGMA wal_autocheckpoint;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_WAL_CHECKPOINT)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaWalCheckpoint().
+            Build();
+
+    ASSERT_EQ("PRAGMA wal_checkpoint;", query);
+}
+
+TEST(PragmaClause, TEST_PRAGMA_WRITABLE_SCHEMA)
+{
+    string query = DataBaseQueryBuilder().
+            PragmaWritableSchema().
+            Build();
+
+    ASSERT_EQ("PRAGMA writable_schema;", query);
 }

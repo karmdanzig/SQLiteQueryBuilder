@@ -201,7 +201,41 @@ public:
 
     DataBaseQueryBuilder& PragmaRecursiveTriggers();
 
+    DataBaseQueryBuilder& PragmaReverseUnorderedSelects();
+
+    DataBaseQueryBuilder& PragmaSchemaVersion();
+
+    DataBaseQueryBuilder& PragmaSecureDelete();
+
+    DataBaseQueryBuilder& PragmaShrinkMemory();
+
+    DataBaseQueryBuilder& PragmaSoftHeapLimit();
+
+    DataBaseQueryBuilder& PragmaStats();
+
+    DataBaseQueryBuilder& PragmaSynchronous();
+
     DataBaseQueryBuilder& PragmaTableInfo(const string table);
+
+    DataBaseQueryBuilder& PragmaTempStore();
+
+    DataBaseQueryBuilder& PragmaThreads();
+
+    DataBaseQueryBuilder& PragmaUserVersion();
+
+    DataBaseQueryBuilder& PragmaVdbeAddoptrace();
+
+    DataBaseQueryBuilder& PragmaVdbeDebug();
+
+    DataBaseQueryBuilder& PragmaVdbeListing();
+
+    DataBaseQueryBuilder& PragmaVdbeTrace();
+
+    DataBaseQueryBuilder& PragmaWalAutocheckpoint();
+
+    DataBaseQueryBuilder& PragmaWalCheckpoint();
+
+    DataBaseQueryBuilder& PragmaWritableSchema();
 
 private:
     string m_finalString;
