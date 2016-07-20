@@ -57,16 +57,16 @@ void DataBaseQueryBuilder::processFromClause()
 {
     m_finalString.append(FromClause + " ");
 
-    if (m_from != "")
+    if (!m_from.empty())
     {
         m_finalString.append(m_from);
-        if (m_join != "")
+        if (!m_join.empty())
         {
             m_finalString.append(" " + m_join);
         }
     }
 
-    if (m_fromAsList.size() > 0)
+    if (!m_fromAsList.empty())
     {
         insertFromListWithSeparator(m_fromAsList, " JOIN ");
         m_finalString.append(" " + OnClause + " ");
@@ -76,7 +76,7 @@ void DataBaseQueryBuilder::processFromClause()
 
 void DataBaseQueryBuilder::processWhereClause()
 {
-    if (m_whereList.size() > 0)
+    if (!m_whereList.empty())
     {
     	addReturnLine();
     	m_finalString.append(WhereClause + " ");
@@ -86,7 +86,7 @@ void DataBaseQueryBuilder::processWhereClause()
 
 void DataBaseQueryBuilder::processGroupByClause()
 {
-    if (m_groupbyList.size() > 0)
+    if (!m_groupbyList.empty())
     {
     	addReturnLine();
     	m_finalString.append(GroupByClause + " ");
@@ -96,7 +96,7 @@ void DataBaseQueryBuilder::processGroupByClause()
 
 void DataBaseQueryBuilder::processHavingClause()
 {
-    if (m_havingList.size() > 0)
+    if (!m_havingList.empty())
     {
     	addReturnLine();
     	m_finalString.append(HavingClause + " ");
@@ -106,7 +106,7 @@ void DataBaseQueryBuilder::processHavingClause()
 
 void DataBaseQueryBuilder::processOrderByClause()
 {
-    if (m_orderbyList.size() > 0)
+    if (!m_orderbyList.empty())
     {
     	addReturnLine();
     	m_finalString.append(OrderByClause + " ");
@@ -172,11 +172,11 @@ void DataBaseQueryBuilder::processDropClause()
 void DataBaseQueryBuilder::processAlterClause()
 {
 	m_finalString = AlterClause + " " + m_alterTable + " ";
-	if (m_renameTable != "")
+	if (!m_renameTable.empty())
 	{
 		m_finalString.append(RenameToClause + " " + m_renameTable);
 	}
-	else if (m_addColumn != "")
+	else if (!m_addColumn.empty())
 	{
 		m_finalString.append(AddColumnClause + " " + m_addColumn);
 	}
