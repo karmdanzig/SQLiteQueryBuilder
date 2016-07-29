@@ -472,9 +472,9 @@ void DataBaseQueryBuilder::processPragmaClause()
 
 }
 
-void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList, string separator)
+void DataBaseQueryBuilder::insertFromListWithSeparator(const vector<string>& whichList, const string& separator)
 {
-	for(std::vector<string>::iterator it = whichList.begin() ; it != whichList.end(); it++)
+	for(std::vector<string>::const_iterator it = whichList.begin() ; it != whichList.end(); it++)
 	{
 		m_finalString.append(*it);
 		if (*it != whichList.at(whichList.size() - 1))
@@ -485,9 +485,11 @@ void DataBaseQueryBuilder::insertFromListWithSeparator(vector<string>& whichList
 	}
 }
 
-void DataBaseQueryBuilder::insertFromListWithOperatorList(vector<string>& whichList)
+void DataBaseQueryBuilder::insertFromListWithOperatorList(const vector<string>& whichList)
 {
-    for(std::vector<string>::iterator it = whichList.begin(), it2 = m_operatorList.begin(); it != whichList.end(); it++, it2++)
+	std::vector<string>::iterator it2 = m_operatorList.begin();
+
+    for(std::vector<string>::const_iterator it = whichList.begin(); it != whichList.end(); it++, it2++)
     {
         m_finalString.append(*it);
         if (*it != whichList.at(whichList.size() - 1))
@@ -564,9 +566,9 @@ string DataBaseQueryBuilder::Build()
     return m_finalString;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Select(const string ColumnToSelect)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Select(const string& columnToSelect)
 {
-    m_selectList.push_back(ColumnToSelect);
+    m_selectList.push_back(columnToSelect);
     m_queryType = SelectQuery;
     return *this;
 }
@@ -584,46 +586,46 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Distinct()
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::From(const string fromClause)
+DataBaseQueryBuilder& DataBaseQueryBuilder::From(const string& fromClause)
 {
     m_from = fromClause;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::FromAs(const string table, const string alias)
+DataBaseQueryBuilder& DataBaseQueryBuilder::FromAs(const string& table, const string& alias)
 {
     string temp = table + " " + AsClause + " " + alias;
     m_fromAsList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::JoinAs(const string table, const string alias)
+DataBaseQueryBuilder& DataBaseQueryBuilder::JoinAs(const string& table, const string& alias)
 {
     string temp = table + " " + AsClause + " " + alias;
     m_fromAsList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::OnEqual(const string column, const string alias1, const string alias2)
+DataBaseQueryBuilder& DataBaseQueryBuilder::OnEqual(const string& column, const string& alias1, const string& alias2)
 {
     string temp = alias1 + "." + column +  " = " + alias2 + "." + column;
     m_OnList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalJoin(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalJoin(const string& table)
 {
 	m_join = NaturalClause + " "  + JoinClause + " " + table;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::CrossJoin(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::CrossJoin(const string& table)
 {
 	m_join = CrossClause + " " + JoinClause + " " + table;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalLeftOuterJoin(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::NaturalLeftOuterJoin(const string& table)
 {
 	m_join = NaturalClause + " " + LeftClause + " " + OuterClause + " " + JoinClause + " " + table;
     return *this;
@@ -636,68 +638,68 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Delete()
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::InsertInto(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::InsertInto(const string& table)
 {
     m_insertInto = table;
     m_queryType = InsertQuery;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Update(const string TableToUpdate)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Update(const string& table)
 {
-    m_update = TableToUpdate;
+    m_update = table;
     m_queryType = UpdateQuery;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Create(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Create(const string& table)
 {
     m_createTable = table;
     m_queryType = CreateQuery;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::AddColumn(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull)
+DataBaseQueryBuilder& DataBaseQueryBuilder::AddColumn(const string& fieldName, const string& fieldType, const bool& primaryKey, const bool& notNull)
 {
     m_addColumn = fieldName + " " + fieldType + " " + (primaryKey? PrimaryKeyClause + " " : "") + (notNull? NotNullClause : "");
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Field(const string fieldName, const string fieldType, const bool primaryKey, const bool notNull)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Field(const string& fieldName, const string& fieldType, const bool& primaryKey, const bool& notNull)
 {
     string temp = fieldName + " " + fieldType + " " + (primaryKey? PrimaryKeyClause + " " : "") + (notNull? NotNullClause : "");
     m_fieldsList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Drop(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Drop(const string& table)
 {
     m_dropTable = table;
     m_queryType = DropQuery;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Alter(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Alter(const string& table)
 {
     m_alterTable = table;
     m_queryType = AlterQuery;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::RenameTo(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::RenameTo(const string& table)
 {
     m_renameTable = table;
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Values(const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Values(const string& value)
 {
     string temp = "\'" + value + "\'";
     m_valuesList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Values(const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Values(const int& value)
 {
     ostringstream ss;
     ss << value;
@@ -706,14 +708,14 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Values(const int value)
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Set(const string setField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Set(const string& setField, const string& value)
 {
     string temp = setField + " " + EqualClause + " \'" + value + "\'";
     m_setList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Set(const string setField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Set(const string& setField, const int& value)
 {
     ostringstream ss;
     ss << value;
@@ -722,114 +724,114 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Set(const string setField, const int
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqual(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqual(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + EqualClause + " \'" + value + "\'";
+    string temp = filterField + " " + EqualClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLessThan(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLessThan(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + LessClause + " \'" + value + "\'";
+    string temp = filterField + " " + LessClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereGreaterThan(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereGreaterThan(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + GreaterClause + " \'" + value + "\'";
+    string temp = filterField + " " + GreaterClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrLessThan(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrLessThan(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + LessOrEqualClause + " \'" + value + "\'";
+    string temp = filterField + " " + LessOrEqualClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrGreaterThan(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrGreaterThan(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + GreaterOrEqualClause + " \'" + value + "\'";
+    string temp = filterField + " " + GreaterOrEqualClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqual(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqual(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + EqualClause + " " + ss.str();
+    string temp = filterField + " " + EqualClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLessThan(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLessThan(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + LessClause + " " + ss.str();
+    string temp = filterField + " " + LessClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereGreaterThan(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereGreaterThan(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + GreaterClause + " " + ss.str();
+    string temp = filterField + " " + GreaterClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrLessThan(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrLessThan(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + LessOrEqualClause + " " + ss.str();
+    string temp = filterField + " " + LessOrEqualClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrGreaterThan(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereEqualOrGreaterThan(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + GreaterOrEqualClause + " " + ss.str();
+    string temp = filterField + " " + GreaterOrEqualClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(const string& filterField, const string& value)
 {
-    string temp = FilterField + " " + LikeClause + " \'" + value + "\'";
+    string temp = filterField + " " + LikeClause + " \'" + value + "\'";
     m_whereList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(const string FilterField, const int value)
-{
-    ostringstream ss;
-    ss << value;
-    string temp = FilterField + " " + LikeClause + " " + ss.str();
-    m_whereList.push_back(temp);
-    return *this;
-}
-
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(const string FilterField, const string value)
-{
-    string temp = FilterField + " " + NotClause + " " + LikeClause + " \'" + value + "\'";
-    m_whereList.push_back(temp);
-    return *this;
-}
-
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereLike(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " " + NotClause + " " + LikeClause + " " + ss.str();
+    string temp = filterField + " " + LikeClause + " " + ss.str();
+    m_whereList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(const string& filterField, const string& value)
+{
+    string temp = filterField + " " + NotClause + " " + LikeClause + " \'" + value + "\'";
+    m_whereList.push_back(temp);
+    return *this;
+}
+
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotLike(const string& filterField, const int& value)
+{
+    ostringstream ss;
+    ss << value;
+    string temp = filterField + " " + NotClause + " " + LikeClause + " " + ss.str();
     m_whereList.push_back(temp);
     return *this;
 }
@@ -846,13 +848,13 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Or()
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::GroupBy(const string column)
+DataBaseQueryBuilder& DataBaseQueryBuilder::GroupBy(const string& column)
 {
 	m_groupbyList.push_back(column);
 	return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::OrderBy(const string column)
+DataBaseQueryBuilder& DataBaseQueryBuilder::OrderBy(const string& column)
 {
 	m_orderbyList.push_back(column);
 	return *this;
@@ -870,23 +872,23 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::Desc()
 	return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string& filterField, const string& value)
 {
-    string temp = FilterField + " = \'" + value + "\'";
+    string temp = filterField + " = \'" + value + "\'";
     m_havingList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string FilterField, const int value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::Having(const string& filterField, const int& value)
 {
     ostringstream ss;
     ss << value;
-    string temp = FilterField + " = " + ss.str();
+    string temp = filterField + " = " + ss.str();
     m_havingList.push_back(temp);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string FilterField, const string value)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string& filterField, const string& value)
 {
 	string temp1 = value;
 	size_t start_pos = temp1.find(TerminationQueryCharacter);
@@ -894,14 +896,14 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereInQuery(const string FilterFiel
 	{
 	    temp1.replace(start_pos, TerminationQueryCharacter.length(), "");
 	}
-	temp1 = FilterField + " " + InClause + " (" + temp1 + ")";
+	temp1 = filterField + " " + InClause + " (" + temp1 + ")";
     m_whereList.push_back(temp1);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn (const string FilterField, const int numberOfArguments, ... )
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn(const string& filterField, const int& numberOfArguments, ... )
 {
-	string temp = FilterField + " " + InClause + " (";
+	string temp = filterField + " " + InClause + " (";
     va_list arguments;
     va_start (arguments, numberOfArguments);
     ostringstream ss;
@@ -918,36 +920,36 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::WhereIn (const string FilterField, c
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(const string FilterField, const int min, const int max)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(const string& filterField, const int& min, const int& max)
 {
     ostringstream ss, ss1;
     ss << min;
     ss1 << max;
-	string temp1 = FilterField + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
+	string temp1 = filterField + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
     m_whereList.push_back(temp1);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(const string FilterField, const string min, const string max)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereBetween(const string& filterField, const string& min, const string& max)
 {
-	string temp1 = FilterField + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
+	string temp1 = filterField + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
     m_whereList.push_back(temp1);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(const string FilterField, const int min, const int max)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(const string& filterField, const int& min, const int& max)
 {
     ostringstream ss, ss1;
     ss << min;
     ss1 << max;
-	string temp1 = FilterField + " " + NotClause + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
+	string temp1 = filterField + " " + NotClause + " " + BetweenClause + " " + ss.str() + " " + AndClause + " " + ss1.str();
     m_whereList.push_back(temp1);
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(const string FilterField, const string min, const string max)
+DataBaseQueryBuilder& DataBaseQueryBuilder::WhereNotBetween(const string& filterField, const string& min, const string& max)
 {
-	string temp1 = FilterField + " " + NotClause + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
+	string temp1 = filterField + " " + NotClause + " " + BetweenClause + " " + min + " " + AndClause + " " + max;
     m_whereList.push_back(temp1);
     return *this;
 }
@@ -1285,7 +1287,7 @@ DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaSynchronous()
     return *this;
 }
 
-DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaTableInfo(const string table)
+DataBaseQueryBuilder& DataBaseQueryBuilder::PragmaTableInfo(const string& table)
 {
     m_queryType = PragmaQuery;
     m_pragmaType = TableInfo;
