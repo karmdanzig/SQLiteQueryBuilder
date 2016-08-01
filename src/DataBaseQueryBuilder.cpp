@@ -474,7 +474,7 @@ void DataBaseQueryBuilder::processPragmaClause()
 
 void DataBaseQueryBuilder::insertFromListWithSeparator(const vector<string>& whichList, const string& separator)
 {
-	for(std::vector<string>::const_iterator it = whichList.begin() ; it != whichList.end(); it++)
+	for(std::vector<string>::const_iterator it = whichList.begin() ; it != whichList.end(); ++it)
 	{
 		m_finalString.append(*it);
 		if (*it != whichList.at(whichList.size() - 1))
@@ -489,7 +489,7 @@ void DataBaseQueryBuilder::insertFromListWithOperatorList(const vector<string>& 
 {
 	std::vector<string>::iterator it2 = m_operatorList.begin();
 
-    for(std::vector<string>::const_iterator it = whichList.begin(); it != whichList.end(); it++, it2++)
+    for(std::vector<string>::const_iterator it = whichList.begin(); it != whichList.end(); ++it, ++it2)
     {
         m_finalString.append(*it);
         if (*it != whichList.at(whichList.size() - 1))
