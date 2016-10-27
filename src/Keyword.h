@@ -18,14 +18,14 @@ class Keyword
 protected:
 
     std::string m_completeKeyword;
+    void insertFromListWithSeparator(const std::vector<std::string>& whichlist, const std::string& separator);
+    void insertFromListWithOperatorList(const std::vector<std::string>& whichList, std::queue<std::string>& operatorList);
+    void addReturnLine();
 
 public:
 
     Keyword();
-
-    void insertFromListWithSeparator(const std::vector<std::string>& whichlist, const std::string& separator);
-    void insertFromListWithOperatorList(const std::vector<std::string>& whichList, std::queue<std::string>& operatorList);
-    void addReturnLine();
+    string& getCompleteKeyword();
 };
 
 

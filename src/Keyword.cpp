@@ -44,3 +44,8 @@ void Keyword::addReturnLine()
 {
     m_completeKeyword.append("\n");
 }
+
+string& Keyword::getCompleteKeyword()
+{
+    return m_completeKeyword;
+}

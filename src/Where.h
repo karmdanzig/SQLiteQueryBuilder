@@ -12,12 +12,16 @@
 
 class Where : public Keyword
 {
+private:
+
+    std::vector<std::string> whereList;
+    std::queue<std::string> theQueue;
 
 public:
 
-    Where();
+    Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue);
 
-    void processWhereClause(const std::vector<std::string>& whereList);
+    void processWhereClause();
 };
 
 

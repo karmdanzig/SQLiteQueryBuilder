@@ -7,15 +7,15 @@
 
 #include "Where.h"
 
-Where::Where()
+Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue)
+: whereList(whereList), theQueue(theQueue)
 {
+    processWhereClause();
 }
 
 
-void Where::processWhereClause(const std::vector<std::string>& whereList)
+void Where::processWhereClause()
 {
-    std::queue<std::string> theQueue;
-
     if (!whereList.empty())
     {
         addReturnLine();
