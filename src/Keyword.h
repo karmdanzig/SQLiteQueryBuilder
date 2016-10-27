@@ -15,7 +15,7 @@
 
 class Keyword
 {
-private:
+protected:
 
     std::string m_completeKeyword;
 

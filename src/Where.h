@@ -17,7 +17,7 @@ public:
 
     Where();
 
-    std::string processWhereClause(const std::vector<std::string>& whereList);
+    void processWhereClause(const std::vector<std::string>& whereList);
 };
 
 

@@ -12,17 +12,15 @@ Where::Where()
 }
 
 
-std::string Where::processWhereClause(const std::vector<std::string>& whereList)
+void Where::processWhereClause(const std::vector<std::string>& whereList)
 {
-    std::string returnString = "";
     std::queue<std::string> theQueue;
 
     if (!whereList.empty())
     {
         addReturnLine();
-        returnString.append(WhereClause + " ");
+        m_completeKeyword.append(WhereClause + " ");
         insertFromListWithOperatorList(whereList, theQueue);
     }
 
-    return returnString;
 }
