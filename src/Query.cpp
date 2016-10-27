@@ -10,12 +10,3 @@
 Query::Query()
 {
 }
-
-std::string Query::getString()
-{
-    return theQuery;
-}
-
-void Query::setString()
-{
-}

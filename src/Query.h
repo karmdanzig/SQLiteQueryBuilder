@@ -16,7 +16,6 @@ class Query
 public:
 
     Query();
-    virtual Query& Build() = 0;
 };
 
 
