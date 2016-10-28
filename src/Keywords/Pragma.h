@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Pragma : public Keyword
 {
 private:
@@ -23,5 +26,6 @@ public:
     void processKeyword();
 };
 
+}
 
 #endif /* SRC_KEYWORDS_PRAGMA_H_ */

@@ -11,6 +11,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Alter : public Keyword
 {
 private:
@@ -27,5 +30,6 @@ public:
     void processKeyword();
 };
 
+}
 
 #endif /* SRC_KEYWORDS_ALTER_H_ */

@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Where : public Keyword
 {
 private:
@@ -24,6 +27,6 @@ public:
     void processKeyword();
 };
 
-
+}
 
 #endif /* SRC_WHERE_H_ */

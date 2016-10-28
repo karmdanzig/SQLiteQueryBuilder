@@ -7,6 +7,9 @@
 
 #include "Pragma.h"
 
+namespace Keys
+{
+
 Pragma::Pragma(const PragmaType& command)
 : command(command)
 {
@@ -304,5 +307,7 @@ void Pragma::processKeyword()
             break;
         }
     }
+
+}
 
 }

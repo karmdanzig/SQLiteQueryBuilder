@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Values : public Keyword
 {
 private:
@@ -23,6 +26,6 @@ public:
     void processKeyword();
 };
 
-
+}
 
 #endif /* SRC_KEYWORDS_VALUES_H_ */

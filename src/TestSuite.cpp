@@ -14,27 +14,16 @@
 #include "Keywords/Where.h"
 #include "Keywords/Keyword.h"
 
+#include "Builders/SelectBuilder.h"
+
+
 int main(int argc, char **argv) {
 
-    vector<string> select;
-    select.push_back("Column2");
-    select.push_back("Column3");
-    select.push_back("Column4");
-    select.push_back("Column1");
-
-    vector<string> where;
-    where.push_back("Column2 = 0");
-    where.push_back("Column3 < 8");
-
-    queue<string> operators;
-    operators.push("AND");
-
-
-    Keyword *t = new Select(select, 0, 0);
-    Keyword *f = new From("Table1");
-    Keyword *e = new Where(where, operators);
-
-    string r = t->getCompleteKeyword() + f->getCompleteKeyword() + e->getCompleteKeyword();
+    string r = SelectBuilder().
+            Select("Char1").
+            Select("Char2").
+            From("Table").
+            Build();
 
     cout << r << endl;
 

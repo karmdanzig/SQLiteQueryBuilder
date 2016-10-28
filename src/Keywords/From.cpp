@@ -7,6 +7,9 @@
 
 #include "From.h"
 
+namespace Keys
+{
+
 From::From(const std::string& table) : table(table)
 {
     processKeyword();
@@ -35,6 +38,8 @@ void From::processKeyword()
         m_completeKeyword.append(" " + OnClause + " ");
         insertFromListWithOperatorList(m_OnList);
     }*/
-};
+}
+
+}
 
 

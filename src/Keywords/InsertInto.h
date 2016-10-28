@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class InsertInto : public Keyword
 {
 private:
@@ -23,6 +26,6 @@ public:
     void processKeyword();
 };
 
-
+}
 
 #endif /* SRC_KEYWORDS_INSERTINTO_H_ */

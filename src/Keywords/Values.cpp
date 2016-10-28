@@ -7,6 +7,9 @@
 
 #include "Values.h"
 
+namespace Keys
+{
+
 Values::Values(const std::vector<std::string>& valuesList)
 : valuesList(valuesList)
 {
@@ -22,4 +25,6 @@ void Values::processKeyword()
     m_completeKeyword.append(ValuesClause + " (");
     insertFromListWithSeparator(valuesList, ", ");
     m_completeKeyword.append(")");
+}
+
 }

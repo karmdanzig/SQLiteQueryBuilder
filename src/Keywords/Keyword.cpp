@@ -7,6 +7,8 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
 
 Keyword::Keyword() : m_completeKeyword("")
 {
@@ -52,4 +54,6 @@ void Keyword::addReturnLine()
 string& Keyword::getCompleteKeyword()
 {
     return m_completeKeyword;
+}
+
 }

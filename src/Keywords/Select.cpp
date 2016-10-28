@@ -7,6 +7,9 @@
 
 #include "Select.h"
 
+namespace Keys
+{
+
 Select::Select(const std::vector<std::string>& selectList, const bool& selectAll, const bool& distinct)
 : selectList(selectList), selectAll(0), distinct(0)
 {
@@ -29,4 +32,6 @@ void Select::processKeyword()
     {
         insertFromListWithSeparator(selectList, ",");
     }
+}
+
 }

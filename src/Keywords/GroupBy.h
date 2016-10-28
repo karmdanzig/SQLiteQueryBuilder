@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class GroupBy : public Keyword
 {
 private:
@@ -23,6 +26,6 @@ public:
     void processKeyword();
 };
 
-
+}
 
 #endif /* GROUPBY_H_ */

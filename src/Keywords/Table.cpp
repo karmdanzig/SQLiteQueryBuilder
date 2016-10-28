@@ -7,6 +7,9 @@
 
 #include "Table.h"
 
+namespace Keys
+{
+
 Table::Table(const std::vector<std::string>& fieldsList)
 : fieldsList(fieldsList)
 {
@@ -25,5 +28,5 @@ void Table::processKeyword()
     m_completeKeyword.append(")");
 }
 
-
+}
 

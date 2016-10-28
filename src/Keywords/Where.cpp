@@ -7,6 +7,9 @@
 
 #include "Where.h"
 
+namespace Keys
+{
+
 Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue)
 : whereList(whereList), theQueue(theQueue)
 {
@@ -25,5 +28,7 @@ void Where::processKeyword()
         m_completeKeyword.append(WhereClause + " ");
         insertFromListWithOperatorList(whereList, theQueue);
     }
+
+}
 
 }

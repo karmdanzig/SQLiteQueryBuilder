@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Select : public Keyword
 {
 private:
@@ -27,5 +30,5 @@ public:
 };
 
 
-
+}
 #endif /* SRC_KEYWORDS_SELECT_H_ */

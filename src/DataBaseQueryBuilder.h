@@ -15,13 +15,13 @@ public:
 
     ~DataBaseQueryBuilder ();
 
-    string Build();
+    virtual string Build();
 
-    DataBaseQueryBuilder& Select(const string& columnToSelect);
+    virtual DataBaseQueryBuilder& Select(const string& columnToSelect);
 
-    DataBaseQueryBuilder& SelectAll();
+    virtual DataBaseQueryBuilder& SelectAll();
 
-    DataBaseQueryBuilder& From(const string& fromTable);
+    virtual DataBaseQueryBuilder& From(const string& fromTable);
 
     DataBaseQueryBuilder& FromAs(const string& table, const string& alias);
 

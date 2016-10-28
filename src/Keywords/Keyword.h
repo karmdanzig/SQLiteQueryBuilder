@@ -13,6 +13,9 @@
 #include <queue>
 #include "../Constants.h"
 
+namespace Keys
+{
+
 class Keyword
 {
 protected:
@@ -30,6 +33,6 @@ public:
     virtual void processKeyword () = 0;
 };
 
-
+}
 
 #endif /* SRC_KEYWORD_H_ */

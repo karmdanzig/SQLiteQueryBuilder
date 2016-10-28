@@ -7,6 +7,9 @@
 
 #include "Update.h"
 
+namespace Keys
+{
+
 Update::Update(const std::string& table)
 : table(table)
 {
@@ -22,4 +25,4 @@ void Update::processKeyword()
     m_completeKeyword = UpdateClause + " " + table + " ";
 }
 
-
+}

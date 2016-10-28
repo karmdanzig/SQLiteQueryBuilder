@@ -7,6 +7,9 @@
 
 #include "Alter.h"
 
+namespace Keys
+{
+
 Alter::Alter(const std::string& table, const AlterType& type, const std::string& newvalue)
 : table(table), type(type), newvalue(newvalue)
 {
@@ -30,3 +33,4 @@ void Alter::processKeyword()
     }
 }
 
+}

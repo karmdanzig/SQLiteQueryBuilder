@@ -7,6 +7,9 @@
 
 #include "Set.h"
 
+namespace Keys
+{
+
 Set::Set(const std::vector<std::string>& setList)
 : setList(setList)
 {
@@ -21,4 +24,6 @@ void Set::processKeyword()
 {
     m_completeKeyword.append(SetClause + " ");
     insertFromListWithSeparator(setList, ", ");
+}
+
 }

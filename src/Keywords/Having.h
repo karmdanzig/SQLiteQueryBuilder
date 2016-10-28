@@ -10,6 +10,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Having : public Keyword
 {
 private:
@@ -23,7 +26,7 @@ public:
     void processKeyword();
 };
 
-
+}
 
 
 

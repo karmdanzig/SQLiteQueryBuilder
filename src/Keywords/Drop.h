@@ -11,6 +11,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class Drop : public Keyword
 {
 private:
@@ -25,5 +28,6 @@ public:
     void processKeyword();
 };
 
+}
 
 #endif /* SRC_KEYWORDS_DROP_H_ */

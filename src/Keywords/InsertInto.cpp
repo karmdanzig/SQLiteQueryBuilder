@@ -7,6 +7,9 @@
 
 #include "InsertInto.h"
 
+namespace Keys
+{
+
 InsertInto::InsertInto(const std::string& table)
 : table(table)
 {
@@ -22,7 +25,7 @@ void InsertInto::processKeyword()
     m_completeKeyword = InsertIntoClause + " " + table;
 }
 
-
+}
 
 
 

@@ -7,6 +7,9 @@
 
 #include "Drop.h"
 
+namespace Keys
+{
+
 Drop::Drop(const std::string& table, const bool& ifExists)
 : table(table), ifExists(ifExists)
 {
@@ -22,4 +25,4 @@ void Drop::processKeyword()
     m_completeKeyword = DropClause + " " + Table + " " + (ifExists? IfExistsClause + " " : "") + table;
 }
 
-
+}

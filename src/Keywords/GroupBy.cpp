@@ -7,6 +7,9 @@
 
 #include "GroupBy.h"
 
+namespace Keys
+{
+
 GroupBy::GroupBy(const std::vector<std::string>& groupByList)
 : groupByList(groupByList)
 {
@@ -28,4 +31,4 @@ void GroupBy::processKeyword()
 
 }
 
-
+}

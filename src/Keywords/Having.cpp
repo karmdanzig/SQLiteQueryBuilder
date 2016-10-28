@@ -7,6 +7,9 @@
 
 #include "Having.h"
 
+namespace Keys
+{
+
 Having::Having(const std::vector<std::string>& havingList)
 : havingList(havingList)
 {
@@ -29,5 +32,5 @@ void Having::processKeyword()
 
 }
 
-
+}
 

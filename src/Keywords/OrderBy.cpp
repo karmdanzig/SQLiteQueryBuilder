@@ -7,6 +7,9 @@
 
 #include "OrderBy.h"
 
+namespace Keys
+{
+
 OrderBy::OrderBy(const std::vector<std::string>& orderByList)
 : orderByList(orderByList)
 {
@@ -28,4 +31,4 @@ void OrderBy::processKeyword()
 
 }
 
-
+}

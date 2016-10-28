@@ -7,6 +7,9 @@
 
 #include "Create.h"
 
+namespace Keys
+{
+
 Create::Create(const std::string& table, const bool& temporary, const bool& ifNotExists)
 : table(table), temporary(0), ifNotExists(0)
 {
@@ -22,4 +25,5 @@ void Create::processKeyword()
     m_completeKeyword = CreateClause + " " + (temporary? TemporaryClause + " " : "") + Table + " " + (ifNotExists? IfNotExistsClause + " " : "") + table;
 }
 
+}
 

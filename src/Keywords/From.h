@@ -11,6 +11,9 @@
 
 #include "Keyword.h"
 
+namespace Keys
+{
+
 class From : public Keyword
 {
 private:
@@ -26,6 +29,6 @@ public:
     void processKeyword();
 };
 
-
+}
 
 #endif /* FROM_H_ */
