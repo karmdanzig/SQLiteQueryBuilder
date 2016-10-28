@@ -78,6 +78,12 @@ typedef enum
 	WritableSchema
 } PragmaType;
 
+typedef enum
+{
+    RenameTo = 1,
+    AddColumn
+} AlterType;
+
 const string TerminationQueryCharacter = ";";
 const string Table = "TABLE";
 const string SelectClause = "SELECT";

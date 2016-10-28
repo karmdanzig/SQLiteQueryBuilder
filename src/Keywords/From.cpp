@@ -19,7 +19,6 @@ From::~From()
 void From::processKeyword()
 {
 
-
     if (!table.empty())
     {
         addReturnLine();
