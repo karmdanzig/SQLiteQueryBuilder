@@ -13,12 +13,17 @@
 
 class From : public Keyword
 {
+private:
+
+    std::vector<std::string> fromList;
+    std::string table;
+
 
 public:
 
-    From();
+    From(std::string table);
 
-    void processKeyword(const std::vector<std::string>& whereList);
+    void processKeyword();
 };
 
 

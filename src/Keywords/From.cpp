@@ -7,25 +7,27 @@
 
 #include "From.h"
 
-From::From()
+From::From(std::string table) : table(table)
 {
+    processKeyword();
 }
 
 
-void From::processKeyword(const std::vector<std::string>& whereList)
+void From::processKeyword()
 {
- /*   m_completeKeyword.append(FromClause + " ");
 
-    if (!m_from.empty())
+
+    if (!table.empty())
     {
-        m_completeKeyword.append(m_from);
-        if (!m_join.empty())
+        addReturnLine();
+        m_completeKeyword.append(FromClause + " " + table);
+        /*if (!m_join.empty())
         {
             m_completeKeyword.append(" " + m_join);
-        }
+        }*/
     }
 
-    if (!m_fromAsList.empty())
+    /*if (!m_fromAsList.empty())
     {
         insertFromListWithSeparator(whereList, " JOIN ");
         m_completeKeyword.append(" " + OnClause + " ");

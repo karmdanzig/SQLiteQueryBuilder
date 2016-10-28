@@ -20,7 +20,7 @@ private:
 
 public:
 
-    Select(const std::vector<std::string>& selectList, bool selectAll, bool distinct);
+    Select(const std::vector<std::string>& selectList, bool selectAll = 0, bool distinct = 0);
 
     void processKeyword();
 };
