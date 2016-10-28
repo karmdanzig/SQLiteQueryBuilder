@@ -10,11 +10,11 @@
 OrderBy::OrderBy(const std::vector<std::string>& orderByList)
 : orderByList(orderByList)
 {
-    processOrderByClause();
+    processKeyword();
 }
 
 
-void OrderBy::processOrderByClause()
+void OrderBy::processKeyword()
 {
     if (!orderByList.empty())
     {

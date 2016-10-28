@@ -10,11 +10,11 @@
 GroupBy::GroupBy(const std::vector<std::string>& groupByList)
 : groupByList(groupByList)
 {
-    processGroupByClause();
+    processKeyword();
 }
 
 
-void GroupBy::processGroupByClause()
+void GroupBy::processKeyword()
 {
     if (!groupByList.empty())
     {

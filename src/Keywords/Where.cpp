@@ -10,11 +10,11 @@
 Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue)
 : whereList(whereList), theQueue(theQueue)
 {
-    processWhereClause();
+    processKeyword();
 }
 
 
-void Where::processWhereClause()
+void Where::processKeyword()
 {
     if (!whereList.empty())
     {

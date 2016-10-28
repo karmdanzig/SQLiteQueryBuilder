@@ -18,7 +18,7 @@ public:
 
     From();
 
-    void processFromClause(const std::vector<std::string>& whereList);
+    void processKeyword(const std::vector<std::string>& whereList);
 };
 
 

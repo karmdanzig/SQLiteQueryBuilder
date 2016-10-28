@@ -20,7 +20,7 @@ public:
 
     Values(const std::vector<std::string>& valuesList);
 
-    void processValuesClause();
+    void processKeyword();
 };
 
 

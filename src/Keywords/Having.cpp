@@ -10,11 +10,11 @@
 Having::Having(const std::vector<std::string>& havingList)
 : havingList(havingList)
 {
-    processHavingClause();
+    processKeyword();
 }
 
 
-void Having::processHavingClause()
+void Having::processKeyword()
 {
     if (!havingList.empty())
     {

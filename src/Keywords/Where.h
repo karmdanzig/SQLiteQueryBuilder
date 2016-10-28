@@ -21,7 +21,7 @@ public:
 
     Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue);
 
-    void processWhereClause();
+    void processKeyword();
 };
 
 

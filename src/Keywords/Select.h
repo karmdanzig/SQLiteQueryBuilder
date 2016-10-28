@@ -22,7 +22,7 @@ public:
 
     Select(const std::vector<std::string>& selectList, bool selectAll, bool distinct);
 
-    void processSelectClause();
+    void processKeyword();
 };
 
 

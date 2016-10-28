@@ -20,7 +20,7 @@ public:
 
     OrderBy(const std::vector<std::string>& orderByList);
 
-    void processOrderByClause();
+    void processKeyword();
 };
 
 

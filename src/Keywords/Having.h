@@ -20,7 +20,7 @@ public:
 
     Having(const std::vector<std::string>& havingList);
 
-    void processHavingClause();
+    void processKeyword();
 };
 
 

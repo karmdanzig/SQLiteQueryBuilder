@@ -10,10 +10,10 @@
 Values::Values(const std::vector<std::string>& valuesList)
 : valuesList(valuesList)
 {
-    processValuesClause();
+    processKeyword();
 }
 
-void Values::processValuesClause()
+void Values::processKeyword()
 {
     m_completeKeyword.append(ValuesClause + " (");
     insertFromListWithSeparator(valuesList, ", ");

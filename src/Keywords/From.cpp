@@ -12,7 +12,7 @@ From::From()
 }
 
 
-void From::processFromClause(const std::vector<std::string>& whereList)
+void From::processKeyword(const std::vector<std::string>& whereList)
 {
  /*   m_completeKeyword.append(FromClause + " ");
 

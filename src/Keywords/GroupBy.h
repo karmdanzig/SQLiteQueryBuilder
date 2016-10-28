@@ -20,7 +20,7 @@ public:
 
     GroupBy(const std::vector<std::string>& groupbyList);
 
-    void processGroupByClause();
+    void processKeyword();
 };
 
 
