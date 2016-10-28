@@ -21,7 +21,7 @@ private:
 public:
 
     Select(const std::vector<std::string>& selectList, bool selectAll = 0, bool distinct = 0);
-
+    ~Select();
     void processKeyword();
 };
 

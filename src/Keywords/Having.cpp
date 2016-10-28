@@ -13,6 +13,10 @@ Having::Having(const std::vector<std::string>& havingList)
     processKeyword();
 }
 
+Having::~Having()
+{
+}
+
 
 void Having::processKeyword()
 {

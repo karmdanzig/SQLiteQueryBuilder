@@ -20,7 +20,7 @@ private:
 public:
 
     Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue);
-
+    ~Where();
     void processKeyword();
 };
 

@@ -22,7 +22,7 @@ private:
 public:
 
     From(std::string table);
-
+    ~From();
     void processKeyword();
 };
 

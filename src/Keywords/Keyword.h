@@ -25,6 +25,7 @@ protected:
 public:
 
     Keyword();
+    virtual ~Keyword();
     string& getCompleteKeyword();
     virtual void processKeyword () = 0;
 };

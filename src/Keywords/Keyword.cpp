@@ -12,6 +12,10 @@ Keyword::Keyword() : m_completeKeyword("")
 {
 }
 
+Keyword::~Keyword()
+{
+}
+
 void Keyword::insertFromListWithSeparator(const std::vector<std::string>& whichList, const std::string& separator)
 {
     for(std::vector<std::string>::const_iterator it = whichList.begin() ; it != whichList.end(); ++it)

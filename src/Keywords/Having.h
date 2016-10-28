@@ -19,7 +19,7 @@ private:
 public:
 
     Having(const std::vector<std::string>& havingList);
-
+    ~Having();
     void processKeyword();
 };
 

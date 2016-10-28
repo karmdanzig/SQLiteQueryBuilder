@@ -13,6 +13,10 @@ Select::Select(const std::vector<std::string>& selectList, bool selectAll, bool 
     processKeyword();
 }
 
+Select::~Select()
+{
+}
+
 void Select::processKeyword()
 {
     m_completeKeyword = SelectClause + " " + (distinct? DistinctClause + " " : "");

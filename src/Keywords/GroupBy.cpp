@@ -13,6 +13,9 @@ GroupBy::GroupBy(const std::vector<std::string>& groupByList)
     processKeyword();
 }
 
+GroupBy::~GroupBy()
+{
+}
 
 void GroupBy::processKeyword()
 {

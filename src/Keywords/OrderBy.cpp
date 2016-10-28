@@ -13,6 +13,9 @@ OrderBy::OrderBy(const std::vector<std::string>& orderByList)
     processKeyword();
 }
 
+OrderBy::~OrderBy()
+{
+}
 
 void OrderBy::processKeyword()
 {

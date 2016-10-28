@@ -19,7 +19,7 @@ private:
 public:
 
     GroupBy(const std::vector<std::string>& groupbyList);
-
+    ~GroupBy();
     void processKeyword();
 };
 

@@ -12,6 +12,9 @@ From::From(std::string table) : table(table)
     processKeyword();
 }
 
+From::~From()
+{
+}
 
 void From::processKeyword()
 {

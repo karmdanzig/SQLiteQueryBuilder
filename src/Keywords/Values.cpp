@@ -13,6 +13,10 @@ Values::Values(const std::vector<std::string>& valuesList)
     processKeyword();
 }
 
+Values::~Values()
+{
+}
+
 void Values::processKeyword()
 {
     m_completeKeyword.append(ValuesClause + " (");

@@ -13,6 +13,9 @@ Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>&
     processKeyword();
 }
 
+Where::~Where()
+{
+}
 
 void Where::processKeyword()
 {

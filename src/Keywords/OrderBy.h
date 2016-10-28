@@ -19,7 +19,7 @@ private:
 public:
 
     OrderBy(const std::vector<std::string>& orderByList);
-
+    ~OrderBy();
     void processKeyword();
 };
 
