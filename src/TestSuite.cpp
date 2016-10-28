@@ -9,11 +9,6 @@
 #include "UnitTests/TestAlter.h"
 #include "UnitTests/TestPragma.h"*/
 
-#include "Keywords/Select.h"
-#include "Keywords/From.h"
-#include "Keywords/Where.h"
-#include "Keywords/Keyword.h"
-
 #include "Builders/SelectBuilder.h"
 
 
