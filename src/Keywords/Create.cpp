@@ -7,7 +7,7 @@
 
 #include "Create.h"
 
-Create::Create(const std::string& table, bool temporary, bool ifNotExists)
+Create::Create(const std::string& table, const bool& temporary, const bool& ifNotExists)
 : table(table), temporary(0), ifNotExists(0)
 {
     processKeyword();

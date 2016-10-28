@@ -7,7 +7,7 @@
 
 #include "Drop.h"
 
-Drop::Drop(std::string table, bool ifExists)
+Drop::Drop(const std::string& table, const bool& ifExists)
 : table(table), ifExists(ifExists)
 {
     processKeyword();

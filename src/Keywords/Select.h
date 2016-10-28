@@ -15,12 +15,13 @@ class Select : public Keyword
 private:
 
     std::vector<std::string> selectList;
-    bool distinct;
     bool selectAll;
+    bool distinct;
+
 
 public:
 
-    Select(const std::vector<std::string>& selectList, bool selectAll = 0, bool distinct = 0);
+    Select(const std::vector<std::string>& selectList, const bool& selectAll, const bool& distinct);
     ~Select();
     void processKeyword();
 };

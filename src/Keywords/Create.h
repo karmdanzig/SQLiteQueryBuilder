@@ -21,7 +21,7 @@ private:
 
 public:
 
-    Create(const std::string& table, bool temporary, bool ifNotExists);
+    Create(const std::string& table, const bool& temporary, const bool& ifNotExists);
     ~Create();
     void processKeyword();
 };

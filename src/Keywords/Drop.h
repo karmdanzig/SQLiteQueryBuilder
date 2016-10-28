@@ -20,7 +20,7 @@ private:
 
 public:
 
-    Drop(std::string table, bool ifExists);
+    Drop(const std::string& table, const bool& ifExists);
     ~Drop();
     void processKeyword();
 };

@@ -7,7 +7,7 @@
 
 #include "From.h"
 
-From::From(std::string table) : table(table)
+From::From(const std::string& table) : table(table)
 {
     processKeyword();
 }

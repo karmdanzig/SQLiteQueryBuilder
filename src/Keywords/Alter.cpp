@@ -7,7 +7,7 @@
 
 #include "Alter.h"
 
-Alter::Alter(std::string table, AlterType type, std::string newvalue)
+Alter::Alter(const std::string& table, const AlterType& type, const std::string& newvalue)
 : table(table), type(type), newvalue(newvalue)
 {
     processKeyword();

@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     operators.push("AND");
 
 
-    Keyword *t = new Select(select);
+    Keyword *t = new Select(select, 0, 0);
     Keyword *f = new From("Table1");
     Keyword *e = new Where(where, operators);
 

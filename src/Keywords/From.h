@@ -21,7 +21,7 @@ private:
 
 public:
 
-    From(std::string table);
+    From(const std::string& table);
     ~From();
     void processKeyword();
 };
