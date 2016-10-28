@@ -25,7 +25,7 @@ public:
     Alter(std::string table, AlterType type, std::string newvalue);
     ~Alter();
     void processKeyword();
-};
+}
 
 
 #endif /* SRC_KEYWORDS_ALTER_H_ */
