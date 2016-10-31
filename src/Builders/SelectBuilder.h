@@ -8,14 +8,13 @@
 #ifndef SRC_BUILDERS_SELECTBUILDER_H_
 #define SRC_BUILDERS_SELECTBUILDER_H_
 
-#include "../DataBaseQueryBuilder.h"
+#include "QueryBuilder.h"
 
-class SelectBuilder : public DataBaseQueryBuilder
+class SelectBuilder : public QueryBuilder
 {
 
     std::vector<std::string> m_selectList;
     bool m_selectAll;
-    std::string m_fromTable;
 
 public:
 
@@ -24,7 +23,6 @@ public:
 
     SelectBuilder& Select(const std::string& columnToSelect);
     SelectBuilder& SelectAll();
-    SelectBuilder& From(const std::string& fromTable);
 
     std::string Build();
 

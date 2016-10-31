@@ -10,6 +10,12 @@
 namespace Keys
 {
 
+Where::Where(const std::vector<std::string>& whereList)
+: whereList(whereList)
+{
+    processKeyword();
+}
+
 Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue)
 : whereList(whereList), theQueue(theQueue)
 {

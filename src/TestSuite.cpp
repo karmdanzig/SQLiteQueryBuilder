@@ -10,17 +10,27 @@
 #include "UnitTests/TestPragma.h"*/
 
 #include "Builders/SelectBuilder.h"
+#include "Builders/DeleteBuilder.h"
 
+#include <iostream>
 
 int main(int argc, char **argv) {
 
-    string r = SelectBuilder().
-            Select("Char1").
-            Select("Char2").
+    std::string r = DeleteBuilder().
+            Delete().
             From("Table").
+            WhereEqual("Column1", 3).
             Build();
 
-    cout << r << endl;
+    std::cout << r << std::endl;
+
+    r = SelectBuilder().
+                Select("Column7").
+                From("Table").
+                WhereEqual("Column1", 3).
+                Build();
+
+    std::cout << r << std::endl;
 
     /*
 	::testing::InitGoogleTest(&argc, argv);

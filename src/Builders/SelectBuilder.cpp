@@ -8,8 +8,9 @@
 #include "SelectBuilder.h"
 #include "../Keywords/Select.h"
 #include "../Keywords/From.h"
+#include "../Keywords/Where.h"
 
-SelectBuilder::SelectBuilder() : m_selectAll(false), m_fromTable("")
+SelectBuilder::SelectBuilder() : m_selectAll(false)
 {
 }
 
@@ -29,15 +30,10 @@ SelectBuilder& SelectBuilder::SelectAll()
     return *this;
 }
 
-SelectBuilder& SelectBuilder::From(const std::string& fromTable)
-{
-    m_fromTable = fromTable;
-    return *this;
-}
-
 std::string SelectBuilder::Build()
 {
     Keys::Select t(m_selectList, false, false);
-    Keys::From t1(m_fromTable);
-    return t.getCompleteKeyword() + t1.getCompleteKeyword();
+    Keys::From f(m_fromTable);
+    Keys::Where w(m_whereList);
+    return t.getCompleteKeyword() + f.getCompleteKeyword() + w.getCompleteKeyword();
 }
