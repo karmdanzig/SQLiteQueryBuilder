@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
 #include <stdarg.h>
 #include <sstream>
 #include "../Constants.h"
@@ -22,6 +23,9 @@ protected:
     std::string m_fromTable;
     std::vector<std::string> m_havingList;
     std::vector<std::string> m_whereList;
+    std::queue<std::string> m_operatorList;
+    std::vector<std::string> m_groupbyList;
+    std::vector<std::string> m_orderbyList;
 
 public:
 
@@ -76,6 +80,18 @@ public:
     QueryBuilder& WhereNotBetween(const std::string& filterField, const int& min, const int& max);
 
     QueryBuilder& WhereNotBetween(const std::string& filterField, const std::string& min, const std::string& max);
+
+    QueryBuilder& And();
+
+    QueryBuilder& Or();
+
+    QueryBuilder& GroupBy(const std::string& column);
+
+    QueryBuilder& OrderBy(const std::string& column);
+
+    QueryBuilder& Asc();
+
+    QueryBuilder& Desc();
 
 };
 

@@ -16,6 +16,7 @@
 #include "Builders/DropBuilder.h"
 #include "Builders/InsertBuilder.h"
 #include "Builders/CreateBuilder.h"
+#include "Builders/UpdateBuilder.h"
 
 #include <iostream>
 
@@ -67,7 +68,13 @@ int main(int argc, char **argv) {
             Build();
     std::cout << r << std::endl;
 
-
+    r = UpdateBuilder().
+                Update("Table").
+                Set("Column1", "2").
+                Set("Column2", 3).
+                WhereLessThan("Column3", 4).
+                Build();
+    std::cout << r << std::endl;
 
     /*
 	::testing::InitGoogleTest(&argc, argv);

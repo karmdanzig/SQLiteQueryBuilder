@@ -10,7 +10,7 @@
 #include "../Keywords/From.h"
 #include "../Keywords/Where.h"
 
-SelectBuilder::SelectBuilder() : m_selectAll(false)
+SelectBuilder::SelectBuilder() : m_selectAll(false), m_distinct(false)
 {
 }
 
@@ -27,6 +27,12 @@ SelectBuilder& SelectBuilder::Select(const std::string& columnToSelect)
 SelectBuilder& SelectBuilder::SelectAll()
 {
     m_selectAll = true;
+    return *this;
+}
+
+SelectBuilder& SelectBuilder::Distinct()
+{
+    m_distinct = true;
     return *this;
 }
 

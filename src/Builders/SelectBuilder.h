@@ -15,6 +15,7 @@ class SelectBuilder : public QueryBuilder
 
     std::vector<std::string> m_selectList;
     bool m_selectAll;
+    bool m_distinct;
 
 public:
 
@@ -23,6 +24,7 @@ public:
 
     SelectBuilder& Select(const std::string& columnToSelect);
     SelectBuilder& SelectAll();
+    SelectBuilder& Distinct();
 
     std::string Build();
 

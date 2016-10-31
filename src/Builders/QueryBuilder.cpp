@@ -194,3 +194,42 @@ QueryBuilder& QueryBuilder::WhereNotLike(const std::string& filterField, const i
     m_whereList.push_back(filterField + " " + NotClause + " " + LikeClause + " " + ss.str());
     return *this;
 }
+
+
+QueryBuilder& QueryBuilder::And()
+{
+    m_operatorList.push(AndClause);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::Or()
+{
+    m_operatorList.push(OrClause);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::GroupBy(const std::string& column)
+{
+    m_groupbyList.push_back(column);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::OrderBy(const std::string& column)
+{
+    m_orderbyList.push_back(column);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::Asc()
+{
+    //m_asc = true;
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::Desc()
+{
+    //m_desc = true;
+    return *this;
+}
+
+
