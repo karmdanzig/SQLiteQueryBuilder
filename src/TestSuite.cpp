@@ -13,6 +13,7 @@
 #include "Builders/DeleteBuilder.h"
 #include "Builders/PragmaBuilder.h"
 #include "Builders/AlterBuilder.h"
+#include "Builders/DropBuilder.h"
 
 #include <iostream>
 
@@ -48,6 +49,13 @@ int main(int argc, char **argv) {
             Alter("Table2").AddColumn("Column2", "INT", 0, 1).
                     Build();
     std::cout << r << std::endl;
+
+
+    r = DropBuilder().
+            Drop("Table2").
+                    Build();
+    std::cout << r << std::endl;
+
 
 
     /*
