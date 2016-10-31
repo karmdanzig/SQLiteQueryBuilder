@@ -15,6 +15,7 @@
 #include "Builders/AlterBuilder.h"
 #include "Builders/DropBuilder.h"
 #include "Builders/InsertBuilder.h"
+#include "Builders/CreateBuilder.h"
 
 #include <iostream>
 
@@ -25,36 +26,45 @@ int main(int argc, char **argv) {
             From("Table").
             WhereEqual("Column1", 3).
             Build();
-
     std::cout << r << std::endl;
 
     r = SelectBuilder().
-                Select("Column7").
-                From("Table").
-                WhereEqual("Column1", 3).
-                Build();
-
+            Select("Column7").
+            From("Table").
+            WhereEqual("Column1", 3).
+            Build();
     std::cout << r << std::endl;
 
     r = PragmaBuilder().
             PragmaVdbeTrace().
-                    Build();
+            Build();
     std::cout << r << std::endl;
 
     r = AlterBuilder().
-            Alter("Table2").RenameTo("Table3").
-                    Build();
+            Alter("Table2").
+            RenameTo("Table3").
+            Build();
     std::cout << r << std::endl;
 
     r = AlterBuilder().
-            Alter("Table2").AddColumn("Column2", "INT", 0, 1).
-                    Build();
+            Alter("Table2").
+            AddColumn("Column2", "INT", 0, 1).
+            Build();
     std::cout << r << std::endl;
 
 
     r = InsertBuilder().
-            InsertInto("Table2").Values(3).Values(4).
-                    Build();
+            InsertInto("Table2").
+            Values(3).
+            Values(4).
+            Build();
+    std::cout << r << std::endl;
+
+    r = CreateBuilder().
+            Create("Table2").
+            Field("Column2", "INT", true, true).
+            Field("Column3", "VAR", true, false).
+            Build();
     std::cout << r << std::endl;
 
 

@@ -6,8 +6,6 @@
  */
 
 #include "QueryBuilder.h"
-#include "../Constants.h"
-
 
 QueryBuilder::QueryBuilder() : m_fromTable("")
 {

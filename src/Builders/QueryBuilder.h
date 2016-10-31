@@ -13,6 +13,7 @@
 #include <vector>
 #include <stdarg.h>
 #include <sstream>
+#include "../Constants.h"
 
 class QueryBuilder
 {

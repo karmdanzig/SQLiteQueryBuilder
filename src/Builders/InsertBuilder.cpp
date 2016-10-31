@@ -23,7 +23,7 @@ InsertBuilder& InsertBuilder::InsertInto(const std::string& table)
     return *this;
 }
 
-InsertBuilder& InsertBuilder::Values(const string& value)
+InsertBuilder& InsertBuilder::Values(const std::string& value)
 {
     m_valuesList.push_back("\'" + value + "\'");
     return *this;
@@ -41,7 +41,7 @@ std::string InsertBuilder::Build()
 {
     Keys::InsertInto d(m_table);
     Keys::Values t(m_valuesList);
-    return d.getCompleteKeyword() + t.getCompleteKeyword();
+    return d.getCompleteKeyword() + "\n" + t.getCompleteKeyword();
 }
 
 

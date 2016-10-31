@@ -20,11 +20,11 @@ private:
     std::string table;
     bool temporary;
     bool ifNotExists;
-
+    std::vector<std::string> fieldsList;
 
 public:
 
-    Create(const std::string& table, const bool& temporary, const bool& ifNotExists);
+    Create(const std::string& table, const bool& temporary, const bool& ifNotExists, std::vector<std::string>& fieldsList);
     ~Create();
     void processKeyword();
 };
