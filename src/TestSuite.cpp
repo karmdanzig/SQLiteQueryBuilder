@@ -11,6 +11,8 @@
 
 #include "Builders/SelectBuilder.h"
 #include "Builders/DeleteBuilder.h"
+#include "Builders/PragmaBuilder.h"
+#include "Builders/AlterBuilder.h"
 
 #include <iostream>
 
@@ -31,6 +33,22 @@ int main(int argc, char **argv) {
                 Build();
 
     std::cout << r << std::endl;
+
+    r = PragmaBuilder().
+            PragmaVdbeTrace().
+                    Build();
+    std::cout << r << std::endl;
+
+    r = AlterBuilder().
+            Alter("Table2").RenameTo("Table3").
+                    Build();
+    std::cout << r << std::endl;
+
+    r = AlterBuilder().
+            Alter("Table2").AddColumn("Column2", "INT", 0, 1).
+                    Build();
+    std::cout << r << std::endl;
+
 
     /*
 	::testing::InitGoogleTest(&argc, argv);

@@ -7,6 +7,14 @@
 
 #include "PragmaBuilder.h"
 
+PragmaBuilder::PragmaBuilder() : m_pragmaType(NonePragma)
+{
+}
+
+PragmaBuilder::~PragmaBuilder()
+{
+}
+
 PragmaBuilder& PragmaBuilder::PragmaApplicationId()
 {
     m_pragmaType = ApplicationId;
@@ -342,4 +350,10 @@ PragmaBuilder& PragmaBuilder::PragmaWritableSchema()
 {
     m_pragmaType = WritableSchema;
     return *this;
+}
+
+std::string PragmaBuilder::Build()
+{
+    Keys::Pragma p(m_pragmaType);
+    return p.getCompleteKeyword();
 }

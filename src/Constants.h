@@ -20,7 +20,8 @@ typedef enum
 
 typedef enum
 {
-	ApplicationId = 1,
+    NonePragma = 0,
+	ApplicationId,
 	AutoVacuum,
 	AutomaticIndex,
 	BusyTimeout,
@@ -80,7 +81,8 @@ typedef enum
 
 typedef enum
 {
-    RenameTo = 1,
+    NoneAlterType = 0,
+    RenameTo,
     AddColumn
 } AlterType;
 
