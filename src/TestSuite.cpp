@@ -14,6 +14,7 @@
 #include "Builders/PragmaBuilder.h"
 #include "Builders/AlterBuilder.h"
 #include "Builders/DropBuilder.h"
+#include "Builders/InsertBuilder.h"
 
 #include <iostream>
 
@@ -51,8 +52,8 @@ int main(int argc, char **argv) {
     std::cout << r << std::endl;
 
 
-    r = DropBuilder().
-            Drop("Table2").
+    r = InsertBuilder().
+            InsertInto("Table2").Values(3).Values(4).
                     Build();
     std::cout << r << std::endl;
 

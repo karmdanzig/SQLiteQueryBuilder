@@ -11,6 +11,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stdarg.h>
+#include <sstream>
 
 class QueryBuilder
 {

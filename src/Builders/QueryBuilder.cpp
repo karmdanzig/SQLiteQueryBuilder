@@ -7,8 +7,7 @@
 
 #include "QueryBuilder.h"
 #include "../Constants.h"
-#include <stdarg.h>
-#include <sstream>
+
 
 QueryBuilder::QueryBuilder() : m_fromTable("")
 {
