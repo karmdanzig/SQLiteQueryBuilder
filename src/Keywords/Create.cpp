@@ -11,7 +11,7 @@ namespace Keys
 {
 
 Create::Create(const std::string& table, const bool& temporary, const bool& ifNotExists, std::vector<std::string>& fieldsList)
-: table(table), temporary(false), ifNotExists(false), fieldsList(fieldsList)
+: table(table), temporary(temporary), ifNotExists(ifNotExists), fieldsList(fieldsList)
 {
     processKeyword();
 }

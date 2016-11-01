@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/DropBuilder.h"
 
 TEST(DropClause, TEST_DROP_TABLE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = DropBuilder().
 			Drop("Table").
 			Build();
 
@@ -12,7 +12,7 @@ TEST(DropClause, TEST_DROP_TABLE)
 
 TEST(DropClause, TEST_DROP_TABLE_IF_EXISTS)
 {
-	string query = DataBaseQueryBuilder().
+	string query = DropBuilder().
 			Drop("Table").
 			IfExists().
 			Build();

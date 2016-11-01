@@ -22,7 +22,7 @@ Update::~Update()
 
 void Update::processKeyword()
 {
-    m_completeKeyword = UpdateClause + " " + table + " ";
+    m_completeKeyword = UpdateClause + " " + table;
 }
 
 }

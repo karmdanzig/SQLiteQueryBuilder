@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/AlterBuilder.h"
 
 TEST(AlterClause, TEST_ALTER_RENAME)
 {
-	string query = DataBaseQueryBuilder().
+	string query = AlterBuilder().
 			Alter("Table").
 			RenameTo("Table1").
 			Build();
@@ -13,7 +13,7 @@ TEST(AlterClause, TEST_ALTER_RENAME)
 
 TEST(AlterClause, TEST_ALTER_ADD_COLUMN)
 {
-	string query = DataBaseQueryBuilder().
+	string query = AlterBuilder().
 			Alter("Table").
 			AddColumn("Field1", "INT", true, true).
 			Build();

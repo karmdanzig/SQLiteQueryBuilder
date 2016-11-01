@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/UpdateBuilder.h"
 
 TEST(UpdateClause, TEST_UPDATE_TABLE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = UpdateBuilder().
 			Update("Table").
 			Set("Column1", "2").
 			Set("Column2", 3).
@@ -14,7 +14,7 @@ TEST(UpdateClause, TEST_UPDATE_TABLE)
 
 TEST(UpdateClause, TEST_UPDATE_TABLE_WITH_CONDITION)
 {
-	string query = DataBaseQueryBuilder().
+	string query = UpdateBuilder().
 			Update("Table").
 			Set("Column1", "2").
 			Set("Column2", 3).

@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/InsertBuilder.h"
 
 TEST(InsertClause, TEST_INSERT_INTO_TABLE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = InsertBuilder().
 			InsertInto("Table").
 			Values("SomeText").
 			Values("2").

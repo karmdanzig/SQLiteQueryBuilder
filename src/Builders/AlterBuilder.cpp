@@ -38,7 +38,7 @@ AlterBuilder& AlterBuilder::AddColumn(const std::string& fieldName, const std::s
 std::string AlterBuilder::Build()
 {
     Keys::Alter t1(m_tableToAlter, m_type, m_newValue);
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + ";";
 }
 
 

@@ -43,5 +43,5 @@ CreateBuilder& CreateBuilder::Field(const std::string& fieldName,  const std::st
 std::string CreateBuilder::Build()
 {
     Keys::Create t1(m_table, m_temporary, m_ifNotExists, m_fieldsList);
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + ";";
 }
