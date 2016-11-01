@@ -88,6 +88,7 @@ typedef enum
 
 const string TerminationQueryCharacter = ";";
 const string Table = "TABLE";
+const string IndexClause = "INDEX";
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";
 const string InsertIntoClause = "INSERT INTO";
@@ -131,5 +132,6 @@ const string TemporaryClause = "TEMPORARY";
 const string RenameToClause = "RENAME TO";
 const string AddColumnClause = "ADD COLUMN";
 const string PragmaClause = "PRAGMA";
+const string UniqueClause = "UNIQUE";
 
 #endif /* SRC_CONSTANTS_H_ */

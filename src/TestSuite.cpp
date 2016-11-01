@@ -17,6 +17,7 @@
 #include "Builders/InsertBuilder.h"
 #include "Builders/CreateBuilder.h"
 #include "Builders/UpdateBuilder.h"
+#include "Builders/CreateIndexBuilder.h"
 
 #include <iostream>
 
@@ -79,6 +80,17 @@ int main(int argc, char **argv) {
             Set("Column2", 3).
             WhereLessThan("Column3", 4).
             Build();
+    std::cout << r << std::endl;
+
+    r = CreateIndexBuilder().
+            CreateUniqueIndex("Index").
+            IfNotExists().
+            OnTable("Table2").
+            Columns("Column1").
+            Columns("Column2").
+            Columns("Column3").
+            Build();
+
     std::cout << r << std::endl;
 
     /*
