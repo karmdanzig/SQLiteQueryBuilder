@@ -18,6 +18,9 @@
 #include "Builders/CreateBuilder.h"
 #include "Builders/UpdateBuilder.h"
 #include "Builders/CreateIndexBuilder.h"
+#include "Builders/BeginTransactionBuilder.h"
+#include "Builders/EndTransactionBuilder.h"
+#include "Builders/RollbackTransactionBuilder.h"
 
 #include <iostream>
 
@@ -89,6 +92,24 @@ int main(int argc, char **argv) {
             Columns("Column1").
             Columns("Column2").
             Columns("Column3").
+            Build();
+
+    std::cout << r << std::endl;
+
+    r = BeginTransactionBuilder().
+            Begin("Transaction").
+            Build();
+
+    std::cout << r << std::endl;
+
+    r = EndTransactionBuilder().
+            End("Transaction").
+            Build();
+
+    std::cout << r << std::endl;
+
+    r = RollbackTransactionBuilder().
+            Rollback().
             Build();
 
     std::cout << r << std::endl;

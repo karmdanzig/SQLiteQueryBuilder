@@ -133,5 +133,8 @@ const string RenameToClause = "RENAME TO";
 const string AddColumnClause = "ADD COLUMN";
 const string PragmaClause = "PRAGMA";
 const string UniqueClause = "UNIQUE";
+const string BeginClause = "BEGIN";
+const string EndClause = "END";
+const string RollbackClause = "ROLLBACK";
 
 #endif /* SRC_CONSTANTS_H_ */
