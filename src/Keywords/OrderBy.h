@@ -18,10 +18,12 @@ class OrderBy : public Keyword
 private:
 
     std::vector<std::string> orderByList;
+    bool ascending;
+    bool descending;
 
 public:
 
-    OrderBy(const std::vector<std::string>& orderByList);
+    OrderBy(const std::vector<std::string>& orderByList, const bool& ascending, const bool& descending);
     ~OrderBy();
     void processKeyword();
 };

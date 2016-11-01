@@ -26,6 +26,8 @@ protected:
     std::queue<std::string> m_operatorList;
     std::vector<std::string> m_groupbyList;
     std::vector<std::string> m_orderbyList;
+    bool m_ascending;
+    bool m_descending;
 
 public:
 

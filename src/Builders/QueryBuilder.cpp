@@ -7,7 +7,7 @@
 
 #include "QueryBuilder.h"
 
-QueryBuilder::QueryBuilder() : m_fromTable("")
+QueryBuilder::QueryBuilder() : m_fromTable(""), m_ascending(false), m_descending(false)
 {
 }
 
@@ -222,13 +222,13 @@ QueryBuilder& QueryBuilder::OrderBy(const std::string& column)
 
 QueryBuilder& QueryBuilder::Asc()
 {
-    //m_asc = true;
+    m_ascending = true;
     return *this;
 }
 
 QueryBuilder& QueryBuilder::Desc()
 {
-    //m_desc = true;
+    m_descending = true;
     return *this;
 }
 

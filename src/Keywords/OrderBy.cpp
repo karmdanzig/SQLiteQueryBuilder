@@ -10,8 +10,8 @@
 namespace Keys
 {
 
-OrderBy::OrderBy(const std::vector<std::string>& orderByList)
-: orderByList(orderByList)
+OrderBy::OrderBy(const std::vector<std::string>& orderByList, const bool& ascending, const bool& descending)
+: orderByList(orderByList), ascending(ascending), descending(descending)
 {
     processKeyword();
 }
@@ -27,6 +27,14 @@ void OrderBy::processKeyword()
         addReturnLine();
         m_completeKeyword.append(OrderByClause + " ");
         insertFromListWithSeparator(orderByList, ", ");
+    }
+    if (ascending)
+    {
+        m_completeKeyword.append(" " + AscClause);
+    }
+    if (descending)
+    {
+        m_completeKeyword.append(" " + DescClause);
     }
 
 }

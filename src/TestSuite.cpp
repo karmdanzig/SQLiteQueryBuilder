@@ -33,6 +33,9 @@ int main(int argc, char **argv) {
             Select("Column7").
             From("Table").
             WhereEqual("Column1", 3).
+            OrderBy("Column3").
+            OrderBy("Column4").
+            Asc().
             Build();
     std::cout << r << std::endl;
 
