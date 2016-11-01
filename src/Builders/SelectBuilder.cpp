@@ -9,6 +9,7 @@
 #include "../Keywords/Select.h"
 #include "../Keywords/From.h"
 #include "../Keywords/Where.h"
+#include "../Keywords/GroupBy.h"
 #include "../Keywords/OrderBy.h"
 
 SelectBuilder::SelectBuilder() : m_selectAll(false), m_distinct(false)
@@ -42,6 +43,7 @@ std::string SelectBuilder::Build()
     Keys::Select t(m_selectList, false, m_distinct);
     Keys::From f(m_fromTable);
     Keys::Where w(m_whereList);
+    Keys::GroupBy gb(m_groupbyList);
     Keys::OrderBy ob(m_orderbyList, m_ascending, m_descending);
-    return t.getCompleteKeyword() + f.getCompleteKeyword() + w.getCompleteKeyword() + ob.getCompleteKeyword();
+    return t.getCompleteKeyword() + f.getCompleteKeyword() + w.getCompleteKeyword() + gb.getCompleteKeyword() + ob.getCompleteKeyword();
 }
