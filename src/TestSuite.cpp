@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
             From("Table").
             WhereEqual("Column1", 3).
             GroupBy("Column2").
+            Having("Column5", 1).
             OrderBy("Column3").
             OrderBy("Column4").
             Asc().
@@ -73,11 +74,11 @@ int main(int argc, char **argv) {
     std::cout << r << std::endl;
 
     r = UpdateBuilder().
-                Update("Table").
-                Set("Column1", "2").
-                Set("Column2", 3).
-                WhereLessThan("Column3", 4).
-                Build();
+            Update("Table").
+            Set("Column1", "2").
+            Set("Column2", 3).
+            WhereLessThan("Column3", 4).
+            Build();
     std::cout << r << std::endl;
 
     /*
