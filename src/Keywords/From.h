@@ -18,13 +18,16 @@ class From : public Keyword
 {
 private:
 
-    std::vector<std::string> fromList;
     std::string table;
-
+    std::string join;
+    std::vector<std::string> fromList;
+    std::vector<std::string> onList;
+    std::queue<std::string> theQueue;
 
 public:
 
     From(const std::string& table);
+    From(const std::string& table, const std::string& join, std::vector<std::string>& fromList, std::vector<std::string>& onList, std::queue<std::string>& theQueue);
     ~From();
     void processKeyword();
 };

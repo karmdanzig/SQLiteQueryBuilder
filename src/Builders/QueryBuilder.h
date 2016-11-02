@@ -21,11 +21,14 @@ class QueryBuilder
 protected:
 
     std::string m_fromTable;
+    std::string m_join;
     std::vector<std::string> m_havingList;
     std::vector<std::string> m_whereList;
     std::queue<std::string> m_operatorList;
     std::vector<std::string> m_groupbyList;
     std::vector<std::string> m_orderbyList;
+    std::vector<std::string> m_fromAsList;
+    std::vector<std::string> m_onList;
     bool m_ascending;
     bool m_descending;
 
@@ -94,6 +97,18 @@ public:
     QueryBuilder& Asc();
 
     QueryBuilder& Desc();
+
+    QueryBuilder& FromAs(const std::string& table, const std::string& alias);
+
+    QueryBuilder& JoinAs(const std::string& table, const std::string& alias);
+
+    QueryBuilder& OnEqual(const std::string& column, const std::string& alias1, const std::string& alias2);
+
+    QueryBuilder& NaturalJoin(const std::string& table);
+
+    QueryBuilder& CrossJoin(const std::string& table);
+
+    QueryBuilder& NaturalLeftOuterJoin(const std::string& table);
 
 };
 

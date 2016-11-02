@@ -42,7 +42,7 @@ SelectBuilder& SelectBuilder::Distinct()
 std::string SelectBuilder::Build()
 {
     Keys::Select t(m_selectList, m_selectAll, m_distinct);
-    Keys::From f(m_fromTable);
+    Keys::From f(m_fromTable, m_join, m_fromAsList, m_onList, m_operatorList);
     Keys::Where w(m_whereList, m_operatorList);
     Keys::GroupBy gb(m_groupbyList);
     Keys::Having h(m_havingList);

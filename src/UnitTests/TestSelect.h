@@ -10,7 +10,7 @@ TEST(SelectClause, TEST_BASIC_SELECT)
 
 	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
-/*
+
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS)
 {
     string query = SelectBuilder().
@@ -124,7 +124,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_OUTER_JOIN)
 
 	ASSERT_EQ("SELECT Column\nFROM Table NATURAL LEFT OUTER JOIN Table2;", query);
 }
-*/
+
 TEST(SelectClause, TEST_BASIC_SELECT_ALL)
 {
 	string query = SelectBuilder().

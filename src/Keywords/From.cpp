@@ -10,7 +10,14 @@
 namespace Keys
 {
 
-From::From(const std::string& table) : table(table)
+From::From(const std::string& table)
+: table(table)
+{
+    processKeyword();
+}
+
+From::From(const std::string& table, const std::string& join, std::vector<std::string>& fromList, std::vector<std::string>& onList, std::queue<std::string>& theQueue)
+: table(table), join(join), fromList(fromList), onList(onList), theQueue(theQueue)
 {
     processKeyword();
 }
@@ -21,23 +28,24 @@ From::~From()
 
 void From::processKeyword()
 {
+    addReturnLine();
+    m_completeKeyword.append(FromClause + " ");
 
     if (!table.empty())
     {
-        addReturnLine();
-        m_completeKeyword.append(FromClause + " " + table);
-        /*if (!m_join.empty())
+        m_completeKeyword.append(table);
+        if (!join.empty())
         {
-            m_completeKeyword.append(" " + m_join);
-        }*/
+            m_completeKeyword.append(" " + join);
+        }
     }
 
-    /*if (!m_fromAsList.empty())
+    if (!fromList.empty())
     {
-        insertFromListWithSeparator(whereList, " JOIN ");
+        insertFromListWithSeparator(fromList, " JOIN ");
         m_completeKeyword.append(" " + OnClause + " ");
-        insertFromListWithOperatorList(m_OnList);
-    }*/
+        insertFromListWithOperatorList(onList, theQueue);
+    }
 }
 
 }

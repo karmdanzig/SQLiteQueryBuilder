@@ -232,4 +232,38 @@ QueryBuilder& QueryBuilder::Desc()
     return *this;
 }
 
+QueryBuilder& QueryBuilder::FromAs(const std::string& table, const std::string& alias)
+{
+    m_fromAsList.push_back(table + " " + AsClause + " " + alias);
+    return *this;
+}
 
+QueryBuilder& QueryBuilder::JoinAs(const std::string& table, const std::string& alias)
+{
+    m_fromAsList.push_back(table + " " + AsClause + " " + alias);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::OnEqual(const std::string& column, const std::string& alias1, const std::string& alias2)
+{
+    m_onList.push_back(alias1 + "." + column +  " = " + alias2 + "." + column);
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::NaturalJoin(const std::string& table)
+{
+    m_join = NaturalClause + " "  + JoinClause + " " + table;
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::CrossJoin(const std::string& table)
+{
+    m_join = CrossClause + " " + JoinClause + " " + table;
+    return *this;
+}
+
+QueryBuilder& QueryBuilder::NaturalLeftOuterJoin(const std::string& table)
+{
+    m_join = NaturalClause + " " + LeftClause + " " + OuterClause + " " + JoinClause + " " + table;
+    return *this;
+}
