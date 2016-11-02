@@ -47,5 +47,5 @@ std::string SelectBuilder::Build()
     Keys::GroupBy gb(m_groupbyList);
     Keys::Having h(m_havingList);
     Keys::OrderBy ob(m_orderbyList, m_ascending, m_descending);
-    return t.getCompleteKeyword() + f.getCompleteKeyword() + w.getCompleteKeyword() + gb.getCompleteKeyword() + h.getCompleteKeyword() + ob.getCompleteKeyword();
+    return t.getCompleteKeyword() + f.getCompleteKeyword() + w.getCompleteKeyword() + gb.getCompleteKeyword() + h.getCompleteKeyword() + ob.getCompleteKeyword() +";";
 }

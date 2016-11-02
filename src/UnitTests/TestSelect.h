@@ -1,19 +1,19 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/SelectBuilder.h"
 
 TEST(SelectClause, TEST_BASIC_SELECT)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column").
 			From("Table").
 			Build();
 
 	ASSERT_EQ("SELECT Column\nFROM Table;", query);
 }
-
+/*
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = SelectBuilder().
             Select("Column").
             FromAs("Table1", "T1").
             JoinAs("Table2", "T2").
@@ -25,7 +25,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS_AND_TWO_CONDITIONS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = SelectBuilder().
             Select("Column").
             FromAs("Table1", "T1").
             JoinAs("Table2", "T2").
@@ -39,7 +39,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ALIAS_AND_TWO_CONDITIONS)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = SelectBuilder().
             Select("Column").
             FromAs("Table1", "T1").
             JoinAs("Table2", "T2").
@@ -54,7 +54,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS_WITH_WHERE_CLAUSE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = SelectBuilder().
             Select("Column").
             FromAs("Table1", "T1").
             JoinAs("Table2", "T2").
@@ -72,7 +72,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_TWO_ALIAS_AND_TWO_CONDITIONS_WITH_WHER
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_THREE_ALIAS_AND_THREE_CONDITIONS_WITH_WHERE_CLAUSE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = SelectBuilder().
             Select("Column").
             FromAs("Table1", "T1").
             JoinAs("Table2", "T2").
@@ -94,7 +94,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_THREE_ALIAS_AND_THREE_CONDITIONS_WITH_
 
 TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column").
 			From("Table").
 			NaturalJoin("Table2").
@@ -105,7 +105,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_JOIN)
 
 TEST(SelectClause, TEST_BASIC_SELECT_CROSS_JOIN)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column").
 			From("Table").
 			CrossJoin("Table2").
@@ -116,7 +116,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_CROSS_JOIN)
 
 TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_OUTER_JOIN)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column").
 			From("Table").
 			NaturalLeftOuterJoin("Table2").
@@ -124,10 +124,10 @@ TEST(SelectClause, TEST_BASIC_SELECT_NATURAL_OUTER_JOIN)
 
 	ASSERT_EQ("SELECT Column\nFROM Table NATURAL LEFT OUTER JOIN Table2;", query);
 }
-
+*/
 TEST(SelectClause, TEST_BASIC_SELECT_ALL)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			SelectAll().
 			From("Table").
 			Build();
@@ -137,7 +137,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_ALL)
 
 TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column").
 			Distinct().
 			From("Table").
@@ -148,7 +148,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT)
 
 TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT_ALL)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			SelectAll().
 			Distinct().
 			From("Table").
@@ -159,7 +159,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_DISTINCT_ALL)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", 2).
@@ -170,7 +170,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_INTEGER_CONDITION)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_ONE_ELEMENT)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereIn("Column1", 1, 10).
@@ -181,7 +181,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_ONE_ELEMENT)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_TWO_ELEMENTS)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereIn("Column1", 2, 1, 2).
@@ -192,7 +192,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_TWO_ELEMENTS)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_FIVE_ELEMENTS)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereIn("Column1", 5, 1, 2, 3, 4, 5).
@@ -203,10 +203,10 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_WHERE_IN_WITH_FIVE_ELEMENTS)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
-			WhereInQuery("Column", DataBaseQueryBuilder().Select("Column2").From("Table2").Build()).
+			WhereInQuery("Column", SelectBuilder().Select("Column2").From("Table2").Build()).
 			Build();
 
 	ASSERT_EQ("SELECT Column1\nFROM Table\nWHERE Column IN (SELECT Column2\nFROM Table2);", query);
@@ -214,7 +214,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_SUBQUERY)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -225,7 +225,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_CONDITION)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereLike("Column", "_T%").
@@ -236,7 +236,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_LIKE_CONDITION)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_NOT_LIKE_CONDITION)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereNotLike("Column", "_T%").
@@ -247,7 +247,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_ONE_TEXT_NOT_LIKE_CONDITION)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -260,7 +260,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_CLAUSE)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -273,7 +273,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_OR_CLAUSE)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -288,7 +288,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_MULTIPLE_CONDITIONS_AND_OR_CLAUSE)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_BETWEEN_CLAUSE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereBetween("Column2", 3, 4).
@@ -299,7 +299,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_BETWEEN_CLAUSE)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_NOT_BETWEEN_CLAUSE)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereNotBetween("Column2", 3, 4).
@@ -310,7 +310,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_NOT_BETWEEN_CLAUSE)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -324,7 +324,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_HAVING)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -339,7 +339,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_HAVING)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -356,7 +356,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_ASC)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
@@ -374,7 +374,7 @@ TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_ASC)
 
 TEST(SelectClause, TEST_BASIC_SELECT_WITH_GROUP_BY_AND_ORDER_BY_DESC)
 {
-	string query = DataBaseQueryBuilder().
+	string query = SelectBuilder().
 			Select("Column1").
 			From("Table").
 			WhereEqual("Column", "2").
