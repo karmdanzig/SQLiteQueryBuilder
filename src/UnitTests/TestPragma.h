@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "../DataBaseQueryBuilder.h"
+#include "../Builders/PragmaBuilder.h"
 
 TEST(PragmaClause, TEST_PRAGMA_APPLICATION_ID)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
     		PragmaApplicationId().
             Build();
 
@@ -12,7 +12,7 @@ TEST(PragmaClause, TEST_PRAGMA_APPLICATION_ID)
 
 TEST(PragmaClause, TEST_PRAGMA_AUTO_VACUUM)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
     		PragmaAutoVacuum().
             Build();
 
@@ -21,7 +21,7 @@ TEST(PragmaClause, TEST_PRAGMA_AUTO_VACUUM)
 
 TEST(PragmaClause, TEST_PRAGMA_AUTO_INDEX)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaAutomaticIndex().
             Build();
 
@@ -30,7 +30,7 @@ TEST(PragmaClause, TEST_PRAGMA_AUTO_INDEX)
 
 TEST(PragmaClause, TEST_PRAGMA_BUSY_TIMEOUT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaBusyTimeout().
             Build();
 
@@ -39,7 +39,7 @@ TEST(PragmaClause, TEST_PRAGMA_BUSY_TIMEOUT)
 
 TEST(PragmaClause, TEST_PRAGMA_CACHE_SIZE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCacheSize().
             Build();
 
@@ -48,7 +48,7 @@ TEST(PragmaClause, TEST_PRAGMA_CACHE_SIZE)
 
 TEST(PragmaClause, TEST_PRAGMA_CACHE_SPILL)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCacheSpill().
             Build();
 
@@ -57,7 +57,7 @@ TEST(PragmaClause, TEST_PRAGMA_CACHE_SPILL)
 
 TEST(PragmaClause, TEST_PRAGMA_CASE_SENTITIVE_LIKE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCaseSensitiveLike().
             Build();
 
@@ -66,7 +66,7 @@ TEST(PragmaClause, TEST_PRAGMA_CASE_SENTITIVE_LIKE)
 
 TEST(PragmaClause, TEST_PRAGMA_CELL_SIZE_CHECK)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCellSizeCheck().
             Build();
 
@@ -75,7 +75,7 @@ TEST(PragmaClause, TEST_PRAGMA_CELL_SIZE_CHECK)
 
 TEST(PragmaClause, TEST_PRAGMA_CHECKPOINT_FULLFSYNC)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCheckpointFullfsync().
             Build();
 
@@ -84,7 +84,7 @@ TEST(PragmaClause, TEST_PRAGMA_CHECKPOINT_FULLFSYNC)
 
 TEST(PragmaClause, TEST_PRAGMA_COLLATION_LIST)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCollationList().
             Build();
 
@@ -93,7 +93,7 @@ TEST(PragmaClause, TEST_PRAGMA_COLLATION_LIST)
 
 TEST(PragmaClause, TEST_PRAGMA_COMPILE_OPTIONS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaCompileOptions().
             Build();
 
@@ -102,7 +102,7 @@ TEST(PragmaClause, TEST_PRAGMA_COMPILE_OPTIONS)
 
 TEST(PragmaClause, TEST_PRAGMA_DATA_VERSION)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaDataVersion().
             Build();
 
@@ -111,7 +111,7 @@ TEST(PragmaClause, TEST_PRAGMA_DATA_VERSION)
 
 TEST(PragmaClause, TEST_PRAGMA_DATABASE_LIST)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaDatabaseList().
             Build();
 
@@ -120,7 +120,7 @@ TEST(PragmaClause, TEST_PRAGMA_DATABASE_LIST)
 
 TEST(PragmaClause, TEST_PRAGMA_DEFER_FOREIGN_KEYS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaDeferForeignKeys().
             Build();
 
@@ -129,7 +129,7 @@ TEST(PragmaClause, TEST_PRAGMA_DEFER_FOREIGN_KEYS)
 
 TEST(PragmaClause, TEST_PRAGMA_ENCODING)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaEncoding().
             Build();
 
@@ -138,7 +138,7 @@ TEST(PragmaClause, TEST_PRAGMA_ENCODING)
 
 TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_CHECK)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaForeignKeyCheck().
             Build();
 
@@ -147,7 +147,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_CHECK)
 
 TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_LIST)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaForeignKeyList().
             Build();
 
@@ -156,7 +156,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_LIST)
 
 TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEYS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaForeignKeys().
             Build();
 
@@ -165,7 +165,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEYS)
 
 TEST(PragmaClause, TEST_PRAGMA_FREELIST_COUNT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaFreelistCount().
             Build();
 
@@ -174,7 +174,7 @@ TEST(PragmaClause, TEST_PRAGMA_FREELIST_COUNT)
 
 TEST(PragmaClause, TEST_PRAGMA_FULLFSYNC)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaFullfsync().
             Build();
 
@@ -183,7 +183,7 @@ TEST(PragmaClause, TEST_PRAGMA_FULLFSYNC)
 
 TEST(PragmaClause, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIgnoreCheckConstraints().
             Build();
 
@@ -192,7 +192,7 @@ TEST(PragmaClause, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
 
 TEST(PragmaClause, TEST_PRAGMA_INCREMENTAL_VACUUM)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIncrementalVacuum().
             Build();
 
@@ -201,7 +201,7 @@ TEST(PragmaClause, TEST_PRAGMA_INCREMENTAL_VACUUM)
 
 TEST(PragmaClause, TEST_PRAGMA_INDEX_INFO)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIndexInfo().
             Build();
 
@@ -210,7 +210,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_INFO)
 
 TEST(PragmaClause, TEST_PRAGMA_INDEX_LIST)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIndexList().
             Build();
 
@@ -219,7 +219,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_LIST)
 
 TEST(PragmaClause, TEST_PRAGMA_INDEX_XINFO)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIndexXinfo().
             Build();
 
@@ -228,7 +228,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_XINFO)
 
 TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaIntegrityCheck().
             Build();
 
@@ -237,7 +237,7 @@ TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
 
 TEST(PragmaClause, TEST_PRAGMA_JOURNAL_MODE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaJournalMode().
             Build();
 
@@ -246,7 +246,7 @@ TEST(PragmaClause, TEST_PRAGMA_JOURNAL_MODE)
 
 TEST(PragmaClause, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaJournalSizeLimit().
             Build();
 
@@ -255,7 +255,7 @@ TEST(PragmaClause, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
 
 TEST(PragmaClause, TEST_PRAGMA_LEGACY_FILE_FORMAT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaLegacyFileFormat().
             Build();
 
@@ -264,7 +264,7 @@ TEST(PragmaClause, TEST_PRAGMA_LEGACY_FILE_FORMAT)
 
 TEST(PragmaClause, TEST_PRAGMA_LOCKING_MODE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaLockingMode().
             Build();
 
@@ -273,7 +273,7 @@ TEST(PragmaClause, TEST_PRAGMA_LOCKING_MODE)
 
 TEST(PragmaClause, TEST_PRAGMA_MAX_PAGE_COUNT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaMaxPageCount().
             Build();
 
@@ -282,7 +282,7 @@ TEST(PragmaClause, TEST_PRAGMA_MAX_PAGE_COUNT)
 
 TEST(PragmaClause, TEST_PRAGMA_MMAP_SIZE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaMmapSize().
             Build();
 
@@ -291,7 +291,7 @@ TEST(PragmaClause, TEST_PRAGMA_MMAP_SIZE)
 
 TEST(PragmaClause, TEST_PRAGMA_PAGE_COUNT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaPageCount().
             Build();
 
@@ -300,7 +300,7 @@ TEST(PragmaClause, TEST_PRAGMA_PAGE_COUNT)
 
 TEST(PragmaClause, TEST_PRAGMA_PAGE_SIZE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaPageSize().
             Build();
 
@@ -309,7 +309,7 @@ TEST(PragmaClause, TEST_PRAGMA_PAGE_SIZE)
 
 TEST(PragmaClause, TEST_PRAGMA_PARSER_TRACE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaParserTrace().
             Build();
 
@@ -318,7 +318,7 @@ TEST(PragmaClause, TEST_PRAGMA_PARSER_TRACE)
 
 TEST(PragmaClause, TEST_PRAGMA_QUICK_CHECK)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaQuickCheck().
             Build();
 
@@ -327,7 +327,7 @@ TEST(PragmaClause, TEST_PRAGMA_QUICK_CHECK)
 
 TEST(PragmaClause, TEST_PRAGMA_READ_UNCOMMITTED)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaReadUncommitted().
             Build();
 
@@ -336,7 +336,7 @@ TEST(PragmaClause, TEST_PRAGMA_READ_UNCOMMITTED)
 
 TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaRecursiveTriggers().
             Build();
 
@@ -345,7 +345,7 @@ TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
 
 TEST(PragmaClause, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaReverseUnorderedSelects().
             Build();
 
@@ -354,7 +354,7 @@ TEST(PragmaClause, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
 
 TEST(PragmaClause, TEST_PRAGMA_SCHEMA_VERSION)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaSchemaVersion().
             Build();
 
@@ -363,7 +363,7 @@ TEST(PragmaClause, TEST_PRAGMA_SCHEMA_VERSION)
 
 TEST(PragmaClause, TEST_PRAGMA_SECURE_DELETE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaSecureDelete().
             Build();
 
@@ -372,7 +372,7 @@ TEST(PragmaClause, TEST_PRAGMA_SECURE_DELETE)
 
 TEST(PragmaClause, TEST_PRAGMA_SHRINK_MEMORY)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaShrinkMemory().
             Build();
 
@@ -381,7 +381,7 @@ TEST(PragmaClause, TEST_PRAGMA_SHRINK_MEMORY)
 
 TEST(PragmaClause, TEST_PRAGMA_SOFT_HEAP_LIMIT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaSoftHeapLimit().
             Build();
 
@@ -390,7 +390,7 @@ TEST(PragmaClause, TEST_PRAGMA_SOFT_HEAP_LIMIT)
 
 TEST(PragmaClause, TEST_PRAGMA_STATS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaStats().
             Build();
 
@@ -399,7 +399,7 @@ TEST(PragmaClause, TEST_PRAGMA_STATS)
 
 TEST(PragmaClause, TEST_PRAGMA_SYNCHRONOUS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaSynchronous().
             Build();
 
@@ -408,7 +408,7 @@ TEST(PragmaClause, TEST_PRAGMA_SYNCHRONOUS)
 
 TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaTableInfo("Table").
             Build();
 
@@ -417,7 +417,7 @@ TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
 
 TEST(PragmaClause, TEST_PRAGMA_TEMP_STORE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaTempStore().
             Build();
 
@@ -426,7 +426,7 @@ TEST(PragmaClause, TEST_PRAGMA_TEMP_STORE)
 
 TEST(PragmaClause, TEST_PRAGMA_THREADS)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaThreads().
             Build();
 
@@ -435,7 +435,7 @@ TEST(PragmaClause, TEST_PRAGMA_THREADS)
 
 TEST(PragmaClause, TEST_PRAGMA_USER_VERSION)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaUserVersion().
             Build();
 
@@ -444,7 +444,7 @@ TEST(PragmaClause, TEST_PRAGMA_USER_VERSION)
 
 TEST(PragmaClause, TEST_PRAGMA_VDBE_ADDOPTRACE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaVdbeAddoptrace().
             Build();
 
@@ -453,7 +453,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_ADDOPTRACE)
 
 TEST(PragmaClause, TEST_PRAGMA_VDBE_DEBUG)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaVdbeDebug().
             Build();
 
@@ -462,7 +462,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_DEBUG)
 
 TEST(PragmaClause, TEST_PRAGMA_VDBE_LISTING)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaVdbeListing().
             Build();
 
@@ -471,7 +471,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_LISTING)
 
 TEST(PragmaClause, TEST_PRAGMA_VDBE_TRACE)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaVdbeTrace().
             Build();
 
@@ -480,7 +480,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_TRACE)
 
 TEST(PragmaClause, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaWalAutocheckpoint().
             Build();
 
@@ -489,7 +489,7 @@ TEST(PragmaClause, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
 
 TEST(PragmaClause, TEST_PRAGMA_WAL_CHECKPOINT)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaWalCheckpoint().
             Build();
 
@@ -498,7 +498,7 @@ TEST(PragmaClause, TEST_PRAGMA_WAL_CHECKPOINT)
 
 TEST(PragmaClause, TEST_PRAGMA_WRITABLE_SCHEMA)
 {
-    string query = DataBaseQueryBuilder().
+    string query = PragmaBuilder().
             PragmaWritableSchema().
             Build();
 

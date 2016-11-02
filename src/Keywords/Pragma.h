@@ -18,10 +18,12 @@ class Pragma : public Keyword
 private:
 
     PragmaType command;
+    std::string m_pragmaValue;
 
 public:
 
     Pragma(const PragmaType& command);
+    Pragma(const PragmaType& command, std::string pragmaValue);
     ~Pragma();
     void processKeyword();
 };

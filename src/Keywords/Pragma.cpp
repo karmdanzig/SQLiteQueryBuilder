@@ -16,6 +16,12 @@ Pragma::Pragma(const PragmaType& command)
     processKeyword();
 }
 
+Pragma::Pragma(const PragmaType& command, std::string pragmaValue)
+: command(command), m_pragmaValue(pragmaValue)
+{
+    processKeyword();
+}
+
 Pragma::~Pragma()
 {
 }
@@ -253,7 +259,7 @@ void Pragma::processKeyword()
         }
         case TableInfo :
         {
-            //m_completeKeyword.append("table_info(" + m_pragma + ")");
+            m_completeKeyword.append("table_info(" + m_pragmaValue + ")");
             break;
         }
         case TempStore :

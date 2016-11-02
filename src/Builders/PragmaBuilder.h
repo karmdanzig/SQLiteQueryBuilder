@@ -16,6 +16,7 @@ class PragmaBuilder : public QueryBuilder
 private:
 
     PragmaType m_pragmaType;
+    std::string m_pragmaValue;
 
 public:
 

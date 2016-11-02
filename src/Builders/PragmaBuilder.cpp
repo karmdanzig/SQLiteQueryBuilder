@@ -288,7 +288,7 @@ PragmaBuilder& PragmaBuilder::PragmaSynchronous()
 PragmaBuilder& PragmaBuilder::PragmaTableInfo(const string& table)
 {
     m_pragmaType = TableInfo;
-    //m_pragma = table;
+    m_pragmaValue = table;
     return *this;
 }
 
@@ -354,6 +354,7 @@ PragmaBuilder& PragmaBuilder::PragmaWritableSchema()
 
 std::string PragmaBuilder::Build()
 {
-    Keys::Pragma p(m_pragmaType);
-    return p.getCompleteKeyword();
+    Keys::Pragma p(m_pragmaType, m_pragmaValue);
+
+    return p.getCompleteKeyword() + ";";
 }
