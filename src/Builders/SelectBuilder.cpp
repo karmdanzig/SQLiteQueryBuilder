@@ -41,9 +41,9 @@ SelectBuilder& SelectBuilder::Distinct()
 
 std::string SelectBuilder::Build()
 {
-    Keys::Select t(m_selectList, false, m_distinct);
+    Keys::Select t(m_selectList, m_selectAll, m_distinct);
     Keys::From f(m_fromTable);
-    Keys::Where w(m_whereList);
+    Keys::Where w(m_whereList, m_operatorList);
     Keys::GroupBy gb(m_groupbyList);
     Keys::Having h(m_havingList);
     Keys::OrderBy ob(m_orderbyList, m_ascending, m_descending);
