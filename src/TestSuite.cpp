@@ -9,6 +9,7 @@
 #include "UnitTests/TestCreateIndex.h"
 #include "UnitTests/TestInsert.h"
 #include "UnitTests/TestDrop.h"
+#include "UnitTests/TestDropIndex.h"
 #include "UnitTests/TestPragma.h"
 
 int main(int argc, char **argv)
