@@ -32,6 +32,11 @@ void Pragma::processKeyword()
 
     switch(command)
     {
+        case NonePragma :
+        {
+            m_completeKeyword.append("");
+            break;
+        }
         case ApplicationId :
         {
             m_completeKeyword.append("application_id");
