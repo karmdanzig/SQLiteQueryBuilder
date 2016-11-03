@@ -5,7 +5,7 @@
  *      Author: porcellic
  */
 
-#include "CreateTableTable.h"
+#include "CreateTable.h"
 
 namespace Keys
 {

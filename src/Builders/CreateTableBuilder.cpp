@@ -5,8 +5,8 @@
  *      Author: porcellic
  */
 
-#include "../Keywords/CreateTableTable.h"
 #include "CreateTableBuilder.h"
+#include "../Keywords/CreateTable.h"
 
 CreateTableBuilder::CreateTableBuilder() : m_temporary(false), m_ifNotExists(false)
 {

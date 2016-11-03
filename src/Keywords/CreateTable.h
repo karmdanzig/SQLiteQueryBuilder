@@ -5,8 +5,8 @@
  *      Author: porcellic
  */
 
-#ifndef SRC_KEYWORDS_CREATETABLETABLE_H_
-#define SRC_KEYWORDS_CREATETABLETABLE_H_
+#ifndef SRC_KEYWORDS_CREATETABLE_H_
+#define SRC_KEYWORDS_CREATETABLE_H_
 
 #include "Keyword.h"
 
@@ -31,4 +31,4 @@ public:
 
 }
 
-#endif /* SRC_KEYWORDS_CREATETABLETABLE_H_ */
+#endif /* SRC_KEYWORDS_CREATETABLE_H_ */
