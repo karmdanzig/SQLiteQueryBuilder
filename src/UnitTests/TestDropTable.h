@@ -1,9 +1,10 @@
 #include "gtest/gtest.h"
-#include "../Builders/DropBuilder.h"
+
+#include "../Builders/DropTableBuilder.h"
 
 TEST(DropTable, TEST_DROP_TABLE)
 {
-	string query = DropBuilder().
+	string query = DropTableBuilder().
 			Drop("Table").
 			Build();
 
@@ -12,7 +13,7 @@ TEST(DropTable, TEST_DROP_TABLE)
 
 TEST(DropTable, TEST_DROP_TABLE_IF_EXISTS)
 {
-	string query = DropBuilder().
+	string query = DropTableBuilder().
 			Drop("Table").
 			IfExists().
 			Build();

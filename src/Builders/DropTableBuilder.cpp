@@ -5,31 +5,31 @@
  *      Author: porcellic
  */
 
-#include "DropBuilder.h"
 #include "../Keywords/Drop.h"
+#include "DropTableBuilder.h"
 
-DropBuilder::DropBuilder()
+DropTableBuilder::DropTableBuilder()
 : m_ifExists(false)
 {
 }
 
-DropBuilder::~DropBuilder()
+DropTableBuilder::~DropTableBuilder()
 {
 }
 
-DropBuilder& DropBuilder::Drop(const std::string& table)
+DropTableBuilder& DropTableBuilder::Drop(const std::string& table)
 {
     m_dropTable = table;
     return *this;
 }
 
-DropBuilder& DropBuilder::IfExists()
+DropTableBuilder& DropTableBuilder::IfExists()
 {
     m_ifExists = true;
     return *this;
 }
 
-std::string DropBuilder::Build()
+std::string DropTableBuilder::Build()
 {
     Keys::Drop d(m_dropTable, m_ifExists, Table_DropType);
     return d.getCompleteKeyword() + TerminationQueryCharacter;
