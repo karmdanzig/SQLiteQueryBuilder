@@ -31,6 +31,7 @@ protected:
     std::vector<std::string> m_onList;
     bool m_ascending;
     bool m_descending;
+    DropOrCreateType typeOfDropOrCreate;
 
 public:
 

@@ -86,8 +86,19 @@ typedef enum
     AddColumn
 } AlterType;
 
+typedef enum
+{
+    NoneType_DropOrCreateType = 0,
+    Index_DropOrCreateType,
+    Table_DropOrCreateType,
+    Trigger_DropOrCreateType,
+    View_DropOrCreateType
+} DropOrCreateType;
+
 const string TerminationQueryCharacter = ";";
 const string Table = "TABLE";
+const string ViewClause = "VIEW";
+const string TriggerClause = "TRIGGER";
 const string IndexClause = "INDEX";
 const string SelectClause = "SELECT";
 const string DeleteClause = "DELETE";

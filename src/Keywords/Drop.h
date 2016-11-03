@@ -20,10 +20,11 @@ private:
 
     std::string table;
     bool ifExists;
+    DropOrCreateType typeOfDropOrCreate;
 
 public:
 
-    Drop(const std::string& table, const bool& ifExists);
+    Drop(const std::string& table, const bool& ifExists, DropOrCreateType typeOfDropOrCreate);
     ~Drop();
     void processKeyword();
 };

@@ -24,6 +24,7 @@ protected:
     void insertFromListWithSeparator(const std::vector<std::string>& whichlist, const std::string& separator);
     void insertFromListWithOperatorList(const std::vector<std::string>& whichList, const std::vector<std::string>& operatorList);
     void addReturnLine();
+    string returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate);
 
 public:
 

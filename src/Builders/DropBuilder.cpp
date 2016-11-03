@@ -8,7 +8,8 @@
 #include "DropBuilder.h"
 #include "../Keywords/Drop.h"
 
-DropBuilder::DropBuilder() : m_ifExists(false)
+DropBuilder::DropBuilder()
+: m_ifExists(false)
 {
 }
 
@@ -30,7 +31,7 @@ DropBuilder& DropBuilder::IfExists()
 
 std::string DropBuilder::Build()
 {
-    Keys::Drop d(m_dropTable, m_ifExists);
+    Keys::Drop d(m_dropTable, m_ifExists, Table_DropOrCreateType);
     return d.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
