@@ -26,7 +26,7 @@ Begin::~Begin()
 
 void Begin::processKeyword()
 {
-    m_completeKeyword = BeginClause + " " + (transaction.empty()? "" : transaction);
+    m_completeKeyword = BeginClause + (transaction.empty()? "" : " " + transaction);
 }
 
 }

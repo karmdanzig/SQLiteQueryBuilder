@@ -45,12 +45,17 @@ void Keyword::insertFromListWithOperatorList(const std::vector<std::string>& whi
     }
 }
 
-string Keyword::returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate)
+std::string Keyword::returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate)
 {
     std::string toReturn;
 
     switch(typeOfDropOrCreate)
     {
+        case NoneType_DropOrCreateType :
+        {
+            toReturn = "";
+            break;
+        }
         case Index_DropOrCreateType :
         {
             toReturn = IndexClause;
@@ -81,7 +86,7 @@ void Keyword::addReturnLine()
     m_completeKeyword.append("\n");
 }
 
-string& Keyword::getCompleteKeyword()
+std::string& Keyword::getCompleteKeyword()
 {
     return m_completeKeyword;
 }

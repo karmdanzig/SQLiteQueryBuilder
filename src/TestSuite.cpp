@@ -1,10 +1,12 @@
 #include "gtest/gtest.h"
 
 #include "UnitTests/TestSelect.h"
+#include "UnitTests/TestBeginTransaction.h"
 #include "UnitTests/TestDelete.h"
 #include "UnitTests/TestAlter.h"
 #include "UnitTests/TestUpdate.h"
 #include "UnitTests/TestCreate.h"
+#include "UnitTests/TestCreateIndex.h"
 #include "UnitTests/TestInsert.h"
 #include "UnitTests/TestDrop.h"
 #include "UnitTests/TestPragma.h"

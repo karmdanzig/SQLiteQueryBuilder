@@ -17,6 +17,7 @@ class CreateIndex : public Keyword
 {
 private:
 
+    std::string nameOfIndex;
     std::string table;
     bool unique;
     bool ifNotExists;
@@ -24,7 +25,7 @@ private:
 
 public:
 
-    CreateIndex(const std::string& index, const bool& unique, const bool& ifNotExists, std::vector<std::string>& fieldsList);
+    CreateIndex(const std::string& nameOfIndex, const std::string& table, const bool& unique, const bool& ifNotExists, std::vector<std::string>& fieldsList);
     ~CreateIndex();
     void processKeyword();
 };

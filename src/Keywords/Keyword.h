@@ -24,13 +24,13 @@ protected:
     void insertFromListWithSeparator(const std::vector<std::string>& whichlist, const std::string& separator);
     void insertFromListWithOperatorList(const std::vector<std::string>& whichList, const std::vector<std::string>& operatorList);
     void addReturnLine();
-    string returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate);
+    std::string returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate);
 
 public:
 
     Keyword();
     virtual ~Keyword();
-    string& getCompleteKeyword();
+    std::string& getCompleteKeyword();
     virtual void processKeyword () = 0;
 };
 
