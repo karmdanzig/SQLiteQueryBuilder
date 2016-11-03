@@ -1,9 +1,10 @@
 #include "gtest/gtest.h"
-#include "../Builders/CreateBuilder.h"
+
+#include "../Builders/CreateTableBuilder.h"
 
 TEST(CreateClause, TEST_CREATE_TABLE)
 {
-	string query = CreateBuilder().
+	string query = CreateTableBuilder().
 			Create("Table").
 			Field("Field1", "INT", true, true).
 			Field("Field2", "CHAR(50)", false, true).
@@ -14,7 +15,7 @@ TEST(CreateClause, TEST_CREATE_TABLE)
 
 TEST(CreateClause, TEST_CREATE_TABLE_IF_NOT_EXISTS)
 {
-	string query = CreateBuilder().
+	string query = CreateTableBuilder().
 			Create("Table").
 			IfNotExists().
 			Field("Field1", "INT", true, true).
@@ -26,7 +27,7 @@ TEST(CreateClause, TEST_CREATE_TABLE_IF_NOT_EXISTS)
 
 TEST(CreateClause, TEST_CREATE_TEMPORARY_TABLE_IF_NOT_EXISTS)
 {
-	string query = CreateBuilder().
+	string query = CreateTableBuilder().
 			Create("Table").
 			Temporary().
 			IfNotExists().

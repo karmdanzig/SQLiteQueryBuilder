@@ -7,19 +7,6 @@ using namespace std;
 
 typedef enum
 {
-	None = 0,
-	SelectQuery,
-	DeleteQuery,
-	InsertQuery,
-	UpdateQuery,
-	CreateQuery,
-	DropQuery,
-	AlterQuery,
-	PragmaQuery
-} QueryType;
-
-typedef enum
-{
     NonePragma = 0,
 	ApplicationId,
 	AutoVacuum,
