@@ -1,7 +1,7 @@
 #include "UnitTests/TestAlter.h"
 #include "UnitTests/TestBeginTransaction.h"
-#include "UnitTests/TestCreate.h"
 #include "UnitTests/TestCreateIndex.h"
+#include "UnitTests/TestCreateTable.h"
 #include "UnitTests/TestDelete.h"
 #include "UnitTests/TestDrop.h"
 #include "UnitTests/TestDropIndex.h"
