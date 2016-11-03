@@ -42,7 +42,7 @@ void From::processKeyword()
 
     if (!fromList.empty())
     {
-        insertFromListWithSeparator(fromList, " JOIN ");
+        insertFromListWithSeparator(fromList, " " + JoinClause + " ");
         m_completeKeyword.append(" " + OnClause + " ");
         insertFromListWithOperatorList(onList, operatorList);
     }
