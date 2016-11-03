@@ -25,7 +25,7 @@ EndTransactionBuilder& EndTransactionBuilder::End(const std::string& transaction
 std::string EndTransactionBuilder::Build()
 {
     Keys::End t1(m_transaction);
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 

@@ -27,7 +27,7 @@ std::string DeleteBuilder::Build()
     std::string returnstring = "DELETE";
     Keys::From t1(m_fromTable);
     Keys::Where w(m_whereList);
-    return returnstring + t1.getCompleteKeyword() + w.getCompleteKeyword() +";";
+    return returnstring + t1.getCompleteKeyword() + w.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 

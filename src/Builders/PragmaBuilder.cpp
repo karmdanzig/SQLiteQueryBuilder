@@ -356,5 +356,5 @@ std::string PragmaBuilder::Build()
 {
     Keys::Pragma p(m_pragmaType, m_pragmaValue);
 
-    return p.getCompleteKeyword() + ";";
+    return p.getCompleteKeyword() + TerminationQueryCharacter;
 }

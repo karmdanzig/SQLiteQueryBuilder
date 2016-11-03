@@ -50,7 +50,7 @@ CreateIndexBuilder& CreateIndexBuilder::Columns(const std::string& columns)
 std::string CreateIndexBuilder::Build()
 {
     Keys::CreateIndex t1(m_index, m_unique, m_ifNotExists, m_columnsList);
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 

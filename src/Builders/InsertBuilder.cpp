@@ -41,7 +41,7 @@ std::string InsertBuilder::Build()
 {
     Keys::InsertInto d(m_table);
     Keys::Values t(m_valuesList);
-    return d.getCompleteKeyword() + "\n" + t.getCompleteKeyword() + ";";
+    return d.getCompleteKeyword() + "\n" + t.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 

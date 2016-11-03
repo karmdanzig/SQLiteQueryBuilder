@@ -30,7 +30,7 @@ BeginTransactionBuilder& BeginTransactionBuilder::Begin(const std::string& trans
 std::string BeginTransactionBuilder::Build()
 {
     Keys::Begin t1(m_transaction);
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 

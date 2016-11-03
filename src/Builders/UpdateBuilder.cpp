@@ -43,5 +43,5 @@ std::string UpdateBuilder::Build()
     Keys::Update u(m_table);
     Keys::Set s(m_setList);
     Keys::Where w(m_whereList);
-    return u.getCompleteKeyword() + "\n" + s.getCompleteKeyword() + w.getCompleteKeyword() + ";";
+    return u.getCompleteKeyword() + "\n" + s.getCompleteKeyword() + w.getCompleteKeyword() + TerminationQueryCharacter;
 }

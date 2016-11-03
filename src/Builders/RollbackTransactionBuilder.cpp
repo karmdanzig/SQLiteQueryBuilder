@@ -24,7 +24,7 @@ RollbackTransactionBuilder& RollbackTransactionBuilder::Rollback()
 std::string RollbackTransactionBuilder::Build()
 {
     Keys::Rollback t1;
-    return t1.getCompleteKeyword();
+    return t1.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
 
