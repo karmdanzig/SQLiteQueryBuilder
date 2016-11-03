@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/DropIndexBuilder.h"
 
-TEST(DropIndexClause, TEST_DROP_INDEX)
+TEST(DropIndex, TEST_DROP_INDEX)
 {
 	string query = DropIndexBuilder().
 			DropIndex("MyIndex").
@@ -10,7 +10,7 @@ TEST(DropIndexClause, TEST_DROP_INDEX)
 	ASSERT_EQ("DROP INDEX MyIndex;", query);
 }
 
-TEST(DropIndexClause, TEST_DROP_INDEX_IF_EXISTS)
+TEST(DropIndex, TEST_DROP_INDEX_IF_EXISTS)
 {
 	string query = DropIndexBuilder().
 	        DropIndex("MyIndex").

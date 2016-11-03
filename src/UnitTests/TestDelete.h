@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/DeleteBuilder.h"
 
-TEST(DeleteClause, TEST_DELETE)
+TEST(Delete, TEST_DELETE)
 {
 	string query = DeleteBuilder().
 			Delete().
@@ -11,7 +11,7 @@ TEST(DeleteClause, TEST_DELETE)
 	ASSERT_EQ("DELETE\nFROM Table;", query);
 }
 
-TEST(DeleteClause, TEST_DELETE_WITH_CONDITION)
+TEST(Delete, TEST_DELETE_WITH_CONDITION)
 {
 	string query = DeleteBuilder().
 			Delete().

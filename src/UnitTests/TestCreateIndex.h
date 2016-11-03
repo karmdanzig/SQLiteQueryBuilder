@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/CreateIndexBuilder.h"
 
-TEST(CreateIndexClause, TEST_CREATE_INDEX)
+TEST(CreateIndex, TEST_CREATE_INDEX)
 {
 	string query = CreateIndexBuilder().
 			CreateIndex("MyIndex").
@@ -12,7 +12,7 @@ TEST(CreateIndexClause, TEST_CREATE_INDEX)
 	ASSERT_EQ("CREATE INDEX MyIndex ON MyTable (Column1);", query);
 }
 
-TEST(CreateIndexClause, TEST_CREATE_INDEX_MULTIPLE_COLUMNS)
+TEST(CreateIndex, TEST_CREATE_INDEX_MULTIPLE_COLUMNS)
 {
     string query = CreateIndexBuilder().
             CreateIndex("MyIndex").
@@ -24,7 +24,7 @@ TEST(CreateIndexClause, TEST_CREATE_INDEX_MULTIPLE_COLUMNS)
     ASSERT_EQ("CREATE INDEX MyIndex ON MyTable (Column1, Column2);", query);
 }
 
-TEST(CreateIndexClause, TEST_CREATE_UNIQUE_INDEX_IF_NOT_EXISTS_MULTIPLE_COLUMNS)
+TEST(CreateIndex, TEST_CREATE_UNIQUE_INDEX_IF_NOT_EXISTS_MULTIPLE_COLUMNS)
 {
     string query = CreateIndexBuilder().
             CreateUniqueIndex("MyIndex").

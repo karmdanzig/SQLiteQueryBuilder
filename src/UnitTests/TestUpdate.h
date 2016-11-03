@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/UpdateBuilder.h"
 
-TEST(UpdateClause, TEST_UPDATE_TABLE)
+TEST(Update, TEST_UPDATE_TABLE)
 {
 	string query = UpdateBuilder().
 			Update("Table").
@@ -12,7 +12,7 @@ TEST(UpdateClause, TEST_UPDATE_TABLE)
 	ASSERT_EQ("UPDATE Table\nSET Column1 = \'2\', Column2 = 3;", query);
 }
 
-TEST(UpdateClause, TEST_UPDATE_TABLE_WITH_CONDITION)
+TEST(Update, TEST_UPDATE_TABLE_WITH_CONDITION)
 {
 	string query = UpdateBuilder().
 			Update("Table").

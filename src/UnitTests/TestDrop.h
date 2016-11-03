@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/DropBuilder.h"
 
-TEST(DropClause, TEST_DROP_TABLE)
+TEST(DropTable, TEST_DROP_TABLE)
 {
 	string query = DropBuilder().
 			Drop("Table").
@@ -10,7 +10,7 @@ TEST(DropClause, TEST_DROP_TABLE)
 	ASSERT_EQ("DROP TABLE Table;", query);
 }
 
-TEST(DropClause, TEST_DROP_TABLE_IF_EXISTS)
+TEST(DropTable, TEST_DROP_TABLE_IF_EXISTS)
 {
 	string query = DropBuilder().
 			Drop("Table").

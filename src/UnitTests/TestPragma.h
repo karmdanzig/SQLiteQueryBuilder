@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/PragmaBuilder.h"
 
-TEST(PragmaClause, TEST_PRAGMA_APPLICATION_ID)
+TEST(Pragma, TEST_PRAGMA_APPLICATION_ID)
 {
     string query = PragmaBuilder().
     		PragmaApplicationId().
@@ -10,7 +10,7 @@ TEST(PragmaClause, TEST_PRAGMA_APPLICATION_ID)
     ASSERT_EQ("PRAGMA application_id;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_AUTO_VACUUM)
+TEST(Pragma, TEST_PRAGMA_AUTO_VACUUM)
 {
     string query = PragmaBuilder().
     		PragmaAutoVacuum().
@@ -19,7 +19,7 @@ TEST(PragmaClause, TEST_PRAGMA_AUTO_VACUUM)
     ASSERT_EQ("PRAGMA auto_vacuum;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_AUTO_INDEX)
+TEST(Pragma, TEST_PRAGMA_AUTO_INDEX)
 {
     string query = PragmaBuilder().
             PragmaAutomaticIndex().
@@ -28,7 +28,7 @@ TEST(PragmaClause, TEST_PRAGMA_AUTO_INDEX)
     ASSERT_EQ("PRAGMA automatic_index;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_BUSY_TIMEOUT)
+TEST(Pragma, TEST_PRAGMA_BUSY_TIMEOUT)
 {
     string query = PragmaBuilder().
             PragmaBusyTimeout().
@@ -37,7 +37,7 @@ TEST(PragmaClause, TEST_PRAGMA_BUSY_TIMEOUT)
     ASSERT_EQ("PRAGMA busy_timeout;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_CACHE_SIZE)
+TEST(Pragma, TEST_PRAGMA_CACHE_SIZE)
 {
     string query = PragmaBuilder().
             PragmaCacheSize().
@@ -46,7 +46,7 @@ TEST(PragmaClause, TEST_PRAGMA_CACHE_SIZE)
     ASSERT_EQ("PRAGMA cache_size;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_CACHE_SPILL)
+TEST(Pragma, TEST_PRAGMA_CACHE_SPILL)
 {
     string query = PragmaBuilder().
             PragmaCacheSpill().
@@ -55,7 +55,7 @@ TEST(PragmaClause, TEST_PRAGMA_CACHE_SPILL)
     ASSERT_EQ("PRAGMA cache_spill;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_CASE_SENTITIVE_LIKE)
+TEST(Pragma, TEST_PRAGMA_CASE_SENTITIVE_LIKE)
 {
     string query = PragmaBuilder().
             PragmaCaseSensitiveLike().
@@ -64,7 +64,7 @@ TEST(PragmaClause, TEST_PRAGMA_CASE_SENTITIVE_LIKE)
     ASSERT_EQ("PRAGMA case_sensitive_like;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_CELL_SIZE_CHECK)
+TEST(Pragma, TEST_PRAGMA_CELL_SIZE_CHECK)
 {
     string query = PragmaBuilder().
             PragmaCellSizeCheck().
@@ -73,7 +73,7 @@ TEST(PragmaClause, TEST_PRAGMA_CELL_SIZE_CHECK)
     ASSERT_EQ("PRAGMA cell_size_check;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_CHECKPOINT_FULLFSYNC)
+TEST(Pragma, TEST_PRAGMA_CHECKPOINT_FULLFSYNC)
 {
     string query = PragmaBuilder().
             PragmaCheckpointFullfsync().
@@ -82,7 +82,7 @@ TEST(PragmaClause, TEST_PRAGMA_CHECKPOINT_FULLFSYNC)
     ASSERT_EQ("PRAGMA checkpoint_fullfsync;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_COLLATION_LIST)
+TEST(Pragma, TEST_PRAGMA_COLLATION_LIST)
 {
     string query = PragmaBuilder().
             PragmaCollationList().
@@ -91,7 +91,7 @@ TEST(PragmaClause, TEST_PRAGMA_COLLATION_LIST)
     ASSERT_EQ("PRAGMA collation_list;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_COMPILE_OPTIONS)
+TEST(Pragma, TEST_PRAGMA_COMPILE_OPTIONS)
 {
     string query = PragmaBuilder().
             PragmaCompileOptions().
@@ -100,7 +100,7 @@ TEST(PragmaClause, TEST_PRAGMA_COMPILE_OPTIONS)
     ASSERT_EQ("PRAGMA compile_options;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_DATA_VERSION)
+TEST(Pragma, TEST_PRAGMA_DATA_VERSION)
 {
     string query = PragmaBuilder().
             PragmaDataVersion().
@@ -109,7 +109,7 @@ TEST(PragmaClause, TEST_PRAGMA_DATA_VERSION)
     ASSERT_EQ("PRAGMA data_version;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_DATABASE_LIST)
+TEST(Pragma, TEST_PRAGMA_DATABASE_LIST)
 {
     string query = PragmaBuilder().
             PragmaDatabaseList().
@@ -118,7 +118,7 @@ TEST(PragmaClause, TEST_PRAGMA_DATABASE_LIST)
     ASSERT_EQ("PRAGMA database_list;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_DEFER_FOREIGN_KEYS)
+TEST(Pragma, TEST_PRAGMA_DEFER_FOREIGN_KEYS)
 {
     string query = PragmaBuilder().
             PragmaDeferForeignKeys().
@@ -127,7 +127,7 @@ TEST(PragmaClause, TEST_PRAGMA_DEFER_FOREIGN_KEYS)
     ASSERT_EQ("PRAGMA defer_foreign_keys;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_ENCODING)
+TEST(Pragma, TEST_PRAGMA_ENCODING)
 {
     string query = PragmaBuilder().
             PragmaEncoding().
@@ -136,7 +136,7 @@ TEST(PragmaClause, TEST_PRAGMA_ENCODING)
     ASSERT_EQ("PRAGMA encoding;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_CHECK)
+TEST(Pragma, TEST_PRAGMA_FOREIGN_KEY_CHECK)
 {
     string query = PragmaBuilder().
             PragmaForeignKeyCheck().
@@ -145,7 +145,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_CHECK)
     ASSERT_EQ("PRAGMA foreign_key_check;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_LIST)
+TEST(Pragma, TEST_PRAGMA_FOREIGN_KEY_LIST)
 {
     string query = PragmaBuilder().
             PragmaForeignKeyList().
@@ -154,7 +154,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEY_LIST)
     ASSERT_EQ("PRAGMA foreign_key_list;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEYS)
+TEST(Pragma, TEST_PRAGMA_FOREIGN_KEYS)
 {
     string query = PragmaBuilder().
             PragmaForeignKeys().
@@ -163,7 +163,7 @@ TEST(PragmaClause, TEST_PRAGMA_FOREIGN_KEYS)
     ASSERT_EQ("PRAGMA foreign_keys;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_FREELIST_COUNT)
+TEST(Pragma, TEST_PRAGMA_FREELIST_COUNT)
 {
     string query = PragmaBuilder().
             PragmaFreelistCount().
@@ -172,7 +172,7 @@ TEST(PragmaClause, TEST_PRAGMA_FREELIST_COUNT)
     ASSERT_EQ("PRAGMA freelist_count;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_FULLFSYNC)
+TEST(Pragma, TEST_PRAGMA_FULLFSYNC)
 {
     string query = PragmaBuilder().
             PragmaFullfsync().
@@ -181,7 +181,7 @@ TEST(PragmaClause, TEST_PRAGMA_FULLFSYNC)
     ASSERT_EQ("PRAGMA fullfsync;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
+TEST(Pragma, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
 {
     string query = PragmaBuilder().
             PragmaIgnoreCheckConstraints().
@@ -190,7 +190,7 @@ TEST(PragmaClause, TEST_PRAGMA_IGNORE_CHECK_CONSTRAINTS)
     ASSERT_EQ("PRAGMA ignore_check_constraints;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_INCREMENTAL_VACUUM)
+TEST(Pragma, TEST_PRAGMA_INCREMENTAL_VACUUM)
 {
     string query = PragmaBuilder().
             PragmaIncrementalVacuum().
@@ -199,7 +199,7 @@ TEST(PragmaClause, TEST_PRAGMA_INCREMENTAL_VACUUM)
     ASSERT_EQ("PRAGMA incremental_vacuum;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_INDEX_INFO)
+TEST(Pragma, TEST_PRAGMA_INDEX_INFO)
 {
     string query = PragmaBuilder().
             PragmaIndexInfo().
@@ -208,7 +208,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_INFO)
     ASSERT_EQ("PRAGMA index_info;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_INDEX_LIST)
+TEST(Pragma, TEST_PRAGMA_INDEX_LIST)
 {
     string query = PragmaBuilder().
             PragmaIndexList().
@@ -217,7 +217,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_LIST)
     ASSERT_EQ("PRAGMA index_list;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_INDEX_XINFO)
+TEST(Pragma, TEST_PRAGMA_INDEX_XINFO)
 {
     string query = PragmaBuilder().
             PragmaIndexXinfo().
@@ -226,7 +226,7 @@ TEST(PragmaClause, TEST_PRAGMA_INDEX_XINFO)
     ASSERT_EQ("PRAGMA index_xinfo;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
+TEST(Pragma, TEST_PRAGMA_INTEGRITY_CHECK)
 {
     string query = PragmaBuilder().
             PragmaIntegrityCheck().
@@ -235,7 +235,7 @@ TEST(PragmaClause, TEST_PRAGMA_INTEGRITY_CHECK)
     ASSERT_EQ("PRAGMA integrity_check;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_JOURNAL_MODE)
+TEST(Pragma, TEST_PRAGMA_JOURNAL_MODE)
 {
     string query = PragmaBuilder().
             PragmaJournalMode().
@@ -244,7 +244,7 @@ TEST(PragmaClause, TEST_PRAGMA_JOURNAL_MODE)
     ASSERT_EQ("PRAGMA journal_mode;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
+TEST(Pragma, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
 {
     string query = PragmaBuilder().
             PragmaJournalSizeLimit().
@@ -253,7 +253,7 @@ TEST(PragmaClause, TEST_PRAGMA_JOURNAL_SIZE_LIMIT)
     ASSERT_EQ("PRAGMA journal_size_limit;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_LEGACY_FILE_FORMAT)
+TEST(Pragma, TEST_PRAGMA_LEGACY_FILE_FORMAT)
 {
     string query = PragmaBuilder().
             PragmaLegacyFileFormat().
@@ -262,7 +262,7 @@ TEST(PragmaClause, TEST_PRAGMA_LEGACY_FILE_FORMAT)
     ASSERT_EQ("PRAGMA legacy_file_format;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_LOCKING_MODE)
+TEST(Pragma, TEST_PRAGMA_LOCKING_MODE)
 {
     string query = PragmaBuilder().
             PragmaLockingMode().
@@ -271,7 +271,7 @@ TEST(PragmaClause, TEST_PRAGMA_LOCKING_MODE)
     ASSERT_EQ("PRAGMA locking_mode;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_MAX_PAGE_COUNT)
+TEST(Pragma, TEST_PRAGMA_MAX_PAGE_COUNT)
 {
     string query = PragmaBuilder().
             PragmaMaxPageCount().
@@ -280,7 +280,7 @@ TEST(PragmaClause, TEST_PRAGMA_MAX_PAGE_COUNT)
     ASSERT_EQ("PRAGMA max_page_count;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_MMAP_SIZE)
+TEST(Pragma, TEST_PRAGMA_MMAP_SIZE)
 {
     string query = PragmaBuilder().
             PragmaMmapSize().
@@ -289,7 +289,7 @@ TEST(PragmaClause, TEST_PRAGMA_MMAP_SIZE)
     ASSERT_EQ("PRAGMA mmap_size;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_PAGE_COUNT)
+TEST(Pragma, TEST_PRAGMA_PAGE_COUNT)
 {
     string query = PragmaBuilder().
             PragmaPageCount().
@@ -298,7 +298,7 @@ TEST(PragmaClause, TEST_PRAGMA_PAGE_COUNT)
     ASSERT_EQ("PRAGMA page_count;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_PAGE_SIZE)
+TEST(Pragma, TEST_PRAGMA_PAGE_SIZE)
 {
     string query = PragmaBuilder().
             PragmaPageSize().
@@ -307,7 +307,7 @@ TEST(PragmaClause, TEST_PRAGMA_PAGE_SIZE)
     ASSERT_EQ("PRAGMA page_size;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_PARSER_TRACE)
+TEST(Pragma, TEST_PRAGMA_PARSER_TRACE)
 {
     string query = PragmaBuilder().
             PragmaParserTrace().
@@ -316,7 +316,7 @@ TEST(PragmaClause, TEST_PRAGMA_PARSER_TRACE)
     ASSERT_EQ("PRAGMA parser_trace;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_QUICK_CHECK)
+TEST(Pragma, TEST_PRAGMA_QUICK_CHECK)
 {
     string query = PragmaBuilder().
             PragmaQuickCheck().
@@ -325,7 +325,7 @@ TEST(PragmaClause, TEST_PRAGMA_QUICK_CHECK)
     ASSERT_EQ("PRAGMA quick_check;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_READ_UNCOMMITTED)
+TEST(Pragma, TEST_PRAGMA_READ_UNCOMMITTED)
 {
     string query = PragmaBuilder().
             PragmaReadUncommitted().
@@ -334,7 +334,7 @@ TEST(PragmaClause, TEST_PRAGMA_READ_UNCOMMITTED)
     ASSERT_EQ("PRAGMA read_uncommitted;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
+TEST(Pragma, TEST_PRAGMA_RECURSIVE_TRIGGERS)
 {
     string query = PragmaBuilder().
             PragmaRecursiveTriggers().
@@ -343,7 +343,7 @@ TEST(PragmaClause, TEST_PRAGMA_RECURSIVE_TRIGGERS)
     ASSERT_EQ("PRAGMA recursive_triggers;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
+TEST(Pragma, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
 {
     string query = PragmaBuilder().
             PragmaReverseUnorderedSelects().
@@ -352,7 +352,7 @@ TEST(PragmaClause, TEST_PRAGMA_REVERSE_UNORDERED_SELECTS)
     ASSERT_EQ("PRAGMA reverse_unordered_selects;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_SCHEMA_VERSION)
+TEST(Pragma, TEST_PRAGMA_SCHEMA_VERSION)
 {
     string query = PragmaBuilder().
             PragmaSchemaVersion().
@@ -361,7 +361,7 @@ TEST(PragmaClause, TEST_PRAGMA_SCHEMA_VERSION)
     ASSERT_EQ("PRAGMA schema_version;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_SECURE_DELETE)
+TEST(Pragma, TEST_PRAGMA_SECURE_DELETE)
 {
     string query = PragmaBuilder().
             PragmaSecureDelete().
@@ -370,7 +370,7 @@ TEST(PragmaClause, TEST_PRAGMA_SECURE_DELETE)
     ASSERT_EQ("PRAGMA secure_delete;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_SHRINK_MEMORY)
+TEST(Pragma, TEST_PRAGMA_SHRINK_MEMORY)
 {
     string query = PragmaBuilder().
             PragmaShrinkMemory().
@@ -379,7 +379,7 @@ TEST(PragmaClause, TEST_PRAGMA_SHRINK_MEMORY)
     ASSERT_EQ("PRAGMA shrink_memory;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_SOFT_HEAP_LIMIT)
+TEST(Pragma, TEST_PRAGMA_SOFT_HEAP_LIMIT)
 {
     string query = PragmaBuilder().
             PragmaSoftHeapLimit().
@@ -388,7 +388,7 @@ TEST(PragmaClause, TEST_PRAGMA_SOFT_HEAP_LIMIT)
     ASSERT_EQ("PRAGMA soft_heap_limit;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_STATS)
+TEST(Pragma, TEST_PRAGMA_STATS)
 {
     string query = PragmaBuilder().
             PragmaStats().
@@ -397,7 +397,7 @@ TEST(PragmaClause, TEST_PRAGMA_STATS)
     ASSERT_EQ("PRAGMA stats;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_SYNCHRONOUS)
+TEST(Pragma, TEST_PRAGMA_SYNCHRONOUS)
 {
     string query = PragmaBuilder().
             PragmaSynchronous().
@@ -406,7 +406,7 @@ TEST(PragmaClause, TEST_PRAGMA_SYNCHRONOUS)
     ASSERT_EQ("PRAGMA synchronous;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
+TEST(Pragma, TEST_PRAGMA_TABLE_INFO)
 {
     string query = PragmaBuilder().
             PragmaTableInfo("Table").
@@ -415,7 +415,7 @@ TEST(PragmaClause, TEST_PRAGMA_TABLE_INFO)
     ASSERT_EQ("PRAGMA table_info(Table);", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_TEMP_STORE)
+TEST(Pragma, TEST_PRAGMA_TEMP_STORE)
 {
     string query = PragmaBuilder().
             PragmaTempStore().
@@ -424,7 +424,7 @@ TEST(PragmaClause, TEST_PRAGMA_TEMP_STORE)
     ASSERT_EQ("PRAGMA temp_store;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_THREADS)
+TEST(Pragma, TEST_PRAGMA_THREADS)
 {
     string query = PragmaBuilder().
             PragmaThreads().
@@ -433,7 +433,7 @@ TEST(PragmaClause, TEST_PRAGMA_THREADS)
     ASSERT_EQ("PRAGMA threads;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_USER_VERSION)
+TEST(Pragma, TEST_PRAGMA_USER_VERSION)
 {
     string query = PragmaBuilder().
             PragmaUserVersion().
@@ -442,7 +442,7 @@ TEST(PragmaClause, TEST_PRAGMA_USER_VERSION)
     ASSERT_EQ("PRAGMA user_version;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_VDBE_ADDOPTRACE)
+TEST(Pragma, TEST_PRAGMA_VDBE_ADDOPTRACE)
 {
     string query = PragmaBuilder().
             PragmaVdbeAddoptrace().
@@ -451,7 +451,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_ADDOPTRACE)
     ASSERT_EQ("PRAGMA vdbe_addoptrace;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_VDBE_DEBUG)
+TEST(Pragma, TEST_PRAGMA_VDBE_DEBUG)
 {
     string query = PragmaBuilder().
             PragmaVdbeDebug().
@@ -460,7 +460,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_DEBUG)
     ASSERT_EQ("PRAGMA vdbe_debug;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_VDBE_LISTING)
+TEST(Pragma, TEST_PRAGMA_VDBE_LISTING)
 {
     string query = PragmaBuilder().
             PragmaVdbeListing().
@@ -469,7 +469,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_LISTING)
     ASSERT_EQ("PRAGMA vdbe_listing;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_VDBE_TRACE)
+TEST(Pragma, TEST_PRAGMA_VDBE_TRACE)
 {
     string query = PragmaBuilder().
             PragmaVdbeTrace().
@@ -478,7 +478,7 @@ TEST(PragmaClause, TEST_PRAGMA_VDBE_TRACE)
     ASSERT_EQ("PRAGMA vdbe_trace;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
+TEST(Pragma, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
 {
     string query = PragmaBuilder().
             PragmaWalAutocheckpoint().
@@ -487,7 +487,7 @@ TEST(PragmaClause, TEST_PRAGMA_WAL_AUTOCHECKPOINT)
     ASSERT_EQ("PRAGMA wal_autocheckpoint;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_WAL_CHECKPOINT)
+TEST(Pragma, TEST_PRAGMA_WAL_CHECKPOINT)
 {
     string query = PragmaBuilder().
             PragmaWalCheckpoint().
@@ -496,7 +496,7 @@ TEST(PragmaClause, TEST_PRAGMA_WAL_CHECKPOINT)
     ASSERT_EQ("PRAGMA wal_checkpoint;", query);
 }
 
-TEST(PragmaClause, TEST_PRAGMA_WRITABLE_SCHEMA)
+TEST(Pragma, TEST_PRAGMA_WRITABLE_SCHEMA)
 {
     string query = PragmaBuilder().
             PragmaWritableSchema().

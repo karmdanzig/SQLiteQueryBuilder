@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/EndTransactionBuilder.h"
 
-TEST(EndTransactionClause, TEST_END_TRANSACTION)
+TEST(EndTransaction, TEST_END_TRANSACTION)
 {
 	string query = EndTransactionBuilder().
 			End("MyTransaction").

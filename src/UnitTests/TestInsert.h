@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/InsertBuilder.h"
 
-TEST(InsertClause, TEST_INSERT_INTO_TABLE)
+TEST(Insert, TEST_INSERT_INTO_TABLE)
 {
 	string query = InsertBuilder().
 			InsertInto("Table").

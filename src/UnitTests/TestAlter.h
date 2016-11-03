@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Builders/AlterBuilder.h"
 
-TEST(AlterClause, TEST_ALTER_RENAME)
+TEST(Alter, TEST_ALTER_RENAME)
 {
 	string query = AlterBuilder().
 			Alter("Table").
@@ -11,7 +11,7 @@ TEST(AlterClause, TEST_ALTER_RENAME)
 	ASSERT_EQ("ALTER Table RENAME TO Table1;", query);
 }
 
-TEST(AlterClause, TEST_ALTER_ADD_COLUMN)
+TEST(Alter, TEST_ALTER_ADD_COLUMN)
 {
 	string query = AlterBuilder().
 			Alter("Table").
