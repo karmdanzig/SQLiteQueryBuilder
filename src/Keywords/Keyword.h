@@ -22,7 +22,7 @@ protected:
 
     std::string m_completeKeyword;
     void insertFromListWithSeparator(const std::vector<std::string>& whichlist, const std::string& separator);
-    void insertFromListWithOperatorList(const std::vector<std::string>& whichList, std::queue<std::string>& operatorList);
+    void insertFromListWithOperatorList(const std::vector<std::string>& whichList, const std::vector<std::string>& operatorList);
     void addReturnLine();
 
 public:

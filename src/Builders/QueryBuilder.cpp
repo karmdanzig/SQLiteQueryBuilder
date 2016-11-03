@@ -198,13 +198,13 @@ QueryBuilder& QueryBuilder::WhereNotLike(const std::string& filterField, const i
 
 QueryBuilder& QueryBuilder::And()
 {
-    m_operatorList.push(AndClause);
+    m_operatorList.push_back(AndClause);
     return *this;
 }
 
 QueryBuilder& QueryBuilder::Or()
 {
-    m_operatorList.push(OrClause);
+    m_operatorList.push_back(OrClause);
     return *this;
 }
 

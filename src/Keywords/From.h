@@ -22,12 +22,12 @@ private:
     std::string join;
     std::vector<std::string> fromList;
     std::vector<std::string> onList;
-    std::queue<std::string> theQueue;
+    std::vector<std::string> operatorList;
 
 public:
 
     From(const std::string& table);
-    From(const std::string& table, const std::string& join, std::vector<std::string>& fromList, std::vector<std::string>& onList, std::queue<std::string>& theQueue);
+    From(const std::string& table, const std::string& join, const std::vector<std::string>& fromList, const std::vector<std::string>& onList, const std::vector<std::string>& operatorList);
     ~From();
     void processKeyword();
 };

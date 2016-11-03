@@ -31,16 +31,15 @@ void Keyword::insertFromListWithSeparator(const std::vector<std::string>& whichL
     }
 }
 
-void Keyword::insertFromListWithOperatorList(const std::vector<std::string>& whichList, std::queue<std::string>& operatorList)
+void Keyword::insertFromListWithOperatorList(const std::vector<std::string>& whichList, const std::vector<std::string>& operatorList)
 {
 
-    for(std::vector<std::string>::const_iterator it = whichList.begin(); it != whichList.end(); ++it)
+    for(std::vector<std::string>::const_iterator it = whichList.begin(), it2 = operatorList.begin(); it != whichList.end(); ++it, ++it2)
     {
         m_completeKeyword.append(*it);
         if (*it != whichList.at(whichList.size() - 1))
         {
-            m_completeKeyword.append(" " + operatorList.front() +" ");
-            operatorList.pop();
+            m_completeKeyword.append(" " + *it2 +" ");
         }
 
     }

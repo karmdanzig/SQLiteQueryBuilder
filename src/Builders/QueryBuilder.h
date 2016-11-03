@@ -24,7 +24,7 @@ protected:
     std::string m_join;
     std::vector<std::string> m_havingList;
     std::vector<std::string> m_whereList;
-    std::queue<std::string> m_operatorList;
+    std::vector<std::string> m_operatorList;
     std::vector<std::string> m_groupbyList;
     std::vector<std::string> m_orderbyList;
     std::vector<std::string> m_fromAsList;

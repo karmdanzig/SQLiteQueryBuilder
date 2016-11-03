@@ -16,8 +16,8 @@ From::From(const std::string& table)
     processKeyword();
 }
 
-From::From(const std::string& table, const std::string& join, std::vector<std::string>& fromList, std::vector<std::string>& onList, std::queue<std::string>& theQueue)
-: table(table), join(join), fromList(fromList), onList(onList), theQueue(theQueue)
+From::From(const std::string& table, const std::string& join, const std::vector<std::string>& fromList, const std::vector<std::string>& onList, const std::vector<std::string>& operatorList)
+: table(table), join(join), fromList(fromList), onList(onList), operatorList(operatorList)
 {
     processKeyword();
 }
@@ -44,7 +44,7 @@ void From::processKeyword()
     {
         insertFromListWithSeparator(fromList, " JOIN ");
         m_completeKeyword.append(" " + OnClause + " ");
-        insertFromListWithOperatorList(onList, theQueue);
+        insertFromListWithOperatorList(onList, operatorList);
     }
 }
 

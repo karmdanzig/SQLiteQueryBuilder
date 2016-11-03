@@ -16,8 +16,8 @@ Where::Where(const std::vector<std::string>& whereList)
     processKeyword();
 }
 
-Where::Where(const std::vector<std::string>& whereList, std::queue<std::string>& theQueue)
-: whereList(whereList), theQueue(theQueue)
+Where::Where(const std::vector<std::string>& whereList, const std::vector<std::string>& operatorList)
+: whereList(whereList), operatorList(operatorList)
 {
     processKeyword();
 }
@@ -32,7 +32,7 @@ void Where::processKeyword()
     {
         addReturnLine();
         m_completeKeyword.append(WhereClause + " ");
-        insertFromListWithOperatorList(whereList, theQueue);
+        insertFromListWithOperatorList(whereList, operatorList);
     }
 
 }

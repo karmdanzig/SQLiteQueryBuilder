@@ -42,8 +42,23 @@ SelectBuilder& SelectBuilder::Distinct()
 std::string SelectBuilder::Build()
 {
     Keys::Select t(m_selectList, m_selectAll, m_distinct);
-    Keys::From f(m_fromTable, m_join, m_fromAsList, m_onList, m_operatorList);
-    Keys::Where w(m_whereList, m_operatorList);
+
+    std::vector<std::string> subvectorForFrom;
+    std::vector<std::string> subvectorForWhere;
+
+    if(!m_onList.empty() && !m_whereList.empty())
+    {
+        subvectorForFrom.insert(subvectorForFrom.end(), m_operatorList.begin(), m_operatorList.begin() + m_onList.size() - 1);
+        subvectorForWhere.insert(subvectorForWhere.end(), m_operatorList.begin() + m_onList.size() - 1, m_operatorList.end());
+    }
+    else
+    {
+        subvectorForFrom.insert(subvectorForFrom.end(), m_operatorList.begin(), m_operatorList.end());
+        subvectorForWhere.insert(subvectorForWhere.end(), m_operatorList.begin(), m_operatorList.end());
+    }
+
+    Keys::From f(m_fromTable, m_join, m_fromAsList, m_onList, subvectorForFrom);
+    Keys::Where w(m_whereList, subvectorForWhere);
     Keys::GroupBy gb(m_groupbyList);
     Keys::Having h(m_havingList);
     Keys::OrderBy ob(m_orderbyList, m_ascending, m_descending);
