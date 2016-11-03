@@ -31,7 +31,7 @@ DropBuilder& DropBuilder::IfExists()
 
 std::string DropBuilder::Build()
 {
-    Keys::Drop d(m_dropTable, m_ifExists, Table_DropOrCreateType);
+    Keys::Drop d(m_dropTable, m_ifExists, Table_DropType);
     return d.getCompleteKeyword() + TerminationQueryCharacter;
 }
 

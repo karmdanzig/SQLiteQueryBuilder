@@ -88,12 +88,12 @@ typedef enum
 
 typedef enum
 {
-    NoneType_DropOrCreateType = 0,
-    Index_DropOrCreateType,
-    Table_DropOrCreateType,
-    Trigger_DropOrCreateType,
-    View_DropOrCreateType
-} DropOrCreateType;
+    NoneType_DropType = 0,
+    Index_DropType,
+    Table_DropType,
+    Trigger_DropType,
+    View_DropType
+} DropType;
 
 const string TerminationQueryCharacter = ";";
 const string TableClause = "TABLE";

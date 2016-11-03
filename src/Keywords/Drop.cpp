@@ -10,7 +10,7 @@
 namespace Keys
 {
 
-Drop::Drop(const std::string& table, const bool& ifExists, DropOrCreateType typeOfDropOrCreate)
+Drop::Drop(const std::string& table, const bool& ifExists, DropType typeOfDropOrCreate)
 : table(table), ifExists(ifExists), typeOfDropOrCreate(typeOfDropOrCreate)
 {
     processKeyword();

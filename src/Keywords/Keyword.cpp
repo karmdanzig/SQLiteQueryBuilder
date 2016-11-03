@@ -45,33 +45,33 @@ void Keyword::insertFromListWithOperatorList(const std::vector<std::string>& whi
     }
 }
 
-std::string Keyword::returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate)
+std::string Keyword::returnTypeOfDropOrCreate(DropType typeOfDropOrCreate)
 {
     std::string toReturn;
 
     switch(typeOfDropOrCreate)
     {
-        case NoneType_DropOrCreateType :
+        case NoneType_DropType :
         {
             toReturn = "";
             break;
         }
-        case Index_DropOrCreateType :
+        case Index_DropType :
         {
             toReturn = IndexClause;
             break;
         }
-        case Table_DropOrCreateType :
+        case Table_DropType :
         {
             toReturn = TableClause;
             break;
         }
-        case Trigger_DropOrCreateType :
+        case Trigger_DropType :
         {
             toReturn = TriggerClause;
             break;
         }
-        case View_DropOrCreateType :
+        case View_DropType :
         {
             toReturn = ViewClause;
             break;

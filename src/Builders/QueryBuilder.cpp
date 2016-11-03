@@ -7,7 +7,7 @@
 
 #include "QueryBuilder.h"
 
-QueryBuilder::QueryBuilder() : m_fromTable(""), m_ascending(false), m_descending(false), typeOfDropOrCreate(NoneType_DropOrCreateType)
+QueryBuilder::QueryBuilder() : m_fromTable(""), m_ascending(false), m_descending(false), typeOfDropOrCreate(NoneType_DropType)
 {
 }
 

@@ -31,7 +31,7 @@ DropIndexBuilder& DropIndexBuilder::IfExists()
 
 std::string DropIndexBuilder::Build()
 {
-    Keys::Drop d(m_nameOfIndex, m_ifExists, Index_DropOrCreateType);
+    Keys::Drop d(m_nameOfIndex, m_ifExists, Index_DropType);
     return d.getCompleteKeyword() + TerminationQueryCharacter;
 }
 
