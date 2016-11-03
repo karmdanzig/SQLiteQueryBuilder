@@ -58,7 +58,7 @@ string Keyword::returnTypeOfDropOrCreate(DropOrCreateType typeOfDropOrCreate)
         }
         case Table_DropOrCreateType :
         {
-            toReturn = Table;
+            toReturn = TableClause;
             break;
         }
         case Trigger_DropOrCreateType :

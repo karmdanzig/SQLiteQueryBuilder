@@ -22,7 +22,7 @@ Create::~Create()
 
 void Create::processKeyword()
 {
-    m_completeKeyword = CreateClause + " " + (temporary? TemporaryClause + " " : "") + Table + " " + (ifNotExists? IfNotExistsClause + " " : "") + table;
+    m_completeKeyword = CreateClause + " " + (temporary? TemporaryClause + " " : "") + TableClause + " " + (ifNotExists? IfNotExistsClause + " " : "") + table;
     m_completeKeyword.append(" (");
     addReturnLine();
     insertFromListWithSeparator(fieldsList, ",\n");

@@ -96,7 +96,7 @@ typedef enum
 } DropOrCreateType;
 
 const string TerminationQueryCharacter = ";";
-const string Table = "TABLE";
+const string TableClause = "TABLE";
 const string ViewClause = "VIEW";
 const string TriggerClause = "TRIGGER";
 const string IndexClause = "INDEX";
