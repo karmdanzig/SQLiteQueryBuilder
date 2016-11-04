@@ -133,6 +133,7 @@ const string PragmaClause = "PRAGMA";
 const string UniqueClause = "UNIQUE";
 const string BeginClause = "BEGIN";
 const string EndClause = "END";
+const string CommitClause = "COMMIT";
 const string RollbackClause = "ROLLBACK";
 
 #endif /* SRC_CONSTANTS_H_ */

@@ -1,5 +1,6 @@
 #include "UnitTests/TestAlter.h"
 #include "UnitTests/TestBeginTransaction.h"
+#include "UnitTests/TestCommit.h"
 #include "UnitTests/TestCreateIndex.h"
 #include "UnitTests/TestCreateTable.h"
 #include "UnitTests/TestDelete.h"
