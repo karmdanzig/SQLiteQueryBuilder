@@ -6,6 +6,8 @@
 #include "UnitTests/TestDelete.h"
 #include "UnitTests/TestDropIndex.h"
 #include "UnitTests/TestDropTable.h"
+#include "UnitTests/TestDropTrigger.h"
+#include "UnitTests/TestDropView.h"
 #include "UnitTests/TestEndTransaction.h"
 #include "UnitTests/TestInsert.h"
 #include "UnitTests/TestPragma.h"

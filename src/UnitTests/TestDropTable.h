@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-
 #include "../Builders/DropTableBuilder.h"
 
 TEST(DropTable, TEST_DROP_TABLE)
